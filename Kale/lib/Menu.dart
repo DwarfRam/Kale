@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'fondecran_widget.dart';
+
+import 'Routes.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -10,13 +11,6 @@ class Menu extends StatefulWidget {
 
 class _MenuState extends State<Menu> {
   int _currentIndex = 0;
-  final List<Widget> _children = [
-    PlaceholderWidget(Colors.white),
-    PlaceholderWidget(Colors.deepOrange),
-    PlaceholderWidget(Colors.green),
-    PlaceholderWidget(Colors.black),
-    PlaceholderWidget(Colors.black)
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +19,6 @@ class _MenuState extends State<Menu> {
         title: Text('Kale'),
         backgroundColor: Colors.black12 ,
       ),
-      body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,
@@ -65,11 +58,21 @@ class _MenuState extends State<Menu> {
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
-      Navigator.pushNamed(context, '/',);
-      Navigator.pushNamed(context, '/ecoresp',);
-      Navigator.pushNamed(context, '/recherche',);
-      Navigator.pushNamed(context, '/planif',);
-      Navigator.pushNamed(context, '/profil',);
+      if (_currentIndex == 0){
+        Navigator.pushNamed(context, home,);
+      };
+      if (_currentIndex == 1){
+        Navigator.pushNamed(context, ecoresp,);
+      };
+      if (_currentIndex == 2){
+        Navigator.pushNamed(context, recherche,);
+      };
+      if (_currentIndex == 3){
+        Navigator.pushNamed(context, planif,);
+      };
+      if (_currentIndex == 4){
+        Navigator.pushNamed(context, profil,);
+      };
     },
     );
   }
