@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'Menu.dart';
 
-class Page2 extends StatelessWidget {
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,8 +9,9 @@ class Page2 extends StatelessWidget {
         title: Text('Page 2'),
       ),
       body: Center(
-        child: Text('Ceci est la page 2'),
+        child: Text('Ceci est la page 4'),
       ),
+      bottomNavigationBar: Menu(),
     );
   }
 }
