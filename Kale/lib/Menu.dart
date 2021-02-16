@@ -2,21 +2,48 @@ import 'package:flutter/material.dart';
 
 import 'Routes.dart';
 
-class Menu extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _MenuState();
-  }
-}
+class Menu extends StatelessWidget {
 
-class _MenuState extends State<Menu> {
-  int _currentIndex = 0;
+  Menu({Key key, this.currentindex }): super(key: key);
+
+  final int currentindex;
+
 
   @override
   Widget build(BuildContext context) {
+    void onTabTapped(int index) {
+      print(this.currentindex);
+      if (index == 0){
+        print("avant");
+        Navigator.popAndPushNamed(context, home,);
+        print("après");
+      };
+      if (index == 1){
+        print("avant");
+        print(this.currentindex);
+        //Navigator.pushNamed(context, ecoresp,);
+        Navigator.popAndPushNamed(context, ecoresp);
+        print("après");
+      };
+      if (index == 2){
+        print("avant");
+        Navigator.popAndPushNamed(context, recherche,);
+        print("après");
+      };
+      if (index == 3){
+        print("avant");
+        Navigator.popAndPushNamed(context, planif,);
+        print("après");
+      };
+      if (index == 4){
+        print("avant");
+        Navigator.popAndPushNamed(context, profil,);
+        print("après");
+      };
+    }
     return BottomNavigationBar(
         onTap: onTabTapped,
-        currentIndex: _currentIndex,
+        currentIndex: currentindex,
         items: [
           BottomNavigationBarItem(
             icon: new Icon(Icons.home, color: Colors.black38),
@@ -45,36 +72,9 @@ class _MenuState extends State<Menu> {
           )
         ],
       );
+
+
+
   }
-  void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-      if (_currentIndex == 0){
-        print("avant");
-        Navigator.pushNamed(context, home,);
-        print("après");
-      };
-      if (_currentIndex == 1){
-        print("avant");
-        Navigator.pushNamed(context, ecoresp,);
-        print("après");
-      };
-      if (_currentIndex == 2){
-        print("avant");
-        Navigator.pushNamed(context, recherche,);
-        print("après");
-      };
-      if (_currentIndex == 3){
-        print("avant");
-        Navigator.pushNamed(context, planif,);
-        print("après");
-      };
-      if (_currentIndex == 4){
-        print("avant");
-        Navigator.pushNamed(context, profil,);
-        print("après");
-      };
-    },
-    );
-  }
+
 }

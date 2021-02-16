@@ -19,7 +19,7 @@ class _RechercheState extends State<Recherche> {
       body: Center(
         child: Text('Ceci est la page 3'),
       ),
-      bottomNavigationBar: MyApp.menu,
+      bottomNavigationBar: Menu(currentindex : 2),
     );
   }
 }

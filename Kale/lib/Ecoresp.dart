@@ -19,7 +19,7 @@ class _EcorespState extends State<Ecoresp> {
       body: Center(
         child: Text('Ceci est la page 2'),
       ),
-      bottomNavigationBar: MyApp.menu,
+      bottomNavigationBar: Menu(currentindex : 1),
     );
   }
 }

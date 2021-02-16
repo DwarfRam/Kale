@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'Menu.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -16,11 +17,13 @@ class _HomeState extends State<Home> {
         title: Text('Home'),
       ),
       body: Container(
-          padding: const EdgeInsets.all(32.0),
+          padding: const EdgeInsets.all(8.0),
           alignment: Alignment.center,
+
+
           child : Text('truc'),
       ),
-      bottomNavigationBar: MyApp.menu,
+      bottomNavigationBar: Menu(currentindex : 0),
     );
   }
 }
