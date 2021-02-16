@@ -15,8 +15,10 @@ class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case home:
+        print("home");
         return MaterialPageRoute(builder: (_) => Home());
       case ecoresp:
+        print("ecoresp");
         return MaterialPageRoute(builder: (_) => Ecoresp());
       case recherche:
         return MaterialPageRoute(builder: (_) => Recherche());

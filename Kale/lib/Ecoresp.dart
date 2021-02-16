@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'Menu.dart';
+import 'main.dart';
 
-class Ecoresp extends StatelessWidget {
+class Ecoresp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _EcorespState();
+  }
+}
+
+class _EcorespState extends State<Ecoresp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +19,7 @@ class Ecoresp extends StatelessWidget {
       body: Center(
         child: Text('Ceci est la page 2'),
       ),
-      bottomNavigationBar: Menu(),
+      bottomNavigationBar: MyApp.menu,
     );
   }
 }

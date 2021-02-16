@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
-import 'Menu.dart';
+import 'main.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _HomeState();
+  }
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Page 2'),
+        title: Text('Home'),
       ),
-      body: Center(
-        child: Text('Ceci est la page 4'),
+      body: Container(
+          padding: const EdgeInsets.all(32.0),
+          alignment: Alignment.center,
+          child : Text('truc'),
       ),
-      bottomNavigationBar: Menu(),
+      bottomNavigationBar: MyApp.menu,
     );
   }
 }

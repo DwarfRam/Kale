@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'Menu.dart';
+import 'main.dart';
 
-class Planif extends StatelessWidget {
+class Planif extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _PlanifState();
+  }
+}
+
+class _PlanifState extends State<Planif> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +19,7 @@ class Planif extends StatelessWidget {
       body: Center(
         child: Text('Ceci est la page 4'),
       ),
-      bottomNavigationBar: Menu(),
+      bottomNavigationBar: MyApp.menu,
     );
   }
 }
