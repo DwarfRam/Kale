@@ -8,37 +8,23 @@ class Menu extends StatelessWidget {
 
   final int currentindex;
 
-
   @override
   Widget build(BuildContext context) {
     void onTabTapped(int index) {
-      print(this.currentindex);
       if (index == 0){
-        print("avant");
         Navigator.popAndPushNamed(context, home,);
-        print("après");
       };
       if (index == 1){
-        print("avant");
-        print(this.currentindex);
-        //Navigator.pushNamed(context, ecoresp,);
         Navigator.popAndPushNamed(context, ecoresp);
-        print("après");
       };
       if (index == 2){
-        print("avant");
         Navigator.popAndPushNamed(context, recherche,);
-        print("après");
       };
       if (index == 3){
-        print("avant");
         Navigator.popAndPushNamed(context, planif,);
-        print("après");
       };
       if (index == 4){
-        print("avant");
         Navigator.popAndPushNamed(context, profil,);
-        print("après");
       };
     }
     return BottomNavigationBar(

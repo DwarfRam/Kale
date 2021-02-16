@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
           alignment: Alignment.center,
 
 
-          child : Text('truc'),
+          child : Text("lien vers l'inscription"),
       ),
       bottomNavigationBar: Menu(currentindex : 0),
     );
