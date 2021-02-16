@@ -19,7 +19,7 @@ class _PlanifState extends State<Planif> {
       body: Center(
         child: Text('Ceci est la page 4'),
       ),
-      bottomNavigationBar: MyApp.menu,
+      bottomNavigationBar: Menu(currentindex : 3),
     );
   }
 }

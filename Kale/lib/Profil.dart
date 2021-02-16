@@ -19,7 +19,7 @@ class _ProfilState extends State<Profil> {
       body: Center(
         child: Text('Ceci est la page 5'),
       ),
-      bottomNavigationBar: MyApp.menu,
+      bottomNavigationBar: Menu(currentindex : 4),
     );
   }
 }
