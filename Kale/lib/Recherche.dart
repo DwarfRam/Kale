@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'Menu.dart';
+import 'main.dart';
 
-class Recherche extends StatelessWidget {
+class Recherche extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _RechercheState();
+  }
+}
+
+class _RechercheState extends State<Recherche> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +19,7 @@ class Recherche extends StatelessWidget {
       body: Center(
         child: Text('Ceci est la page 3'),
       ),
-      bottomNavigationBar: Menu(),
+      bottomNavigationBar: MyApp.menu,
     );
   }
 }
