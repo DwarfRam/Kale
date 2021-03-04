@@ -7,7 +7,35 @@ class Connexion extends StatefulWidget {
 }
 
 class _ConnexionState extends State<Connexion> {
+
+  final TextEditingController _emailFilter = new TextEditingController();
+  final TextEditingController _passwordFilter = new TextEditingController();
+  String _email = "";
+  String _password = "";
+
+  _ConnexionState() {
+    _emailFilter.addListener(_emailListen);
+    _passwordFilter.addListener(_passwordListen);
+  }
+
+  void _emailListen() {
+    if (_emailFilter.text.isEmpty) {
+      _email = "";
+    } else {
+      _email = _emailFilter.text;
+    }
+  }
+
+  void _passwordListen() {
+    if (_passwordFilter.text.isEmpty) {
+      _password = "";
+    } else {
+      _password = _passwordFilter.text;
+    }
+  }
+
   @override
+
   Widget build(BuildContext context) {
     return new Scaffold(
         resizeToAvoidBottomPadding: false,
@@ -32,6 +60,7 @@ class _ConnexionState extends State<Connexion> {
                 child: Column(
                   children: <Widget>[
                     TextField(
+                      controller : _emailFilter,
                       decoration: InputDecoration(
                           labelText: 'Email',
                           labelStyle: TextStyle(
@@ -43,6 +72,7 @@ class _ConnexionState extends State<Connexion> {
                     ),
                     SizedBox(height: 20.0),
                     TextField(
+                      controller : _passwordFilter,
                       decoration: InputDecoration(
                           labelText: 'Mot de passe',
                           labelStyle: TextStyle(
@@ -78,7 +108,10 @@ class _ConnexionState extends State<Connexion> {
                         color: Colors.green,
                         elevation: 7.0,
                         child: GestureDetector(
-                          onTap: () {Navigator.popAndPushNamed(context, home,);},
+                          onTap: () {
+                            Navigator.popAndPushNamed(context, home,);
+                            _connexioncompte();
+                            },
                           child: Center(
                             child: Text(
                               'CONNEXION',
@@ -123,5 +156,8 @@ class _ConnexionState extends State<Connexion> {
         ),
         bottomNavigationBar: Menu(currentindex : 0),
     );
+  }
+  void _connexioncompte () {
+    print('The user wants to login with $_email and $_password');
   }
 }

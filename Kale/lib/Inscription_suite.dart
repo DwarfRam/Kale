@@ -67,6 +67,7 @@ class _Inscription_suiteState extends State<Inscription_suite> {
                       child: GestureDetector(
                         onTap: () {
                           Navigator.popAndPushNamed(context, home,);
+
                         },
                         child: Center(
                           child: Text(
@@ -139,4 +140,6 @@ class _Inscription_suiteState extends State<Inscription_suite> {
       bottomNavigationBar: Menu(currentindex : 0),
     );
   }
+
+
 }

@@ -7,7 +7,40 @@ class Inscription extends StatefulWidget {
   _InscriptionState createState() => _InscriptionState();
 }
 
+
+enum FormType {
+  login,
+  register
+}
+
 class _InscriptionState extends State<Inscription> {
+
+  final TextEditingController _emailFilter = new TextEditingController();
+  final TextEditingController _passwordFilter = new TextEditingController();
+  String _email = "";
+  String _password = "";
+
+  _InscriptionState() {
+    _emailFilter.addListener(_emailListen);
+    _passwordFilter.addListener(_passwordListen);
+  }
+
+  void _emailListen() {
+    if (_emailFilter.text.isEmpty) {
+      _email = "";
+    } else {
+      _email = _emailFilter.text;
+    }
+  }
+
+  void _passwordListen() {
+    if (_passwordFilter.text.isEmpty) {
+      _password = "";
+    } else {
+      _password = _passwordFilter.text;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -33,6 +66,7 @@ class _InscriptionState extends State<Inscription> {
               child: Column(
                 children: <Widget>[
                   TextField(
+                    controller : _emailFilter,
                     decoration: InputDecoration(
                         labelText: 'Email',
                         labelStyle: TextStyle(
@@ -46,6 +80,7 @@ class _InscriptionState extends State<Inscription> {
                   ),
                   SizedBox(height: 10.0),
                   TextField(
+                    controller : _passwordFilter,
                     decoration: InputDecoration(
                         labelText: 'Mot de passe ',
                         labelStyle: TextStyle(
@@ -67,6 +102,7 @@ class _InscriptionState extends State<Inscription> {
                         child: GestureDetector(
                           onTap: () {
                             Navigator.popAndPushNamed(context, inscription_suite,);
+                            _creercompte();
                           },
                           child: Center(
                             child: Text(
@@ -138,5 +174,8 @@ class _InscriptionState extends State<Inscription> {
         ),
         bottomNavigationBar: Menu(currentindex : 0),
     );
+  }
+  _creercompte (){
+    print('the user wants to create an account with $_email and $_password');
   }
 }
