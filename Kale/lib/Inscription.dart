@@ -44,8 +44,9 @@ class _InscriptionState extends State<Inscription> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        resizeToAvoidBottomPadding: false,
-        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
+      resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
             Widget>[
           Container(
             child: Stack(
@@ -77,6 +78,7 @@ class _InscriptionState extends State<Inscription> {
                         // hintStyle: ,
                         focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.green))),
+
                   ),
                   SizedBox(height: 10.0),
                   TextField(
@@ -171,6 +173,7 @@ class _InscriptionState extends State<Inscription> {
              ],
            )
         ]
+        ),
         ),
         bottomNavigationBar: Menu(currentindex : 0),
     );

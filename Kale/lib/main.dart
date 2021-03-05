@@ -9,10 +9,10 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   static Widget menu;
   @override
-
   Widget build(BuildContext context) {
     menu = new Menu();
     return MaterialApp(
+
       title: 'Kale',
       onGenerateRoute: Routes.generateRoute,
       initialRoute: home,

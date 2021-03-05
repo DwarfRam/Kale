@@ -18,7 +18,8 @@ class _HomeState extends State<Home> {
         title: Text('Home'),
 
       ),
-      body: Column(
+      body: SingleChildScrollView(
+      child: Column(
         children: [
           Container(
               padding: const EdgeInsets.only(top: 500.0),
@@ -77,6 +78,7 @@ class _HomeState extends State<Home> {
       ),
       ],
     ),
+      ),
         bottomNavigationBar: Menu(currentindex : 0),
     );
   }

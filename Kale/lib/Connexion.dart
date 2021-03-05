@@ -38,8 +38,9 @@ class _ConnexionState extends State<Connexion> {
 
   Widget build(BuildContext context) {
     return new Scaffold(
-        resizeToAvoidBottomPadding: false,
-        body: Column(
+      resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
@@ -153,6 +154,7 @@ class _ConnexionState extends State<Connexion> {
             ),
 
           ],
+        ),
         ),
         bottomNavigationBar: Menu(currentindex : 0),
     );

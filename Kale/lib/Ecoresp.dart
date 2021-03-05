@@ -13,11 +13,14 @@ class _EcorespState extends State<Ecoresp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('Page 2'),
       ),
-      body: Center(
+      body: SingleChildScrollView(
+      child: Center(
         child: Text('Ceci est la page 2'),
+      ),
       ),
       bottomNavigationBar: Menu(currentindex : 1),
     );

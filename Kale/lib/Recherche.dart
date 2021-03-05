@@ -20,10 +20,12 @@ class _RechercheState extends State<Recherche> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('Page 2'),
       ),
-      body: Column(
+      body: SingleChildScrollView(
+      child: Column(
         children: <Widget>[TextField(
   controller: _textController,
   onChanged: (text) {
@@ -64,7 +66,7 @@ class _RechercheState extends State<Recherche> {
           ),
                 ],
           ),
-
+      ),
       bottomNavigationBar: Menu(currentindex : 2),
     );
   }
