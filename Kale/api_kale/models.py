@@ -10,6 +10,8 @@ class users(models.Model):
 	name = models.CharField(max_length=200)
 	mdp =  models.CharField(max_length=200)
 	mail = models.CharField(max_length=200)
+	allergy = models.CharField(max_length=200)
+	diet = models.CharField(max_length=200)
 	
 	def __str__(self):
 		return self.name
