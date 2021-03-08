@@ -81,7 +81,7 @@ class _ProfilState extends State<Profil> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width * 1,
-                  padding: EdgeInsets.only(left : 35.0, top: 25.0, right: 35.0),
+                  padding: EdgeInsets.only(left : 15.0, top: 25.0, right: 15.0),
                   child: Container(
                       padding: EdgeInsets.all(10.0),
                       child: Column(
@@ -175,7 +175,7 @@ class _ProfilState extends State<Profil> {
                           ),
                         SizedBox(height: MediaQuery.of(context).size.width * 0.02),
                         Container(
-                            width: MediaQuery.of(context).size.width * 0.7,
+                            width: MediaQuery.of(context).size.width * 0.75,
                             child: Material(
                                 borderRadius: BorderRadius.circular(15.0),
                                 shadowColor: Colors.black26,
@@ -192,12 +192,187 @@ class _ProfilState extends State<Profil> {
                                                 style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
                                               )
                                           ),
+                                          SizedBox(height: MediaQuery.of(context).size.width * 0.02,),
+                                          Container(
+                                            padding : EdgeInsets.only(bottom:MediaQuery.of(context).size.width * 0.02),
+                                              decoration: BoxDecoration(
+                                                  border : Border(bottom : BorderSide(color: Colors.black26)
+                                                  )),
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                    child : Icon(Icons.plus_one, color: Colors.amber)
+                                                  ),
+                                                  SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
+                                                  Container(
+                                                    child :Text('... a atteint le niveau 1 !',
+                                                      textAlign: TextAlign.left,
+                                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                    )
+                                                  )
+                                                ],
+                                              )
+                                          ),
+                                          SizedBox(height: MediaQuery.of(context).size.width * 0.02,),
+                                          Container(
+                                              padding : EdgeInsets.only(bottom:MediaQuery.of(context).size.width * 0.02),
+                                              decoration: BoxDecoration(
+                                                  border : Border(bottom : BorderSide(color: Colors.black26)
+                                                  )),
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                      child : Icon(Icons.star, color: Colors.green)
+                                                  ),
+                                                  SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
+                                                  Container(
+                                                      child :Text('... a publié une nouvelle recette !',
+                                                        textAlign: TextAlign.left,
+                                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                      )
+                                                  )
+                                                ],
+                                              )
+                                          ),
+                                          SizedBox(height: MediaQuery.of(context).size.width * 0.02,),
+                                          Container(
+                                              padding : EdgeInsets.only(bottom:MediaQuery.of(context).size.width * 0.02),
+                                              decoration: BoxDecoration(
+                                                  border : Border(bottom : BorderSide(color: Colors.black26)
+                                                  )),
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                      child : Icon(Icons.verified)
+                                                  ),
+                                                  SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
+                                                  Container(
+                                                      child :Text('... a rempli la mission "..." !',
+                                                        textAlign: TextAlign.left,
+                                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                      )
+                                                  )
+                                                ],
+                                              )
+                                          ),
                                           ]
                                     )
                                 )
                             )
                         ),
+                          SizedBox(height: MediaQuery.of(context).size.width * 0.05,),
+                          Row(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.3,
+                                child : Expanded(
+                                  child : Container (
+                                    child: Material(
+                                        borderRadius: BorderRadius.circular(15.0),
+                                        shadowColor: Colors.black26,
+                                        color: Colors.white,
+                                        elevation: 7.0,
+                                        child : Column (
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children : [
+                                              Container (
+                                                  padding: EdgeInsets.all(10.0),
+                                                  child : Text('Badges',
+                                                    textAlign: TextAlign.left,
+                                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
+                                                  )
+                                              ),
+                                              Container(
+                                                  padding : EdgeInsets.all(10.0),
+                                                  child : Row(
+                                                    children: [
+                                                      Icon(Icons.verified)
+                                                    ],
+                                                  )
+                                              )
+                                            ]
+                                        )
+                                    ),
+                                  ),
+                                ),
+                                ),
 
+                              SizedBox(width: MediaQuery.of(context).size.width * 0.05,),
+                              Container(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                                  child : Expanded(
+                                    child : Container (
+                                      child: Material(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                      shadowColor: Colors.black26,
+                                      color: Colors.white,
+                                      elevation: 7.0,
+                                        child : Column (
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children : [
+                                          Container (
+                                              padding: EdgeInsets.all(10.0),
+                                            child : Text('Dernières recettes ',
+                                                      textAlign: TextAlign.left,
+                                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
+                                                    )),
+                                          Container(
+                                            child :
+                                                Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          child : Icon(Icons.star, color: Colors.yellow),
+                                                        ),
+                                                        SizedBox(width: MediaQuery.of(context).size.width * 0.02 ,),
+                                                        Container(
+                                                          child: Text('Soupe de poireaux', textAlign: TextAlign.left, style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04)),
+                                                        )
+
+                                                      ],
+                                                    ),
+                                                    SizedBox(height: MediaQuery.of(context).size.width * 0.02),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          child : Icon(Icons.star_border),
+                                                        ),
+                                                        SizedBox(width: MediaQuery.of(context).size.width * 0.02 ,),
+                                                        Container(
+                                                          child: Text('Lasagne aux poireaux', textAlign: TextAlign.left, style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04)),
+                                                        )
+
+                                                      ],
+                                                    ),
+                                                    SizedBox(height: MediaQuery.of(context).size.width * 0.02),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          child : Icon(Icons.star_border),
+                                                        ),
+                                                        SizedBox(width: MediaQuery.of(context).size.width * 0.02 ,),
+                                                        Container(
+                                                          child: Text('Omelette à la farine', textAlign: TextAlign.left, style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04)),
+                                                        )
+
+                                                      ],
+                                                    ),
+                                                    SizedBox(height: MediaQuery.of(context).size.width * 0.02),
+                                                  ],
+                                                )
+
+                                          )
+
+                                              ]
+                                          )
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                            ],
+                          ),
           ]
               )))])),
 

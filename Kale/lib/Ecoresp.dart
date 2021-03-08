@@ -322,7 +322,6 @@ class _EcorespState extends State<Ecoresp> {
                     ),
 
                     Row(
-
                       children: [
                         Container(
                           child : Expanded(
