@@ -294,8 +294,7 @@ class _Inscription_suiteState extends State<Inscription_suite> {
                                     Center(
                                       child: Text('Retour',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'Montserrat')),
+                                              fontWeight: FontWeight.bold)),
                                     ),
 
 
