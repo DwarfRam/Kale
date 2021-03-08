@@ -46,8 +46,9 @@ class _InscriptionState extends State<Inscription> {
     return new Scaffold(
       resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-            Widget>[
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
           Container(
             child: Stack(
               children: <Widget>[

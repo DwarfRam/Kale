@@ -24,8 +24,7 @@ class _RechercheState extends State<Recherche> {
       appBar: AppBar(
         title: Text('Page 2'),
       ),
-      body: SingleChildScrollView(
-      child: Column(
+      body: Column(
         children: <Widget>[TextField(
   controller: _textController,
   onChanged: (text) {
@@ -65,7 +64,7 @@ class _RechercheState extends State<Recherche> {
           }),
           ),
                 ],
-          ),
+
       ),
       bottomNavigationBar: Menu(currentindex : 2),
     );

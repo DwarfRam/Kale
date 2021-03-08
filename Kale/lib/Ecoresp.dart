@@ -42,127 +42,126 @@ class _EcorespState extends State<Ecoresp> {
                               padding: EdgeInsets.all(10.0),
                               child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                
-                                child : Text('Statistiques',
-                                  textAlign: TextAlign.left,
-                                  style : TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Container(
-                                child : Text('Depuis le début de votre aventure Kale',
-                                  textAlign: TextAlign.left,
-                                  style : TextStyle(fontSize: 15.0,),
-                                ),
-                              ),
-                              SizedBox(height: 10.0),
-                              Container(
-                                child : Row(
                                   children: [
                                   Container(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child : Container(
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: Colors.lightGreen,
-                                              style: BorderStyle.solid,
-                                              width: 3.0),
-                                          color: Colors.lightGreen[50],
-
-                                          borderRadius: BorderRadius.circular(35.0)),
-                                      child: Container(
-                                        padding: EdgeInsets.all(15.0),
-                                          child : Text('12', textAlign: TextAlign.center,
-                                        style : TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
-                                      )
+                                    child : Text('Statistiques',
+                                      textAlign: TextAlign.left,
+                                      style : TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
                                   ),
-                                    ),
-                                  ),
+                              ),
+                                Container(
+                                  child : Text('Depuis le début de votre aventure Kale',
+                                    textAlign: TextAlign.left,
+                                    style : TextStyle(fontSize: 15.0,),
+                                ),
+                              ),
+                                SizedBox(height: 10.0),
+                                Container(
+                                  child : Row(
+                                  children: [
                                     Container(
-                                      padding : EdgeInsets.only(left: 15.0,),
-                                      child : Text('Litres d\'eau éconimisés',
-                                      textAlign: TextAlign.center,
-                                      style : TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child : Container(
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.lightGreen,
+                                                style: BorderStyle.solid,
+                                                width: 3.0),
+                                            color: Colors.lightGreen[50],
+
+                                            borderRadius: BorderRadius.circular(35.0)),
+                                        child: Container(
+                                          padding: EdgeInsets.all(15.0),
+                                            child : Text('12', textAlign: TextAlign.center,
+                                          style : TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+                                        )
                                     ),
+                                      ),
                                     ),
+                                      Container(
+                                        padding : EdgeInsets.only(left: 15.0,),
+                                        child : Text('Litres d\'eau éconimisés',
+                                        textAlign: TextAlign.center,
+                                        style : TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+                                      ),
+                                      ),
+                                      ],
+                                  ),
+
+                              ),
+                                SizedBox(height: 10.0),
+                                Container(
+                                  child : Row(
+                                    children: [
+                                      Container(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child : Container(
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.lightGreen,
+                                                  style: BorderStyle.solid,
+                                                  width: 3.0),
+                                              color: Colors.lightGreen[50],
+
+                                              borderRadius: BorderRadius.circular(35.0)),
+                                          child: Container(
+                                              padding: EdgeInsets.all(15.0),
+                                              child : Text('12', textAlign: TextAlign.center,
+                                                style : TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+                                              )
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        padding : EdgeInsets.only(left: 15.0,),
+                                        child : Text('Animaux sauvés',
+                                          textAlign: TextAlign.center,
+                                          style : TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
                                     ],
+                                  ),
                                 ),
+                                SizedBox(height: 10.0),
+                                Container(
+                                  child : Row(
+                                    children: [
+                                      Container(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child : Container(
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.lightGreen,
+                                                  style: BorderStyle.solid,
+                                                  width: 3.0),
+                                              color: Colors.lightGreen[50],
 
-                              ),
-                              SizedBox(height: 10.0),
-                              Container(
-                                child : Row(
-                                  children: [
-                                    Container(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child : Container(
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.lightGreen,
-                                                style: BorderStyle.solid,
-                                                width: 3.0),
-                                            color: Colors.lightGreen[50],
-
-                                            borderRadius: BorderRadius.circular(35.0)),
-                                        child: Container(
-                                            padding: EdgeInsets.all(15.0),
-                                            child : Text('12', textAlign: TextAlign.center,
-                                              style : TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
-                                            )
+                                              borderRadius: BorderRadius.circular(35.0)),
+                                          child: Container(
+                                              padding: EdgeInsets.all(15.0),
+                                              child : Text('12', textAlign: TextAlign.center,
+                                                style : TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+                                              )
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Container(
-                                      padding : EdgeInsets.only(left: 15.0,),
-                                      child : Text('Animaux sauvés',
-                                        textAlign: TextAlign.center,
-                                        style : TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 10.0),
-                              Container(
-                                child : Row(
-                                  children: [
-                                    Container(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child : Container(
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.lightGreen,
-                                                style: BorderStyle.solid,
-                                                width: 3.0),
-                                            color: Colors.lightGreen[50],
-
-                                            borderRadius: BorderRadius.circular(35.0)),
-                                        child: Container(
-                                            padding: EdgeInsets.all(15.0),
-                                            child : Text('12', textAlign: TextAlign.center,
-                                              style : TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
-                                            )
+                                      Container(
+                                        padding : EdgeInsets.only(left: 15.0,),
+                                        child : Text('Kg de déchets triés',
+                                          textAlign: TextAlign.center,
+                                          style : TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                    ),
-                                    Container(
-                                      padding : EdgeInsets.only(left: 15.0,),
-                                      child : Text('Kg de déchets triés',
-                                        textAlign: TextAlign.center,
-                                        style : TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                    ],
+                                  ),
 
-                              ),
-                            ]
-                          ))
-                    ),
+                                ),
+                              ]
+                            ))
+                      ),
                     ),
                     Container(
                       width: 700.0,
@@ -186,8 +185,8 @@ class _EcorespState extends State<Ecoresp> {
                             Row(
                                 children: [
                                   Container(
-                                    width: 85.0,
-                                    height: 120.0,
+                                    width: 65.0,
+                                    height: 100.0,
                                     decoration: BoxDecoration(
                                         border: Border.all(
                                             color: Colors.lightGreen,
@@ -215,10 +214,11 @@ class _EcorespState extends State<Ecoresp> {
                                   ),
                                     ),
                                   ),
+
                                   SizedBox(width: 10.0),
-                                  Expanded(child: Container(
-                                    width: 105.0,
-                                    height: 120.0,
+                                  Container(
+                                    width: 145.0,
+                                    height: 150.0,
                                     decoration: BoxDecoration(
                                         border: Border.all(
                                             color: Colors.lightGreen,
@@ -245,17 +245,14 @@ class _EcorespState extends State<Ecoresp> {
                                               ),
                                             ),
 
-                                            SizedBox(height: 5.0),
                                             Expanded(
                                                 child: Container(
-
-                                                    padding : EdgeInsets.only(left:18.0, top:21.0,right: 18.0),
+                                                    padding : EdgeInsets.all(MediaQuery.of(context).size.width * 0.1),
                                                     child: Row(
                                                       children: [
                                                         Container(
                                                           height: 20.0 ,
                                                           width: 20.0,
-
                                                           child : GestureDetector(
                                                             onTap: () {},
                                                             child: Container(
@@ -284,12 +281,11 @@ class _EcorespState extends State<Ecoresp> {
                                       ),
                                     ),
                                   ),
-                                  ),
+
                                   SizedBox(width: 10.0),
-                                  Expanded(
-                                      child : Container(
-                                        width: 85.0,
-                                        height: 120.0,
+                                  Container(
+                                        width: 65.0,
+                                        height: 100.0,
                                         decoration: BoxDecoration(
                                             border: Border.all(
                                                 color: Colors.lightGreen,
@@ -316,7 +312,7 @@ class _EcorespState extends State<Ecoresp> {
                                           ),
                                         ),
                                       )
-                                  )
+
                                 ],
                               ),
                     ],
