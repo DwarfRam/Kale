@@ -1,9 +1,5 @@
-from django.db import models
 
-'''
-TODO :
-Ajouter table régime 
-'''
+from django.db import models
 
 class users(models.Model):
 	id_user = models.AutoField(primary_key=True)
