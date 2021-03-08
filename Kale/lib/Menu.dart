@@ -37,9 +37,9 @@ class Menu extends StatelessWidget {
             activeIcon: new Icon(Icons.home, color: Colors.lightGreen),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.agriculture, color: Colors.black38),
+            icon: new Icon(Icons.eco, color: Colors.black38),
             label: 'Eco-responsable',
-            activeIcon: new Icon(Icons.agriculture, color: Colors.lightGreen),
+            activeIcon: new Icon(Icons.eco, color: Colors.lightGreen),
           ),
           BottomNavigationBarItem(
             icon: new Icon(Icons.search, color: Colors.black38),
