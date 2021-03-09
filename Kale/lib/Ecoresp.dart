@@ -73,6 +73,7 @@ class _EcorespState extends State<Ecoresp> {
                                             borderRadius: BorderRadius.circular(35.0)),
                                         child: Container(
                                           padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+                                            // /!\ STRING DE L'INT
                                             child : Text('12', textAlign: TextAlign.center,
                                           style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.03, fontWeight: FontWeight.bold),
                                         )
@@ -108,6 +109,7 @@ class _EcorespState extends State<Ecoresp> {
                                               borderRadius: BorderRadius.circular(35.0)),
                                           child: Container(
                                               padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+                                              // /!\ STRING DE L'INT
                                               child : Text('12', textAlign: TextAlign.center,
                                                 style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.03, fontWeight: FontWeight.bold),
                                               )
@@ -142,6 +144,7 @@ class _EcorespState extends State<Ecoresp> {
                                               borderRadius: BorderRadius.circular(35.0)),
                                           child: Container(
                                               padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+                                              // /!\ STRING DE L'INT
                                               child : Text('12', textAlign: TextAlign.center,
                                                 style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.03, fontWeight: FontWeight.bold),
                                               )
@@ -206,6 +209,7 @@ class _EcorespState extends State<Ecoresp> {
                                         ),
                                               SizedBox(height: MediaQuery.of(context).size.width * 0.02),
                                               Container(
+                                                // /!\ STRING
                                                   child : Text('intitulé mission', textAlign: TextAlign.center,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.03),
                                                   )
@@ -239,6 +243,7 @@ class _EcorespState extends State<Ecoresp> {
                                             SizedBox(height: MediaQuery.of(context).size.width * 0.02),
                                             Expanded(
                                               child: Container(
+                                                // /!\ STRING
                                                   child : Text('intitulé mission', textAlign: TextAlign.center,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                   )
@@ -250,11 +255,14 @@ class _EcorespState extends State<Ecoresp> {
                                                     padding : EdgeInsets.all(MediaQuery.of(context).size.width * 0.065),
                                                     child: Row(
                                                       children: [
+                                                        // /!\ POUR LL : FAIRE UN MEILLEUR BOUTON + MESSAGE POP UP REFUS/ACCEPTATION
                                                         Container(
                                                           height: MediaQuery.of(context).size.width * 0.04 ,
                                                           width: MediaQuery.of(context).size.width * 0.04,
                                                           child : GestureDetector(
-                                                            onTap: () {},
+                                                            onTap: () {
+                                                              // /!\ ICI FONCTION REFUS MISSION
+                                                            },
                                                             child: Container(
                                                               child: Icon(Icons.clear, color: Colors.red),
                                                             ),
@@ -266,7 +274,9 @@ class _EcorespState extends State<Ecoresp> {
                                                           width: MediaQuery.of(context).size.width * 0.04,
 
                                                           child : GestureDetector(
-                                                            onTap: () {},
+                                                            onTap: () {
+                                                              // /!\ ICI FONCTION ACCEPTATION MISSION
+                                                            },
                                                             child: Container(
 
                                                               child: Icon(Icons.done, color: Colors.lightGreen),
@@ -305,6 +315,7 @@ class _EcorespState extends State<Ecoresp> {
                                                 ),
                                                 SizedBox(height: 5.0),
                                                 Container(
+                                                  // /!\ STRING
                                                     child : Text('intitulé mission', textAlign: TextAlign.center,
                                                       style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.03),
                                                     )
@@ -472,25 +483,32 @@ class _EcorespState extends State<Ecoresp> {
                       color: Colors.white,
                       elevation: 7.0,
                       child: Container(
+                        // /!\ POUR LL ET CB : FAIRE FONCTION POUR REPETER LA CREATION DES CONSEILS
                           padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                           child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  child : Text('Conseil n°1',
-                                    textAlign: TextAlign.left,
-                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.06, fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                                SizedBox(height:MediaQuery.of(context).size.width * 0.03),
-                                Container(
-                                  child : Text('texte en bdd',
-                                    textAlign: TextAlign.left,
-                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
-                                  ),
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                                Column(
+
+                                children: [
+                                    Container(
+                                      child : Text('Conseil n°1',
+                                      textAlign: TextAlign.left,
+                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.06, fontWeight: FontWeight.bold),
+                                      ),
+                                      ),
+                                      SizedBox(height:MediaQuery.of(context).size.width * 0.03),
+                                      Container(
+                                      // /!\ STRING
+                                        child : Text('texte en bdd',
+                                        textAlign: TextAlign.left,
+                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                        ),
                                 )
-                            ])
+                                ])
+                                ],
                         )
+                      )
                     ),
                   )
                   ],

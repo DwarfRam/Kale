@@ -10,6 +10,7 @@ class Profil extends StatefulWidget {
     return _ProfilState();
   }
 }
+// /!\ ICI TU RECUPERES LES MEMES VARIABLES QUE DANS LA PAGE INSCRIPTION_SUITE
 enum Regime {aucun, vegetarien, flexitarien, perscitarien, vegan }
 
 class Allergie {
@@ -270,7 +271,6 @@ class _ProfilState extends State<Profil> {
                             children: [
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.3,
-                                child : Expanded(
                                   child : Container (
                                     child: Material(
                                         borderRadius: BorderRadius.circular(15.0),
@@ -300,12 +300,11 @@ class _ProfilState extends State<Profil> {
                                     ),
                                   ),
                                 ),
-                                ),
+
 
                               SizedBox(width: MediaQuery.of(context).size.width * 0.05,),
                               Container(
                               width: MediaQuery.of(context).size.width * 0.5,
-                                  child : Expanded(
                                     child : Container (
                                       child: Material(
                                       borderRadius: BorderRadius.circular(15.0),
@@ -377,7 +376,7 @@ class _ProfilState extends State<Profil> {
                                       ),
                                     ),
                                   ),
-                                ),
+
 
                             ],
                           ),
