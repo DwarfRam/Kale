@@ -53,18 +53,18 @@ class _InscriptionState extends State<Inscription> {
             child: Stack(
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.fromLTRB(15.0, 110.0, 0.0, 0.0),
+                  padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.03, MediaQuery.of(context).size.width * 0.27, 0.0, 0.0),
                   child: Text(
                     'Inscription',
                     style:
-                    TextStyle(fontSize: 65.0, fontWeight: FontWeight.bold),
+                    TextStyle(fontSize: MediaQuery.of(context).size.width * 0.18, fontWeight: FontWeight.bold),
                   ),
                 )
               ],
             ),
           ),
           Container(
-              padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+              padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.09, left: MediaQuery.of(context).size.width * 0.06, right: MediaQuery.of(context).size.width * 0.06),
               child: Column(
                 children: <Widget>[
                   TextField(
@@ -81,7 +81,7 @@ class _InscriptionState extends State<Inscription> {
                             borderSide: BorderSide(color: Colors.green))),
 
                   ),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: MediaQuery.of(context).size.width * 0.03),
                   TextField(
                     controller : _passwordFilter,
                     decoration: InputDecoration(
@@ -94,9 +94,9 @@ class _InscriptionState extends State<Inscription> {
                             borderSide: BorderSide(color: Colors.green))),
                     obscureText: true,
                   ),
-                  SizedBox(height: 50.0),
+                  SizedBox(height: MediaQuery.of(context).size.width * 0.12),
                   Container(
-                      height: 40.0,
+                      height: MediaQuery.of(context).size.width * 0.1,
                       child: Material(
                         borderRadius: BorderRadius.circular(20.0),
                         shadowColor: Colors.greenAccent,
@@ -118,16 +118,16 @@ class _InscriptionState extends State<Inscription> {
                           ),
                         ),
                       )),
-                  SizedBox(height: 20.0),
+                  SizedBox(height: MediaQuery.of(context).size.width * 0.06),
                   Container(
-                    height: 40.0,
+                    height: MediaQuery.of(context).size.width * 0.1,
                     color: Colors.transparent,
                     child: Container(
                       decoration: BoxDecoration(
                           border: Border.all(
                               color: Colors.black,
                               style: BorderStyle.solid,
-                              width: 1.0),
+                              width: MediaQuery.of(context).size.width * 0.003),
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(20.0)),
                       child: InkWell(
@@ -149,7 +149,7 @@ class _InscriptionState extends State<Inscription> {
                   ),
                 ],
               )),
-           SizedBox(height: 15.0),
+           SizedBox(height: MediaQuery.of(context).size.width * 0.04),
            Row(
              mainAxisAlignment: MainAxisAlignment.center,
              children: <Widget>[
@@ -159,7 +159,7 @@ class _InscriptionState extends State<Inscription> {
                    fontFamily: 'Montserrat',
                  ),
                ),
-               SizedBox(width: 5.0),
+               SizedBox(width: MediaQuery.of(context).size.width * 0.02),
                InkWell(
                  onTap: () {
                    Navigator.popAndPushNamed(context, connexion,);

@@ -81,9 +81,9 @@ class _ProfilState extends State<Profil> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width * 1,
-                  padding: EdgeInsets.only(left : 15.0, top: 25.0, right: 15.0),
+                  padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.03, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.03),
                   child: Container(
-                      padding: EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -100,12 +100,14 @@ class _ProfilState extends State<Profil> {
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children : [
                                               Container (
+                                                // /!\ STRING PRENOM NOM
                                                   child : Text('Prénom Nom',
                                                     textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
                                                   )
                                               ),
                                               Container (
+                                                // /!\ STRING AGE REGIME
                                                   child : Text('Age - régime',
                                                     textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
@@ -133,7 +135,7 @@ class _ProfilState extends State<Profil> {
                                 color: Colors.white,
                                 elevation: 7.0,
                                 child: Container(
-                                  padding: EdgeInsets.all(10.0),
+                                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                                   child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -182,7 +184,7 @@ class _ProfilState extends State<Profil> {
                                 color: Colors.white,
                                 elevation: 7.0,
                                 child: Container(
-                                    padding: EdgeInsets.all(10.0),
+                                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                                     child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
@@ -205,6 +207,7 @@ class _ProfilState extends State<Profil> {
                                                   ),
                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
                                                   Container(
+                                                    // /!\ STRING PRENOM NOM devant la string
                                                     child :Text('... a atteint le niveau 1 !',
                                                       textAlign: TextAlign.left,
                                                       style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
@@ -226,6 +229,7 @@ class _ProfilState extends State<Profil> {
                                                   ),
                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
                                                   Container(
+                                                    // /!\ STRING PRENOM NOM devant la string
                                                       child :Text('... a publié une nouvelle recette !',
                                                         textAlign: TextAlign.left,
                                                         style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
@@ -247,6 +251,7 @@ class _ProfilState extends State<Profil> {
                                                   ),
                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
                                                   Container(
+                                                    // /!\ STRING PRENOM NOM devant la string
                                                       child :Text('... a rempli la mission "..." !',
                                                         textAlign: TextAlign.left,
                                                         style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
@@ -260,7 +265,7 @@ class _ProfilState extends State<Profil> {
                                 )
                             )
                         ),
-                          SizedBox(height: MediaQuery.of(context).size.width * 0.05,),
+                          SizedBox(height: MediaQuery.of(context).size.width * 0.02),
                           Row(
                             children: [
                               Container(
@@ -276,14 +281,14 @@ class _ProfilState extends State<Profil> {
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children : [
                                               Container (
-                                                  padding: EdgeInsets.all(10.0),
+                                                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                                                   child : Text('Badges',
                                                     textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
                                                   )
                                               ),
                                               Container(
-                                                  padding : EdgeInsets.all(10.0),
+                                                  padding : EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                                                   child : Row(
                                                     children: [
                                                       Icon(Icons.verified)
@@ -311,7 +316,7 @@ class _ProfilState extends State<Profil> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children : [
                                           Container (
-                                              padding: EdgeInsets.all(10.0),
+                                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                                             child : Text('Dernières recettes ',
                                                       textAlign: TextAlign.left,
                                                       style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
@@ -323,6 +328,7 @@ class _ProfilState extends State<Profil> {
                                                     Row(
                                                       children: [
                                                         Container(
+                                                          // /!\ CHANGER LA COULEUR ET LA FORME DE L'ETOILE SI FAVORI
                                                           child : Icon(Icons.star, color: Colors.yellow),
                                                         ),
                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02 ,),
@@ -336,6 +342,7 @@ class _ProfilState extends State<Profil> {
                                                     Row(
                                                       children: [
                                                         Container(
+                                                          // /!\ CHANGER LA COULEUR ET LA FORME DE L'ETOILE SI FAVORI
                                                           child : Icon(Icons.star_border),
                                                         ),
                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02 ,),
@@ -349,6 +356,7 @@ class _ProfilState extends State<Profil> {
                                                     Row(
                                                       children: [
                                                         Container(
+                                                          // /!\ CHANGER LA COULEUR ET LA FORME DE L'ETOILE SI FAVORI
                                                           child : Icon(Icons.star_border),
                                                         ),
                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02 ,),
@@ -382,27 +390,27 @@ class _ProfilState extends State<Profil> {
               children: [
                 Container(
                       width: MediaQuery.of(context).size.width * 1,
-                      padding: EdgeInsets.only(left : 35.0, top: 25.0, right: 35.0),
+                      padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
                       child: Material(
                         borderRadius: BorderRadius.circular(15.0),
                         shadowColor: Colors.black26,
                         color: Colors.white,
                         elevation: 7.0,
                         child: Container(
-                          padding: EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                             Row(
                               children: [
                                 Container(
-                                  child: Icon(Icons.star, size : 30, color: Colors.yellow,),
+                                  child: Icon(Icons.star, size : MediaQuery.of(context).size.width * 0.08, color: Colors.yellow,),
                                 ),
-                                SizedBox(width: 20,),
+                                SizedBox(width: MediaQuery.of(context).size.width * 0.06),
                                 Container(
                                   child : Text('Recettes favorites',
                                     textAlign: TextAlign.left,
-                                    style : TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.06, fontWeight: FontWeight.bold),
                                 )
                         )
                               ],
@@ -414,76 +422,137 @@ class _ProfilState extends State<Profil> {
                 ),
                   Container(
                         width: MediaQuery.of(context).size.width * 1,
-                        padding: EdgeInsets.only(left : 35.0, top: 25.0, right: 35.0),
+                      padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
                         child: Material(
                         borderRadius: BorderRadius.circular(15.0),
                         shadowColor: Colors.black26,
                         color: Colors.white,
                         elevation: 7.0,
                             child: Container(
-                            padding: EdgeInsets.all(10.0),
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                                 child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                                   Container(
                                   child : Text('Toutes',
                                     textAlign: TextAlign.left,
-                                    style : TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
                                 )
                                 ),
-                                   SizedBox(height: 10),
+                                   SizedBox(height: MediaQuery.of(context).size.width * 0.03),
                                     Column(
                                       children: [
                                         Row(
                                           children: [
-                                            Container(
-                                                child : Text('Recette 1 ',
-                                                  textAlign: TextAlign.left,
-                                                  style : TextStyle(fontSize: 20.0),
-                                                )
-                                            ),
-                                            SizedBox(width: 60,),
-                                            Container(
-                                                child : Text('Recette 2',
-                                                  textAlign: TextAlign.left,
-                                                  style : TextStyle(fontSize: 20.0),
-                                                )
+                                              Column(
+                                                children: [
+                                                  //Container(
+                                                     // child : Image(
+                                                      //  image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                                    //  )
+                                                //  ),
+                                                  Container(
+                                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                                      child : Text('Recette 1 ',
+                                                        textAlign: TextAlign.left,
+                                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                      )
+                                                  ),
+                                                ],
+                                              ),
+
+                                            SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                                            Column(
+                                              children: [
+                                               // Container(
+                                                 //   child : Image(
+                                                  //    image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                                //    )
+                                               // ),
+                                                Container(
+                                                  // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                                    child : Text('Recette 2 ',
+                                                      textAlign: TextAlign.left,
+                                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                    )
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height:  10,),
+                                        SizedBox(height:  MediaQuery.of(context).size.width * 0.03),
                                         Row(
                                           children: [
-                                            Container(
-                                                child : Text('Recette 3 ',
-                                                  textAlign: TextAlign.left,
-                                                  style : TextStyle(fontSize: 20.0),
-                                                )
+                                            Column(
+                                              children: [
+                                              //  Container(
+                                               //     child : Image(
+                                                 //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                               //     )
+                                              //  ),
+                                                Container(
+                                                  // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                                    child : Text('Recette 3 ',
+                                                      textAlign: TextAlign.left,
+                                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                    )
+                                                ),
+                                              ],
                                             ),
-                                            SizedBox(width: 60,),
-                                            Container(
-                                                child : Text('Recette 4',
-                                                  textAlign: TextAlign.left,
-                                                  style : TextStyle(fontSize: 20.0),
-                                                )
+                                            SizedBox(width:MediaQuery.of(context).size.width * 0.2),
+                                            Column(
+                                              children: [
+                                               // Container(
+                                                //    child : Image(
+                                                 //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                                //    )
+                                               // ),
+                                                Container(
+                                                  // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                                    child : Text('Recette 4 ',
+                                                      textAlign: TextAlign.left,
+                                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                    )
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height:  10,),
+                                        SizedBox(height:  MediaQuery.of(context).size.width * 0.03),
                                         Row(
                                           children: [
-                                            Container(
-                                                child : Text('Recette 5 ',
-                                                  textAlign: TextAlign.left,
-                                                  style : TextStyle(fontSize: 20.0),
-                                                )
+                                            Column(
+                                              children: [
+                                                // Container(
+                                                //    child : Image(
+                                                //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                                //    )
+                                                // ),
+                                                Container(
+                                                  // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                                    child : Text('Recette 5 ',
+                                                      textAlign: TextAlign.left,
+                                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                    )
+                                                ),
+                                              ],
                                             ),
-                                            SizedBox(width: 60,),
-                                            Container(
-                                                child : Text('Recette 6',
-                                                  textAlign: TextAlign.left,
-                                                  style : TextStyle(fontSize: 20.0),
-                                                )
+                                            SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                                            Column(
+                                              children: [
+                                                // Container(
+                                                //    child : Image(
+                                                //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                                //    )
+                                                // ),
+                                                Container(
+                                                  // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                                    child : Text('Recette 6 ',
+                                                      textAlign: TextAlign.left,
+                                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                    )
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         )
@@ -496,77 +565,138 @@ class _ProfilState extends State<Profil> {
                   ),
                 Container(
                     width: MediaQuery.of(context).size.width * 1,
-                    padding: EdgeInsets.only(left : 35.0, top: 25.0, right: 35.0),
+                    padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
                     child: Material(
                         borderRadius: BorderRadius.circular(15.0),
                         shadowColor: Colors.black26,
                         color: Colors.white,
                         elevation: 7.0,
                         child: Container(
-                            padding: EdgeInsets.all(10.0),
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
+                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
                                       child : Text('Collections',
                                         textAlign: TextAlign.left,
-                                        style : TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
                                       )
                                   ),
-                                  SizedBox(height: 10),
+                                  SizedBox(height: MediaQuery.of(context).size.width * 0.03),
                                   Column(
                                     children: [
                                       Row(
                                         children: [
-                                          Container(
-                                              child : Text('Collection 1 ',
-                                                textAlign: TextAlign.left,
-                                                style : TextStyle(fontSize: 20.0),
-                                              )
+                                          Column(
+                                            children: [
+                                              // Container(
+                                              //    child : Image(
+                                              //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                              //    )
+                                              // ),
+                                              Container(
+                                                // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
+                                                  child : Text('Collection 1 ',
+                                                    textAlign: TextAlign.left,
+                                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                  )
+                                              ),
+                                            ],
                                           ),
-                                          SizedBox(width: 40,),
-                                          Container(
-                                              child : Text('Collection 2',
-                                                textAlign: TextAlign.left,
-                                                style : TextStyle(fontSize: 20.0),
-                                              )
+                                          SizedBox(width: MediaQuery.of(context).size.width * 0.15,),
+                                          Column(
+                                            children: [
+                                              // Container(
+                                              //    child : Image(
+                                              //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                              //    )
+                                              // ),
+                                              Container(
+                                                // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
+                                                  child : Text('Collection 2 ',
+                                                    textAlign: TextAlign.left,
+                                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                  )
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
-                                      SizedBox(height:  10,),
+                                      SizedBox(height:  MediaQuery.of(context).size.width * 0.03),
                                       Row(
                                         children: [
-                                          Container(
-                                              child : Text('Collection 3 ',
-                                                textAlign: TextAlign.left,
-                                                style : TextStyle(fontSize: 20.0),
-                                              )
+                                          Column(
+                                            children: [
+                                              // Container(
+                                              //    child : Image(
+                                              //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                              //    )
+                                              // ),
+                                              Container(
+                                                // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
+                                                  child : Text('Collection 3 ',
+                                                    textAlign: TextAlign.left,
+                                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                  )
+                                              ),
+                                            ],
                                           ),
-                                          SizedBox(width: 40,),
-                                          Container(
-                                              child : Text('Collection 4',
-                                                textAlign: TextAlign.left,
-                                                style : TextStyle(fontSize: 20.0),
-                                              )
+                                          SizedBox(width: MediaQuery.of(context).size.width * 0.15,),
+                                          Column(
+                                            children: [
+                                              // Container(
+                                              //    child : Image(
+                                              //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                              //    )
+                                              // ),
+                                              Container(
+                                                // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
+                                                  child : Text('Collection 4 ',
+                                                    textAlign: TextAlign.left,
+                                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                  )
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
 
-                                      SizedBox(height:  10,),
+                                      SizedBox(height:  MediaQuery.of(context).size.width * 0.03),
                                       Row(
                                         children: [
-                                          Container(
-                                              child : Text('Collection 5 ',
-                                                textAlign: TextAlign.left,
-                                                style : TextStyle(fontSize: 20.0),
-                                              )
+                                          Column(
+                                            children: [
+                                              // Container(
+                                              //    child : Image(
+                                              //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                              //    )
+                                              // ),
+                                              Container(
+                                                // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
+                                                  child : Text('Collection 5 ',
+                                                    textAlign: TextAlign.left,
+                                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                  )
+                                              ),
+                                            ],
                                           ),
-                                          SizedBox(width: 40,),
-                                          Container(
-                                              child : Text('Collection 6',
-                                                textAlign: TextAlign.left,
-                                                style : TextStyle(fontSize: 20.0),
-                                              )
+                                          SizedBox(width: MediaQuery.of(context).size.width * 0.15,),
+                                          Column(
+                                            children: [
+                                              // Container(
+                                              //    child : Image(
+                                              //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                              //    )
+                                              // ),
+                                              Container(
+                                                // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
+                                                  child : Text('Collection 6 ',
+                                                    textAlign: TextAlign.left,
+                                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                  )
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       )
@@ -586,14 +716,14 @@ class _ProfilState extends State<Profil> {
                   children: [
                     Container(
                         width: MediaQuery.of(context).size.width * 1,
-                        padding: EdgeInsets.only(left : 35.0, top: 25.0, right: 35.0),
+                        padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
                         child: Material(
                           borderRadius: BorderRadius.circular(15.0),
                           shadowColor: Colors.black26,
                           color: Colors.white,
                           elevation: 7.0,
                           child: Container(
-                            padding: EdgeInsets.all(10.0),
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -618,14 +748,14 @@ class _ProfilState extends State<Profil> {
                     ),
                     Container(
                         width: MediaQuery.of(context).size.width * 1,
-                        padding: EdgeInsets.only(left : 35.0, top: 25.0, right: 35.0),
+                        padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
                         child: Material(
                           borderRadius: BorderRadius.circular(15.0),
                           shadowColor: Colors.black26,
                           color: Colors.white,
                           elevation: 7.0,
                           child: Container(
-                            padding: EdgeInsets.all(10.0),
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -642,12 +772,14 @@ class _ProfilState extends State<Profil> {
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children : [
                                                 Container (
+                                                  // /!\ STRING PRENOM NOM
                                                   child : Text('Prénom Nom',
                                                     textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
                                                   )
                                               ),
                                                 Container (
+                                                  // /!\ STRING AGE REGIME
                                                     child : Text('Age - régime',
                                                       textAlign: TextAlign.left,
                                                       style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
@@ -677,7 +809,9 @@ class _ProfilState extends State<Profil> {
                                         color: Colors.white,
                                         elevation: 7.0,
                                         child: InkWell(
-                                          onTap: () {},
+                                          onTap: () {
+                                            // /!\ FONCTION POUR MODIFIER ?
+                                          },
                                           child:
                                           Center(
                                             child: Text('Modifier',
@@ -696,14 +830,14 @@ class _ProfilState extends State<Profil> {
                     ),
                     Container(
                         width: MediaQuery.of(context).size.width * 1,
-                        padding: EdgeInsets.only(left : 35.0, top: 25.0, right: 35.0),
+                        padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
                         child: Material(
                           borderRadius: BorderRadius.circular(15.0),
                           shadowColor: Colors.black26,
                           color: Colors.white,
                           elevation: 7.0,
                           child: Container(
-                            padding: EdgeInsets.all(10.0),
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -784,14 +918,14 @@ class _ProfilState extends State<Profil> {
 
                                   Container(
                                       width: MediaQuery.of(context).size.width * 1,
-                                      padding: EdgeInsets.only(left : 35.0, top: 25.0, right: 35.0),
+                                      padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
                                       child: Material(
                                       borderRadius: BorderRadius.circular(15.0),
                                       shadowColor: Colors.black26,
                                       color: Colors.white,
                                       elevation: 7.0,
                                         child: Container(
-                                        padding: EdgeInsets.all(10.0),
+                                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                                           child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
@@ -811,7 +945,7 @@ class _ProfilState extends State<Profil> {
                                                     width: 2,
                                                   ),
                                                 ),
-                                                buttonText: Text("Ajouter",style: TextStyle(fontSize: 16,),
+                                                buttonText: Text("Ajouter",style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
                                                 ),
                                                 onConfirm: (results) {
                                                   _selectedallergie = results;
@@ -821,14 +955,14 @@ class _ProfilState extends State<Profil> {
         )),
                 Container(
                 width: MediaQuery.of(context).size.width * 1,
-                padding: EdgeInsets.only(left : 35.0, top: 25.0, right: 35.0),
+                    padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
                     child: Material(
                     borderRadius: BorderRadius.circular(15.0),
                     shadowColor: Colors.black26,
                     color: Colors.white,
                     elevation: 7.0,
                         child: Container(
-                        padding: EdgeInsets.all(10.0),
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                             child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -849,7 +983,7 @@ class _ProfilState extends State<Profil> {
                                                   width: 2,
                                                 ),
                                               ),
-                                              buttonText: Text("Ajouter", style: TextStyle(fontSize: 16,),
+                                              buttonText: Text("Ajouter", style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
                                               ),
                                               onConfirm: (results) {
                                                 _selectedaliment = results;
@@ -857,14 +991,14 @@ class _ProfilState extends State<Profil> {
                                             ]) ))),
                 Container(
                 width: MediaQuery.of(context).size.width * 1,
-                padding: EdgeInsets.only(left : 35.0, top: 25.0, right: 35.0),
+                    padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
                     child: Material(
                     borderRadius: BorderRadius.circular(15.0),
                     shadowColor: Colors.black26,
                     color: Colors.white,
                     elevation: 7.0,
                       child: Container(
-                      padding: EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                         child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -874,7 +1008,7 @@ class _ProfilState extends State<Profil> {
                             )
                             ),
                               Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 30.0),
+                                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.05),
                                 child:TextField(
                                 controller : _nombrefoyerFilter,
                                 decoration: new InputDecoration(labelText: "Taper un nombre"),

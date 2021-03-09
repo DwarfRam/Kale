@@ -90,111 +90,96 @@ class _Inscription_suiteState extends State<Inscription_suite> {
                         child: Stack(
                           children: <Widget>[
                             Container(
-                              padding: EdgeInsets.fromLTRB(15.0, 110.0, 0.0, 0.0),
+                              padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.03, MediaQuery.of(context).size.width * 0.27, 0.0, 0.0),
                               child: Text(
                                 'Inscription',
                                 style:
-                                TextStyle(fontSize: 65.0, fontWeight: FontWeight.bold),
+                                TextStyle(fontSize: MediaQuery.of(context).size.width * 0.18, fontWeight: FontWeight.bold),
                               ),
                             )
                           ],
                         ),
                       ),
                       Container(
-                          padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+                          padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.09, left: MediaQuery.of(context).size.width * 0.06, right: MediaQuery.of(context).size.width * 0.06),
                           child: Column(
-                            children: <Widget>[
-                              Text(
-                                'Type de régime souhaité : ',
-                                style : TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.left,
-                              ),
-                              Column(
-                                  children : <Widget>[
-                                    ListTile(
-                                      title: const Text(
-                                        'Végétarien',
-                                        style : TextStyle(fontSize: 15.0),
-                                        textAlign: TextAlign.left,),
-                                      leading: Radio(
-                                        value: Regime.vegetarien,
-                                        groupValue: _regime,
-                                        activeColor: Colors.lightGreen,
-                                        onChanged: (Regime value) {
-                                          setState(() {
-                                            _regime = value;
-                                          });
-                                        },
-                                      ),
-                                    ),
-                                    ListTile(
-                                      title: const Text(
-                                        'Flexitarien',
-                                        style : TextStyle(fontSize: 15.0),
-                                        textAlign: TextAlign.left,),
-                                      leading: Radio(
-                                        value: Regime.flexitarien,
-                                        groupValue: _regime,
-                                        activeColor: Colors.lightGreen,
-                                        onChanged: (Regime value) {
-                                          setState(() {
-                                            _regime = value;
-                                          });
-                                        },
-                                      ),
-                                    ),
-                                    ListTile(
-                                      title: const Text('Pescitarien',
-                                        style : TextStyle(fontSize: 15.0),
-                                        textAlign: TextAlign.left,),
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                    child : Text('Type de régime souhaité',
+                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.06, fontWeight: FontWeight.bold),
+                                    )
+                                ),
+                                Row( children : [
+                                  Radio(
+                                    value: Regime.aucun,
+                                    groupValue: _regime,
+                                    activeColor: Colors.lightGreen,
+                                    onChanged: (Regime value) {
+                                      setState(() {
+                                        _regime = value;
+                                      });
+                                    },
+                                  ),
+                                  Text('Aucun',
+                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                    textAlign: TextAlign.left,),
+                                ]
+                                ),
+                                Row(children : [
+                                  Radio(
+                                    value: Regime.vegetarien,
+                                    groupValue: _regime,
+                                    activeColor: Colors.lightGreen,
+                                    onChanged: (Regime value) {
+                                      setState(() {
+                                        _regime = value;
+                                      });
+                                    },
+                                  ),
+                                  Text('Végétarien',
+                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                    textAlign: TextAlign.left,),
+                                ]
+                                ),
+                                Row(children : [
+                                  Radio(
+                                    value: Regime.flexitarien,
+                                    groupValue: _regime,
+                                    activeColor: Colors.lightGreen,
+                                    onChanged: (Regime value) {
+                                      setState(() {
+                                        _regime = value;
+                                      });
+                                    },
+                                  ),
+                                  Text('Flexitarien',
+                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                    textAlign: TextAlign.left,),
+                                ]
+                                ),
+                                Row(children : [
+                                  Radio(
+                                    value: Regime.perscitarien,
+                                    groupValue: _regime,
+                                    activeColor: Colors.lightGreen,
+                                    onChanged: (Regime value) {
+                                      setState(() {
+                                        _regime = value;
+                                      });
+                                    },
+                                  ),
+                                  Text('Perscitarien',
+                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                    textAlign: TextAlign.left,),
+                                ]
+                                )
+                              ]
+                          ),
 
-                                      leading: Radio(
-                                        value: Regime.perscitarien,
-                                        groupValue: _regime,
-                                        activeColor: Colors.lightGreen,
-                                        onChanged: (Regime value) {
-                                          setState(() {
-                                            _regime = value;
-                                          });
-                                        },
-                                      ),
-                                    ),
-                                    ListTile(
-                                      title: const Text('Vegan',
-                                        style : TextStyle(fontSize: 15.0),
-                                        textAlign: TextAlign.left,),
-                                      focusColor: Colors.lightGreen,
-                                      hoverColor: Colors.lightGreen,
-                                      leading: Radio(
-                                        value: Regime.vegan,
-                                        groupValue: _regime,
-                                        activeColor: Colors.lightGreen,
-                                        onChanged: (Regime value) {
-                                          setState(() {
-                                            _regime = value;
-                                          });
-                                        },
-                                      ),
-                                    ),
-                                    ListTile(
-                                      title: const Text('Aucun',
-                                        style : TextStyle(fontSize: 15.0),
-                                        textAlign: TextAlign.left,),
-                                      leading: Radio(
-                                        value: Regime.aucun,
-                                        groupValue: _regime,
-                                        activeColor: Colors.lightGreen,
-                                        onChanged: (Regime value) {
-                                          setState(() {
-                                            _regime = value;
-                                          });
-                                        },
-                                      ),
-                                    ),
-                                  ]
                               ),
                               Container(
-                                padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+                                padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.09, left: MediaQuery.of(context).size.width * 0.06, right: MediaQuery.of(context).size.width * 0.06),
                                 child : MultiSelectDialogField(
                                   items: _itemsallergie,
                                   title: Text("Allergies"),
@@ -208,7 +193,7 @@ class _Inscription_suiteState extends State<Inscription_suite> {
                                   buttonText: Text(
                                     "Allergies",
                                     style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: MediaQuery.of(context).size.width * 0.045,
                                     ),
                                   ),
                                   onConfirm: (results) {
@@ -216,7 +201,7 @@ class _Inscription_suiteState extends State<Inscription_suite> {
                                   },),
                               ),
                               Container(
-                                padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+                                padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.09, left: MediaQuery.of(context).size.width * 0.06, right: MediaQuery.of(context).size.width * 0.06),
                                 child : MultiSelectDialogField(
                                   items: _itemsaliments,
                                   title: Text("Aliments non désirés"),
@@ -230,7 +215,7 @@ class _Inscription_suiteState extends State<Inscription_suite> {
                                   buttonText: Text(
                                     "Aliments non désirés",
                                     style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: MediaQuery.of(context).size.width * 0.045,
                                     ),
                                   ),
                                   onConfirm: (results) {
@@ -238,7 +223,7 @@ class _Inscription_suiteState extends State<Inscription_suite> {
                                   },),
                               ),
                               Container(
-                                padding: EdgeInsets.symmetric(horizontal: 30.0),
+                                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.09),
                                 child:TextField(
                                   controller : _nombrefoyerFilter,
                                   decoration: new InputDecoration(labelText: "Nombre de personnes dans le foyer :"),
@@ -249,9 +234,9 @@ class _Inscription_suiteState extends State<Inscription_suite> {
                                 )
                               ),
 
-                              SizedBox(height: 50.0),
+                              SizedBox(height: MediaQuery.of(context).size.width * 0.14),
                               Container(
-                                  height: 40.0,
+                                  height: MediaQuery.of(context).size.width * 0.1,
                                   child: Material(
                                     borderRadius: BorderRadius.circular(20.0),
                                     shadowColor: Colors.greenAccent,
@@ -273,16 +258,16 @@ class _Inscription_suiteState extends State<Inscription_suite> {
                                       ),
                                     ),
                                   )),
-                              SizedBox(height: 20.0),
+                              SizedBox(height: MediaQuery.of(context).size.width * 0.06),
                               Container(
-                                height: 40.0,
+                                height: MediaQuery.of(context).size.width * 0.1,
                                 color: Colors.transparent,
                                 child: Container(
                                   decoration: BoxDecoration(
                                       border: Border.all(
                                           color: Colors.black,
                                           style: BorderStyle.solid,
-                                          width: 1.0),
+                                          width: MediaQuery.of(context).size.width * 0.003),
                                       color: Colors.transparent,
                                       borderRadius: BorderRadius.circular(20.0)),
                                   child: InkWell(
@@ -301,9 +286,9 @@ class _Inscription_suiteState extends State<Inscription_suite> {
                                   ),
                                 ),
                               ),
-                            ],
-                          )),
-                      SizedBox(height: 15.0),
+
+
+                      SizedBox(height: MediaQuery.of(context).size.width * 0.03),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -313,7 +298,7 @@ class _Inscription_suiteState extends State<Inscription_suite> {
                               fontFamily: 'Montserrat',
                             ),
                           ),
-                          SizedBox(width: 5.0),
+                          SizedBox(width: MediaQuery.of(context).size.width * 0.02),
                           InkWell(
                             onTap: () {
                               Navigator.popAndPushNamed(context, connexion,);
@@ -324,9 +309,11 @@ class _Inscription_suiteState extends State<Inscription_suite> {
                                     fontFamily: 'Montserrat',
                                     fontWeight: FontWeight.bold,
                                     decoration: TextDecoration.underline)),
-                          )
+                          ),
+
                         ],
-                      )
+                      ),
+                      SizedBox(height: MediaQuery.of(context).size.width * 0.05)
                     ]
                 ),
                 ),
