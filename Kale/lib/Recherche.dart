@@ -20,6 +20,7 @@ class _RechercheState extends State<Recherche> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('Recheche'),
       ),
@@ -63,8 +64,8 @@ class _RechercheState extends State<Recherche> {
           }),
           ),
                 ],
-          ),
 
+      ),
       bottomNavigationBar: Menu(currentindex : 2),
     );
   }

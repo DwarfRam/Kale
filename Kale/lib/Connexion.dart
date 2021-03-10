@@ -38,25 +38,26 @@ class _ConnexionState extends State<Connexion> {
 
   Widget build(BuildContext context) {
     return new Scaffold(
-        resizeToAvoidBottomPadding: false,
-        body: Column(
+      resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
               child: Stack(
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.fromLTRB(15.0, 110.0, 0.0, 0.0),
+                    padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.03, MediaQuery.of(context).size.width * 0.27, 0.0, 0.0),
                     child: Text('Connexion',
                         style: TextStyle(
-                            fontSize: 65.0, fontWeight: FontWeight.bold)),
+                            fontSize: MediaQuery.of(context).size.width * 0.18, fontWeight: FontWeight.bold)),
                   ),
 
                 ],
               ),
             ),
             Container(
-                padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+                padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.09, left: MediaQuery.of(context).size.width * 0.06, right: MediaQuery.of(context).size.width * 0.06),
                 child: Column(
                   children: <Widget>[
                     TextField(
@@ -70,7 +71,7 @@ class _ConnexionState extends State<Connexion> {
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.green))),
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: MediaQuery.of(context).size.width * 0.03),
                     TextField(
                       controller : _passwordFilter,
                       decoration: InputDecoration(
@@ -83,10 +84,10 @@ class _ConnexionState extends State<Connexion> {
                               borderSide: BorderSide(color: Colors.green))),
                       obscureText: true,
                     ),
-                    SizedBox(height: 5.0),
+                    SizedBox(height: MediaQuery.of(context).size.width * 0.02),
                     Container(
                       alignment: Alignment(1.0, 0.0),
-                      padding: EdgeInsets.only(top: 15.0, left: 20.0),
+                      padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.03, left: MediaQuery.of(context).size.width * 0.06),
                       child: InkWell(
                         onTap: () {Navigator.popAndPushNamed(context, home,);},
                         child: Text(
@@ -99,9 +100,9 @@ class _ConnexionState extends State<Connexion> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 40.0),
+                    SizedBox(height: MediaQuery.of(context).size.width * 0.1),
                     Container(
-                      height: 40.0,
+                      height: MediaQuery.of(context).size.width * 0.1,
                       child: Material(
                         borderRadius: BorderRadius.circular(20.0),
                         shadowColor: Colors.greenAccent,
@@ -127,7 +128,7 @@ class _ConnexionState extends State<Connexion> {
 
                   ],
                 )),
-            SizedBox(height: 15.0),
+            SizedBox(height: MediaQuery.of(context).size.width * 0.035),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -135,7 +136,7 @@ class _ConnexionState extends State<Connexion> {
                   'Nouveau sur Kale ?',
                   style: TextStyle(fontFamily: 'Montserrat'),
                 ),
-                SizedBox(width: 5.0),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.02),
                 InkWell(
                   onTap: () {
                     Navigator.popAndPushNamed(context, inscription,);
@@ -153,6 +154,7 @@ class _ConnexionState extends State<Connexion> {
             ),
 
           ],
+        ),
         ),
         bottomNavigationBar: Menu(currentindex : 0),
     );
