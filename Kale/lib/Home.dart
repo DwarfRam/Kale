@@ -22,6 +22,33 @@ class _HomeState extends State<Home> {
       child: Column(
         children: [
           Container(
+              child:
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Par ici les recettes',
+                    style: TextStyle(fontFamily: 'Montserrat',fontSize: 20.0,),
+                  ),
+                  SizedBox(width: 10.0),
+                  InkWell(
+                    onTap: () {
+                      Navigator.popAndPushNamed(context, recette,);
+                    },
+                    child: Text(
+                      'Recette',
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.green,
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline),
+                    ),
+                  )
+                ],
+              )
+          ),
+          Container(
               padding: const EdgeInsets.only(top: 500.0),
             child:
               Row(

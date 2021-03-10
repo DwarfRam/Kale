@@ -12,18 +12,23 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     void onTabTapped(int index) {
       if (index == 0){
+        // /!\ Ajouter ici, si pas connecté Navigator.popAndPushNamed(context, home_non_connecte,);
         Navigator.popAndPushNamed(context, home,);
       };
       if (index == 1){
+        // /!\ Ajouter ici, si pas connecté Navigator.popAndPushNamed(context, home_non_connecte,);
         Navigator.popAndPushNamed(context, ecoresp);
       };
       if (index == 2){
+        // /!\ Ajouter ici, si pas connecté Navigator.popAndPushNamed(context, home_non_connecte,);
         Navigator.popAndPushNamed(context, recherche,);
       };
       if (index == 3){
+        // /!\ Ajouter ici, si pas connecté Navigator.popAndPushNamed(context, home_non_connecte,);
         Navigator.popAndPushNamed(context, planif,);
       };
       if (index == 4){
+        // /!\ Ajouter ici, si pas connecté Navigator.popAndPushNamed(context, home_non_connecte,);
         Navigator.popAndPushNamed(context, profil,);
       };
     }
