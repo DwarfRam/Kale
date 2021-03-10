@@ -21,7 +21,7 @@ class _RechercheState extends State<Recherche> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Page 2'),
+        title: Text('Recheche'),
       ),
       body: Column(
         children: <Widget>[TextField(
