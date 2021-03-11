@@ -37,10 +37,8 @@ class _RecetteState extends State<Recette> {
                               Row(
                                 children: [
                                     Container(
-                                          child : Image(
-                                            width : MediaQuery.of(context).size.width * 0.3,
-                                            image: NetworkImage('https://assets.afcdn.com/recipe/20200116/106602_w157h157c1.webp'),
-                                          )
+                                          child : Icon(Icons.image,
+                                            size : MediaQuery.of(context).size.width * 0.3,)
                                   ),
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
                                   Column(

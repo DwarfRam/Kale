@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Menu.dart';
 import 'main.dart';
+import 'Menu.dart';
+import 'Routes.dart';
 
 class Recherche extends StatefulWidget {
   @override
@@ -9,67 +10,312 @@ class Recherche extends StatefulWidget {
   }
 }
 
-
-
 class _RechercheState extends State<Recherche> {
-
-  TextEditingController _textController = TextEditingController();
-  List<String> initialList = ["Chat", "Chien", "Rat", "Cheval", "Ours"];
-  List<String> filteredList = List();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Text('Page 2'),
-      ),
-      body: Column(
-        children: <Widget>[TextField(
-  controller: _textController,
-  onChanged: (text) {
-  text = text.toLowerCase();
-  setState(() {
-  filteredList = initialList
-      .where((element) => element.toLowerCase().contains(text))
-      .toList();
-  });
-  },
-  ),
-        if (filteredList.length == 0 && _textController.text.isEmpty)
-            Expanded(
-            child: ListView.builder(
-            itemCount: initialList.length,
-            itemBuilder: (BuildContext context, index) {
-            return Container(
-            height: 50,
-            child: Text(initialList[index]),
-        );
-  }))
-        else if (filteredList.length==0 && _textController.text.isNotEmpty)
-            Expanded(
-            child: Container(
-            child: Text('Aucune donnée'),
-            ),
-        )
-      else
-          Expanded(
-          child: ListView.builder(
-          itemCount: filteredList.length,
-          itemBuilder: (BuildContext context, index) {
-          return Container(
-          height: 50,
-          child: Text(filteredList[index]),
-          );
-          }),
-          ),
-                ],
+        appBar: AppBar(
+          title: Text('Recherche'),
 
-      ),
+    ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.06),
+              child : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                      child : Text('Recettes tendances',
+                        textAlign: TextAlign.left,
+                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.07, color: Colors.green, fontWeight: FontWeight.bold),
+                      )
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.width * 0.03,),
+                  Container(
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                      child :  Row(
+                          children: [
+                            Column(
+                              children: [
+                                //Container(
+                                // child : Image(
+                                //  image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                //  )
+                                //  ),
+                                Container(
+                                  // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                    child : Text('Recette 1 ',
+                                      textAlign: TextAlign.left,
+                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                    )
+                                ),
+                              ],
+                            ),
+
+                            SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                            Column(
+                              children: [
+                                // Container(
+                                //   child : Image(
+                                //    image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                //    )
+                                // ),
+                                Container(
+                                  // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                    child : Text('Recette 2 ',
+                                      textAlign: TextAlign.left,
+                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                    )
+                                ),
+                              ],
+                            ),
+                            SizedBox(width:  MediaQuery.of(context).size.width * 0.1),
+                            Column(
+                              children: [
+                                //  Container(
+                                //     child : Image(
+                                //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                //     )
+                                //  ),
+                                Container(
+                                  // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                    child : Text('Recette 3 ',
+                                      textAlign: TextAlign.left,
+                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                    )
+                                ),
+                              ],
+                            ),
+                          ])),
+                ],
+              )
+            ),
+
+            Container(
+                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.06),
+                child : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        child : Text('Petits-déjeuners gourmands',
+                          textAlign: TextAlign.left,
+                          style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.07, color: Colors.green, fontWeight: FontWeight.bold),
+                        )
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.width * 0.03,),
+                    Container(
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                        child :  Row(
+                            children: [
+                              Column(
+                                children: [
+                                  //Container(
+                                  // child : Image(
+                                  //  image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                  //  )
+                                  //  ),
+                                  Container(
+                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                      child : Text('Recette 1 ',
+                                        textAlign: TextAlign.left,
+                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                      )
+                                  ),
+                                ],
+                              ),
+
+                              SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                              Column(
+                                children: [
+                                  // Container(
+                                  //   child : Image(
+                                  //    image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                  //    )
+                                  // ),
+                                  Container(
+                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                      child : Text('Recette 2 ',
+                                        textAlign: TextAlign.left,
+                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                      )
+                                  ),
+                                ],
+                              ),
+                              SizedBox(width:  MediaQuery.of(context).size.width * 0.1),
+                              Column(
+                                children: [
+                                  //  Container(
+                                  //     child : Image(
+                                  //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                  //     )
+                                  //  ),
+                                  Container(
+                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                      child : Text('Recette 3 ',
+                                        textAlign: TextAlign.left,
+                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                      )
+                                  ),
+                                ],
+                              ),
+                            ])),
+                  ],
+                )
+            ),
+            Container(
+                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.06),
+                child : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        child : Text('Salades vitaminées',
+                          textAlign: TextAlign.left,
+                          style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.07, color: Colors.green, fontWeight: FontWeight.bold),
+                        )
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.width * 0.03,),
+                    Container(
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                        child :  Row(
+                            children: [
+                              Column(
+                                children: [
+                                  //Container(
+                                  // child : Image(
+                                  //  image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                  //  )
+                                  //  ),
+                                  Container(
+                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                      child : Text('Recette 1 ',
+                                        textAlign: TextAlign.left,
+                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                      )
+                                  ),
+                                ],
+                              ),
+
+                              SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                              Column(
+                                children: [
+                                  // Container(
+                                  //   child : Image(
+                                  //    image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                  //    )
+                                  // ),
+                                  Container(
+                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                      child : Text('Recette 2 ',
+                                        textAlign: TextAlign.left,
+                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                      )
+                                  ),
+                                ],
+                              ),
+                              SizedBox(width:  MediaQuery.of(context).size.width * 0.1),
+                              Column(
+                                children: [
+                                  //  Container(
+                                  //     child : Image(
+                                  //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                  //     )
+                                  //  ),
+                                  Container(
+                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                      child : Text('Recette 3 ',
+                                        textAlign: TextAlign.left,
+                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                      )
+                                  ),
+                                ],
+                              ),
+                            ])),
+                  ],
+                )
+            ),
+            Container(
+                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.06),
+                child : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        child : Text('Soupes d\'hiver',
+                          textAlign: TextAlign.left,
+                          style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.07, color: Colors.green, fontWeight: FontWeight.bold),
+                        )
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.width * 0.03,),
+                    Container(
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                        child :  Row(
+                            children: [
+                              Column(
+                                children: [
+                                  //Container(
+                                  // child : Image(
+                                  //  image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                  //  )
+                                  //  ),
+                                  Container(
+                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                      child : Text('Recette 1 ',
+                                        textAlign: TextAlign.left,
+                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                      )
+                                  ),
+                                ],
+                              ),
+
+                              SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                              Column(
+                                children: [
+                                  // Container(
+                                  //   child : Image(
+                                  //    image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                  //    )
+                                  // ),
+                                  Container(
+                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                      child : Text('Recette 2 ',
+                                        textAlign: TextAlign.left,
+                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                      )
+                                  ),
+                                ],
+                              ),
+                              SizedBox(width:  MediaQuery.of(context).size.width * 0.1),
+                              Column(
+                                children: [
+                                  //  Container(
+                                  //     child : Image(
+                                  //     image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                                  //     )
+                                  //  ),
+                                  Container(
+                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
+                                      child : Text('Recette 3 ',
+                                        textAlign: TextAlign.left,
+                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                      )
+                                  ),
+                                ],
+                              ),
+                            ])),
+                  ],
+                )
+            )
+
+          ]
+        ),
+    ),
       bottomNavigationBar: Menu(currentindex : 2),
     );
   }
-
-
 }
+
+
+
+
 
