@@ -60,12 +60,40 @@ class _ProfilState extends State<Profil> {
   List<Aliment> _selectedaliment = [];
   final TextEditingController _nombrefoyerFilter = new TextEditingController();
 
+  Icon actionIcon = new Icon(Icons.search);
+  Widget appBarTitle = new Text("Kale");
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 3,
         child: Scaffold(
         appBar: AppBar(
+          title : appBarTitle,
+          actions: <Widget>[
+            IconButton(icon: actionIcon,onPressed:(){
+              setState(() {
+                if ( this.actionIcon.icon == Icons.search){
+                  this.actionIcon = Icon(Icons.close);
+                  this.appBarTitle = TextField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search,color: Colors.white),
+                        hintText: "Search...",
+                        hintStyle: TextStyle(color: Colors.white)
+                    ),
+                  );}
+                else {
+                  this.actionIcon = Icon(Icons.search);
+                  this.appBarTitle = Text("Kale");
+                }
+
+              });
+            }
+            )
+          ],
         bottom: TabBar(
         tabs: [
           Tab(text: 'Social'),
@@ -73,7 +101,6 @@ class _ProfilState extends State<Profil> {
           Tab(text: 'Paramètres')
           ],
           ),
-          title: Text('Page Profil'),
           ),
           body: TabBarView(
           children: [

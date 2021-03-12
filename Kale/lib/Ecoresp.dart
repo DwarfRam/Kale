@@ -41,19 +41,42 @@ class _EcorespState extends State<Ecoresp> {
         });
   }
 
+  Icon actionIcon = new Icon(Icons.search);
+  Widget appBarTitle = new Text("Kale");
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            bottom: TabBar(
-            tabs: [
-              Tab(text: 'Tableau de bord'),
-              Tab(text: 'Conseils'),
+            backgroundColor: Colors.transparent,
+            title: appBarTitle,
+            actions: <Widget>[
+              IconButton(icon: actionIcon,onPressed:(){
+                setState(() {
+                  if ( this.actionIcon.icon == Icons.search){
+                    this.actionIcon = Icon(Icons.close);
+                    this.appBarTitle = TextField(
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.search,color: Colors.white),
+                          hintText: "Search...",
+                          hintStyle: TextStyle(color: Colors.white)
+                      ),
+                    );}
+                  else {
+                    this.actionIcon = Icon(Icons.search);
+                    this.appBarTitle = Text("Kale");
+                  }
+
+                });
+              }
+              )
             ],
-          ),
-            title: Text('Page Ecoresponsable'),
+
           ),
           body: TabBarView(
             children: [

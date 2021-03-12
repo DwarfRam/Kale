@@ -16,21 +16,48 @@ class _PlanifState extends State<Planif> {
   bool valuefirst = false;
   bool valuesecond = false;
 
-
+  Icon actionIcon = new Icon(Icons.search);
+  Widget appBarTitle = new Text("Kale");
 
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: appBarTitle,
+          actions: <Widget>[
+            IconButton(icon: actionIcon,onPressed:(){
+              setState(() {
+                if ( this.actionIcon.icon == Icons.search){
+                  this.actionIcon = Icon(Icons.close);
+                  this.appBarTitle = TextField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search,color: Colors.white),
+                        hintText: "Search...",
+                        hintStyle: TextStyle(color: Colors.white)
+                    ),
+                  );}
+                else {
+                  this.actionIcon = Icon(Icons.search);
+                  this.appBarTitle = Text("Kale");
+                }
+
+              });
+            }
+            )
+          ],
           bottom: TabBar(
             tabs: [
               Tab(text: 'Calendrier'),
               Tab(text: 'Liste de courses'),
             ],
           ),
-          title: Text('Page Planification'),
         ),
+
         body: TabBarView(
 
             children: [

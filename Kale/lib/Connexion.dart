@@ -34,10 +34,41 @@ class _ConnexionState extends State<Connexion> {
     }
   }
 
-  @override
+  Icon actionIcon = new Icon(Icons.search);
+  Widget appBarTitle = new Text("Kale");
 
+  @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return  Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: appBarTitle,
+        actions: <Widget>[
+          IconButton(icon: actionIcon,onPressed:(){
+            setState(() {
+              if ( this.actionIcon.icon == Icons.search){
+                this.actionIcon = Icon(Icons.close);
+                this.appBarTitle = TextField(
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.search,color: Colors.white),
+                      hintText: "Search...",
+                      hintStyle: TextStyle(color: Colors.white)
+                  ),
+                );}
+              else {
+                this.actionIcon = Icon(Icons.search);
+                this.appBarTitle = Text("Kale");
+              }
+
+            });
+          }
+          )
+        ],
+
+      ),
       resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
         child: Column(

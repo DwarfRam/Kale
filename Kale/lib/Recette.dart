@@ -12,11 +12,39 @@ class Recette extends StatefulWidget {
 }
 
 class _RecetteState extends State<Recette> {
+
+  Icon actionIcon = new Icon(Icons.search);
+  Widget appBarTitle = new Text("Kale");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text('Home'),
+          actions: <Widget>[
+            IconButton(icon: actionIcon,onPressed:(){
+              setState(() {
+                if ( this.actionIcon.icon == Icons.search){
+                  this.actionIcon = Icon(Icons.close);
+                  this.appBarTitle = TextField(
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search,color: Colors.white),
+                        hintText: "Search...",
+                        hintStyle: TextStyle(color: Colors.white)
+                    ),
+                  );}
+                else {
+                  this.actionIcon = Icon(Icons.search);
+                  this.appBarTitle = Text("Kale");
+                }
+
+              });
+            }
+            )
+          ],
 
         ),
         body: SingleChildScrollView(
