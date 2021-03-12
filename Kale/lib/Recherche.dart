@@ -46,9 +46,19 @@ class _RechercheState extends State<Recherche> {
                                 //  ),
                                 Container(
                                   // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
-                                    child : Text('Recette 1 ',
-                                      textAlign: TextAlign.left,
-                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                    child : InkWell(
+                                      onTap: () {
+                                        Navigator.popAndPushNamed(context, recette,);
+                                      },
+                                      child: Text(
+                                        'Recette',
+                                        style: TextStyle(
+                                            fontSize: 20.0,
+                                            color: Colors.green,
+                                            fontFamily: 'Montserrat',
+                                            fontWeight: FontWeight.bold,
+                                            decoration: TextDecoration.underline),
+                                      ),
                                     )
                                 ),
                               ],

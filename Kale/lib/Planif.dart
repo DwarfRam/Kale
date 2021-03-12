@@ -11,6 +11,13 @@ class Planif extends StatefulWidget {
 
 class _PlanifState extends State<Planif> {
   @override
+
+  // /!\ Initialisation des variables récupérées pour la liste de courses
+  bool valuefirst = false;
+  bool valuesecond = false;
+
+
+
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
@@ -147,12 +154,45 @@ class _PlanifState extends State<Planif> {
                           Container(
                             width: MediaQuery.of(context).size.width * 0.8,
                               decoration: BoxDecoration(
-                                  border : Border(bottom : BorderSide(color: Colors.black26)
-                                  )),
+                                  border : Border(bottom : BorderSide(color: Colors.black26),
+                                  ),),
                             child : Text('Lundi',textAlign: TextAlign.left,
                             style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.06, fontWeight: FontWeight.bold),
-                            ))
-
+                            )),
+                          CheckboxListTile(
+                            controlAffinity: ListTileControlAffinity.leading,
+                            activeColor: Colors.green,
+                            // /!\ Valeur de l'ingrédient
+                            secondary: Text('4 pièces',
+                              style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
+                            ),
+                            // /!\ Ingrédient
+                            title: Text('Poireaux',
+                              style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
+                            ),
+                            value: this.valuefirst,
+                            onChanged: (bool value) {
+                              setState(() {
+                                this.valuefirst = value;
+                              });
+                            },
+                          ),
+                          CheckboxListTile(
+                            controlAffinity: ListTileControlAffinity.leading,
+                            activeColor: Colors.green,
+                            secondary:Text('250g',
+                              style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                            ),
+                            title: Text('Crème fraîche',
+                              style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                            ),
+                            value: this.valuesecond,
+                            onChanged: (bool value) {
+                              setState(() {
+                                this.valuesecond = value;
+                              });
+                            },
+                          ),
                         ],
                       )
                     ),
