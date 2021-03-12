@@ -7,6 +7,8 @@ import 'Home.dart';
 import 'Inscription.dart';
 import 'Connexion.dart';
 import 'Inscription_suite.dart';
+import 'package:kale/Home_non_connecté.dart';
+import 'Recette.dart';
 
 const String home = '/';
 const String ecoresp = '/ecoresp';
@@ -16,6 +18,8 @@ const String profil = '/profil';
 const String inscription = '/inscription';
 const String connexion = '/connexion';
 const String inscription_suite = '/inscription_suite';
+const String home_non_connecte = '/home_non_connecte';
+const String recette = '/recette';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -36,7 +40,10 @@ class Routes {
         return MaterialPageRoute(builder: (_) => Connexion());
       case inscription_suite :
         return MaterialPageRoute(builder: (_) => Inscription_suite());
-        
+      case home_non_connecte :
+        return MaterialPageRoute(builder: (_) => Home_non_connecte());
+      case recette :
+        return MaterialPageRoute(builder: (_) => Recette());
       default:
         return MaterialPageRoute(
             builder: (_) =>
