@@ -7,7 +7,7 @@ import 'Home.dart';
 import 'Inscription.dart';
 import 'Connexion.dart';
 import 'Inscription_suite.dart';
-import 'package:kale/Home_non_connecté.dart';
+import 'Home_non_connecte.dart';
 import 'Recette.dart';
 
 const String home = '/';

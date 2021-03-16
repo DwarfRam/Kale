@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Menu.dart';
-import 'main.dart';
+import 'SearchBar.dart';
 
 class Planif extends StatefulWidget {
   @override
@@ -9,8 +9,11 @@ class Planif extends StatefulWidget {
   }
 }
 
+enum Affichage {tableau, liste}
+
 class _PlanifState extends State<Planif> {
-  @override
+
+  Affichage _affichage = Affichage.tableau;
 
   // /!\ Initialisation des variables récupérées pour la liste de courses
   bool valuefirst = false;
@@ -19,38 +22,41 @@ class _PlanifState extends State<Planif> {
   Icon actionIcon = new Icon(Icons.search);
   Widget appBarTitle = new Text("Kale");
 
+  @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: appBarTitle,
+          backgroundColor: Colors.white,
+          title: Text("Kale",style:TextStyle(color:Colors.green)),
           actions: <Widget>[
-            IconButton(icon: actionIcon,onPressed:(){
-              setState(() {
-                if ( this.actionIcon.icon == Icons.search){
-                  this.actionIcon = Icon(Icons.close);
-                  this.appBarTitle = TextField(
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search,color: Colors.white),
-                        hintText: "Search...",
-                        hintStyle: TextStyle(color: Colors.white)
-                    ),
-                  );}
-                else {
-                  this.actionIcon = Icon(Icons.search);
-                  this.appBarTitle = Text("Kale");
+            IconButton(
+                icon: actionIcon,
+                color:Colors.green,
+                onPressed:() {
+                  setState(() {
+                    showSearch(
+                      context: context,
+                      delegate: CustomSearchDelegate(),
+                    );
+                  }
+                  );
                 }
-
-              });
-            }
-            )
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.filter_list,
+                color:Colors.green,
+              ),
+              onPressed: () {
+                showFilterDialog(context);
+              },
+            ),
           ],
           bottom: TabBar(
+            labelColor: Colors.green,
+            indicatorColor: Colors.green,
             tabs: [
               Tab(text: 'Calendrier'),
               Tab(text: 'Liste de courses'),
@@ -72,6 +78,262 @@ class _PlanifState extends State<Planif> {
                         child: InkWell(
                                 onTap: () {
                                   // /!\ FONCTION POUR pop modifier la vue
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return StatefulBuilder(
+                                        builder: (context, setState) {
+                                          return AlertDialog(
+                                            content: SingleChildScrollView(
+                                              child : Column (children : [
+                                              Container(
+                                                child : Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                        child : Text('Affichage',
+                                                          textAlign: TextAlign.left,
+                                                          style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold, color: Colors.green),
+                                                        )
+                                                    ),
+                                                    Row( children : [
+                                                      Row(
+                                                        children : [
+                                                          Radio(
+                                                            value: Affichage.tableau,
+                                                            groupValue: _affichage,
+                                                            activeColor: Colors.lightGreen,
+                                                            onChanged: (Affichage value) {
+                                                              setState(() {
+                                                                _affichage = value;
+                                                              });
+                                                            },
+                                                          ),
+                                                          Text('Tableau',
+                                                            style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                            textAlign: TextAlign.left,),
+                                                        ]),
+                                                      Row( children : [
+                                                        Radio(
+                                                          value: Affichage.liste,
+                                                          groupValue: _affichage,
+                                                          activeColor: Colors.lightGreen,
+                                                          onChanged: (Affichage value) {
+                                                            setState(() {
+                                                              _affichage = value;
+                                                            });
+                                                          },
+                                                        ),
+                                                        Text('Liste',
+                                                          style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                          textAlign: TextAlign.left,),
+                                                      ]),
+                                                        ]
+                                                      ),
+                                                  ],
+                                                )
+                                              ),
+                                              Container(
+                                                  child : Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Container(
+                                                          child : Text('Jours',
+                                                            textAlign: TextAlign.left,
+                                                            style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold, color: Colors.green),
+                                                          )
+                                                      ),
+                                                      Container(
+                                                        child : Column(
+                                                          children :[
+                                                            CheckboxListTile(
+                                                                controlAffinity: ListTileControlAffinity.leading,
+                                                                activeColor: Colors.green,
+                                                                title: Text('Lundi',
+                                                                  style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
+                                                                ),
+                                                                value: this.valuefirst,
+                                                                onChanged: (bool value) {
+                                                                  setState(() {
+                                                                    this.valuefirst = value;
+                                                                  });
+                                                                },
+                                                              ),
+
+                                                            CheckboxListTile(
+                                                              controlAffinity: ListTileControlAffinity.leading,
+                                                              activeColor: Colors.green,
+                                                              title: Text('Mardi',
+                                                                style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                              ),
+                                                              value: this.valuesecond,
+                                                              onChanged: (bool value) {
+                                                                setState(() {
+                                                                  this.valuesecond = value;
+                                                                });
+                                                              },
+                                                            ),
+                                                            CheckboxListTile(
+                                                              controlAffinity: ListTileControlAffinity.leading,
+                                                              activeColor: Colors.green,
+                                                              title: Text('Mercredi',
+                                                                style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                              ),
+                                                              value: this.valuesecond,
+                                                              onChanged: (bool value) {
+                                                                setState(() {
+                                                                  this.valuesecond = value;
+                                                                });
+                                                              },
+                                                            ),
+                                                            CheckboxListTile(
+                                                              controlAffinity: ListTileControlAffinity.leading,
+                                                              activeColor: Colors.green,
+                                                              title: Text('Jeudi',
+                                                                style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                              ),
+                                                              value: this.valuesecond,
+                                                              onChanged: (bool value) {
+                                                                setState(() {
+                                                                  this.valuesecond = value;
+                                                                });
+                                                              },
+                                                            ),
+                                                            CheckboxListTile(
+                                                              controlAffinity: ListTileControlAffinity.leading,
+                                                              activeColor: Colors.green,
+                                                              title: Text('Vendredi',
+                                                                style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                              ),
+                                                              value: this.valuesecond,
+                                                              onChanged: (bool value) {
+                                                                setState(() {
+                                                                  this.valuesecond = value;
+                                                                });
+                                                              },
+                                                            ),
+                                                            CheckboxListTile(
+                                                              controlAffinity: ListTileControlAffinity.leading,
+                                                              activeColor: Colors.green,
+                                                              title: Text('Samedi',
+                                                                style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                              ),
+                                                              value: this.valuesecond,
+                                                              onChanged: (bool value) {
+                                                                setState(() {
+                                                                  this.valuesecond = value;
+                                                                });
+                                                              },
+                                                            ),
+                                                            CheckboxListTile(
+                                                              controlAffinity: ListTileControlAffinity.leading,
+                                                              activeColor: Colors.green,
+                                                              title: Text('Dimanche',
+                                                                style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                              ),
+                                                              value: this.valuesecond,
+                                                              onChanged: (bool value) {
+                                                                setState(() {
+                                                                  this.valuesecond = value;
+                                                                });
+                                                              },
+                                                            ),
+
+                                                        ])
+                                                      ),
+                                                            ]),
+                                                  ),
+                                              Container(
+                                                child : Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Container(
+                                                          child : Text('Repas',
+                                                            textAlign: TextAlign.left,
+                                                            style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold, color: Colors.green),
+                                                          )
+                                                      ),
+                                                      Container(
+                                                          child : Column(
+                                                              children :[
+                                                                CheckboxListTile(
+                                                                  controlAffinity: ListTileControlAffinity.leading,
+                                                                  activeColor: Colors.green,
+                                                                  title: Text('Matin',
+                                                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
+                                                                  ),
+                                                                  value: this.valuefirst,
+                                                                  onChanged: (bool value) {
+                                                                    setState(() {
+                                                                      this.valuefirst = value;
+                                                                    });
+                                                                  },
+                                                                ),
+
+                                                                CheckboxListTile(
+                                                                  controlAffinity: ListTileControlAffinity.leading,
+                                                                  activeColor: Colors.green,
+                                                                  title: Text('Midi',
+                                                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                                  ),
+                                                                  value: this.valuesecond,
+                                                                  onChanged: (bool value) {
+                                                                    setState(() {
+                                                                      this.valuesecond = value;
+                                                                    });
+                                                                  },
+                                                                ),
+                                                                CheckboxListTile(
+                                                                  controlAffinity: ListTileControlAffinity.leading,
+                                                                  activeColor: Colors.green,
+                                                                  title: Text('En-cas',
+                                                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                                  ),
+                                                                  value: this.valuesecond,
+                                                                  onChanged: (bool value) {
+                                                                    setState(() {
+                                                                      this.valuesecond = value;
+                                                                    });
+                                                                  },
+                                                                ),
+                                                                CheckboxListTile(
+                                                                  controlAffinity: ListTileControlAffinity.leading,
+                                                                  activeColor: Colors.green,
+                                                                  title: Text('Soir',
+                                                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                                  ),
+                                                                  value: this.valuesecond,
+                                                                  onChanged: (bool value) {
+                                                                    setState(() {
+                                                                      this.valuesecond = value;
+                                                                    });
+                                                                  },
+                                                                ),
+                                                                 ])
+                                                      ),
+                                                    ]),
+                                              )
+                                          ])
+                                            ),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(context),
+                                                child: Text("Annuler"),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    //action
+                                                  });
+                                                },
+                                                child: Text("Valider"),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    },
+                                  );
                                 },
                                 child: Icon(Icons.settings, color: Colors.green, size : MediaQuery.of(context).size.width * 0.08)
 
@@ -145,8 +407,49 @@ class _PlanifState extends State<Planif> {
                       padding : EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.8, top : MediaQuery.of(context).size.width * 0.04),
                       child: InkWell(
                           onTap: () {
-                            // /!\ FONCTION POUR ajouter une recette
-                          },
+                                showDialog(
+                                context: context,
+                                builder: (context) {
+                                      return StatefulBuilder(
+                                      builder: (context, setState) {
+                                          return AlertDialog(
+                                            content: Container(
+                                              child : Column(
+                                                children: [
+                                                  Container(
+                                                      child : Text('Quand voulez-vous planifier cette recette ?',
+                                                        textAlign: TextAlign.left,
+                                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold, color: Colors.green),
+                                                      )
+                                                  ),
+                                                  Container(
+                                                      child : Text('Calendrier',
+                                                        textAlign: TextAlign.left,
+                                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold, color: Colors.green),
+                                                      )
+                                                  ),
+                                                ],
+                                              )
+
+                                          ),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(context),
+                                                child: Text("Annuler"),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    //action
+                                                  });
+                                                },
+                                                child: Text("Valider"),
+                                              ),
+                                            ],
+                                          );
+
+                                },);
+    });},
                           child: Icon(Icons.add_circle, color: Colors.deepOrangeAccent, size : MediaQuery.of(context).size.width * 0.1)
 
                       ),

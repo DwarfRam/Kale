@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:multi_select_flutter/dialog/multi_select_dialog_field.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'Routes.dart';
+import 'SearchBar.dart';
 import 'Menu.dart';
 
 class Inscription_suite extends StatefulWidget {
@@ -81,31 +82,31 @@ class _Inscription_suiteState extends State<Inscription_suite> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: appBarTitle,
+        backgroundColor: Colors.white,
+        title: Text("Kale",style:TextStyle(color:Colors.green)),
         actions: <Widget>[
-          IconButton(icon: actionIcon,onPressed:(){
-            setState(() {
-              if ( this.actionIcon.icon == Icons.search){
-                this.actionIcon = Icon(Icons.close);
-                this.appBarTitle = TextField(
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search,color: Colors.white),
-                      hintText: "Search...",
-                      hintStyle: TextStyle(color: Colors.white)
-                  ),
-                );}
-              else {
-                this.actionIcon = Icon(Icons.search);
-                this.appBarTitle = Text("Kale");
+          IconButton(
+              icon: actionIcon,
+              color:Colors.green,
+              onPressed:() {
+                setState(() {
+                  showSearch(
+                    context: context,
+                    delegate: CustomSearchDelegate(),
+                  );
+                }
+                );
               }
-
-            });
-          }
-          )
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.filter_list,
+              color:Colors.green,
+            ),
+            onPressed: () {
+              showFilterDialog(context);
+            },
+          ),
         ],
 
       ),

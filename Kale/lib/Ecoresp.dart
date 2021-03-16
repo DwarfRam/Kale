@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'Menu.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
+import 'SearchBar.dart';
 
 
 class Ecoresp extends StatefulWidget {
@@ -11,7 +12,11 @@ class Ecoresp extends StatefulWidget {
   }
 }
 
+enum Raisons {temps, moyens, interet}
+
 class _EcorespState extends State<Ecoresp> {
+
+  Raisons _raison = Raisons.temps;
 
   SearchBar searchBar;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -50,33 +55,40 @@ class _EcorespState extends State<Ecoresp> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            title: appBarTitle,
+            backgroundColor: Colors.white,
+            title: Text("Kale",style:TextStyle(color:Colors.green)),
             actions: <Widget>[
-              IconButton(icon: actionIcon,onPressed:(){
-                setState(() {
-                  if ( this.actionIcon.icon == Icons.search){
-                    this.actionIcon = Icon(Icons.close);
-                    this.appBarTitle = TextField(
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.search,color: Colors.white),
-                          hintText: "Search...",
-                          hintStyle: TextStyle(color: Colors.white)
-                      ),
-                    );}
-                  else {
-                    this.actionIcon = Icon(Icons.search);
-                    this.appBarTitle = Text("Kale");
+              IconButton(
+                  icon: actionIcon,
+                  color:Colors.green,
+                  onPressed:() {
+                    setState(() {
+                      showSearch(
+                        context: context,
+                        delegate: CustomSearchDelegate(),
+                      );
+                    }
+                    );
                   }
-
-                });
-              }
-              )
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.filter_list,
+                  color:Colors.green,
+                ),
+                onPressed: () {
+                  showFilterDialog(context);
+                },
+              ),
             ],
-
+            bottom: TabBar(
+              labelColor: Colors.green,
+              indicatorColor: Colors.green,
+              tabs: [
+                Tab(text: 'Tableau de bord'),
+                Tab(text: 'Conseils'),
+              ],
+            ),
           ),
           body: TabBarView(
             children: [
@@ -303,42 +315,107 @@ class _EcorespState extends State<Ecoresp> {
                                               ),
                                             ),
 
-                                            Expanded(
-                                                child: Container(
-                                                    padding : EdgeInsets.all(MediaQuery.of(context).size.width * 0.065),
+
+                                            Container(
+                                                    padding : EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
                                                     child: Row(
                                                       children: [
                                                         // /!\ POUR LL : FAIRE UN MEILLEUR BOUTON + MESSAGE POP UP REFUS/ACCEPTATION
                                                         Container(
-                                                          height: MediaQuery.of(context).size.width * 0.04 ,
-                                                          width: MediaQuery.of(context).size.width * 0.04,
-                                                          child : GestureDetector(
-                                                            onTap: () {
-                                                              // /!\ ICI FONCTION REFUS MISSION
-                                                            },
-                                                            child: Container(
-                                                              child: Icon(Icons.clear, color: Colors.red),
+                                                          child :Material(
+                                                            borderRadius: BorderRadius.circular(20.0),
+                                                          shadowColor: Colors.red,
+                                                          color: Colors.red,
+                                                          elevation: 7.0,
+                                                                  child : GestureDetector(
+                                                                    onTap: () {
+                                                                      showDialog(context: context, builder: (_) => AlertDialog(
+                                                                          title: Text("Pourquoi voulez-vous rejeter cette mission ?"),
+                                                                        content : Container(
+                                                                          height: MediaQuery.of(context).size.width * 0.4,
+                                                                          child :
+                                                                        Column (children : [
+                                                                            Row( children : [
+                                                                                  Radio(
+                                                                                    value: Raisons.temps,
+                                                                                    groupValue: _raison,
+                                                                                    activeColor: Colors.lightGreen,
+                                                                                    onChanged: (Raisons value) {
+                                                                                      setState(() {
+                                                                                        _raison = value;
+                                                                                      });
+                                                                                    },
+                                                                                  ),
+                                                                                  Text('Je n\'ai pas le temps',
+                                                                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                                                    textAlign: TextAlign.left,),
+                                                                                ]),
+                                                                          Row( children : [
+                                                                            Radio(
+                                                                              value: Raisons.moyens,
+                                                                              groupValue: _raison,
+                                                                              activeColor: Colors.lightGreen,
+                                                                              onChanged: (Raisons value) {
+                                                                                setState(() {
+                                                                                  _raison = value;
+                                                                                });
+                                                                              },
+                                                                            ),
+                                                                            Text('Je n\'ai pas les moyens',
+                                                                              style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                                              textAlign: TextAlign.left,),
+                                                                          ]),
+                                                                          Row( children : [
+                                                                            Radio(
+                                                                              value: Raisons.interet,
+                                                                              groupValue: _raison,
+                                                                              activeColor: Colors.lightGreen,
+                                                                              onChanged: (Raisons value) {
+                                                                                setState(() {
+                                                                                  _raison = value;
+                                                                                });
+                                                                              },
+                                                                            ),
+                                                                            Text('Il ne m\'intéresse pas',
+                                                                              style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
+                                                                              textAlign: TextAlign.left,),
+                                                                          ]),
+                                                                        ]),),
+                                                                      actions: [
+                                                                        TextButton(child : Text("Retour"), onPressed: (){// /!\ ICI FONCTION REFUS MISSION
+                                                                           },),
+                                                                        TextButton(child : Text("Refuser"), onPressed: (){// /!\ ICI FONCTION REFUS MISSION
+                                                                          },),
+                                                                      ],
+                                                                      ));
+                                                                    },
+                                                                    child: Container(
+                                                                      child: Icon(Icons.clear, color: Colors.white),
                                                             ),
-                                                          ),
+                                                          ),)
                                                         ),
                                                         SizedBox(width: MediaQuery.of(context).size.width * 0.02),
                                                         Container(
-                                                          height: MediaQuery.of(context).size.width * 0.04 ,
-                                                          width: MediaQuery.of(context).size.width * 0.04,
+                                                          child :Material(
+                                                            borderRadius: BorderRadius.circular(20.0),
+                                                            shadowColor: Colors.greenAccent,
+                                                            color: Colors.lightGreen,
+                                                            elevation: 7.0,
 
-                                                          child : GestureDetector(
-                                                            onTap: () {
-                                                              // /!\ ICI FONCTION ACCEPTATION MISSION
-                                                            },
-                                                            child: Container(
+                                                            child : GestureDetector(
+                                                              onTap: () {
+                                                                // /!\ ICI FONCTION ACCEPTATION MISSION
+                                                                print("truc");
+                                                              },
+                                                              child: Container(
 
-                                                              child: Icon(Icons.done, color: Colors.lightGreen),
+                                                                child: Icon(Icons.done, color: Colors.white),
                                                             ),
                                                           ),
-                                                        ),
+                                                        ),)
                                                       ],
                                                     )
-                                                )
+
                                             )
                                           ]
                                       ),

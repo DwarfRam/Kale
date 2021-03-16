@@ -3,6 +3,7 @@ import 'Menu.dart';
 import 'package:flutter/services.dart';
 import 'package:multi_select_flutter/dialog/multi_select_dialog_field.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
+import 'SearchBar.dart';
 
 class Profil extends StatefulWidget {
   @override
@@ -68,33 +69,36 @@ class _ProfilState extends State<Profil> {
     return DefaultTabController(
         length: 3,
         child: Scaffold(
-        appBar: AppBar(
-          title : appBarTitle,
-          actions: <Widget>[
-            IconButton(icon: actionIcon,onPressed:(){
-              setState(() {
-                if ( this.actionIcon.icon == Icons.search){
-                  this.actionIcon = Icon(Icons.close);
-                  this.appBarTitle = TextField(
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search,color: Colors.white),
-                        hintText: "Search...",
-                        hintStyle: TextStyle(color: Colors.white)
-                    ),
-                  );}
-                else {
-                  this.actionIcon = Icon(Icons.search);
-                  this.appBarTitle = Text("Kale");
-                }
-
-              });
-            }
-            )
-          ],
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: Text("Kale",style:TextStyle(color:Colors.green)),
+            actions: <Widget>[
+              IconButton(
+                  icon: actionIcon,
+                  color:Colors.green,
+                  onPressed:() {
+                    setState(() {
+                      showSearch(
+                        context: context,
+                        delegate: CustomSearchDelegate(),
+                      );
+                    }
+                    );
+                  }
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.filter_list,
+                  color:Colors.green,
+                ),
+                onPressed: () {
+                  showFilterDialog(context);
+                },
+              ),
+            ],
         bottom: TabBar(
+          labelColor: Colors.green,
+          indicatorColor: Colors.green,
         tabs: [
           Tab(text: 'Social'),
           Tab(text: 'Favoris'),

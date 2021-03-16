@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     menu = new Menu();
     return MaterialApp(
-
+      debugShowCheckedModeBanner: false,
       title: 'Kale',
       onGenerateRoute: Routes.generateRoute,
       initialRoute: home,

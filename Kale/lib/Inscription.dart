@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Routes.dart';
 import 'Menu.dart';
+import 'SearchBar.dart';
 
 class Inscription extends StatefulWidget {
   @override
@@ -48,31 +49,31 @@ class _InscriptionState extends State<Inscription> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: appBarTitle,
+        backgroundColor: Colors.white,
+        title: Text("Kale",style:TextStyle(color:Colors.green)),
         actions: <Widget>[
-          IconButton(icon: actionIcon,onPressed:(){
-            setState(() {
-              if ( this.actionIcon.icon == Icons.search){
-                this.actionIcon = Icon(Icons.close);
-                this.appBarTitle = TextField(
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search,color: Colors.white),
-                      hintText: "Search...",
-                      hintStyle: TextStyle(color: Colors.white)
-                  ),
-                );}
-              else {
-                this.actionIcon = Icon(Icons.search);
-                this.appBarTitle = Text("Kale");
+          IconButton(
+              icon: actionIcon,
+              color:Colors.green,
+              onPressed:() {
+                setState(() {
+                  showSearch(
+                    context: context,
+                    delegate: CustomSearchDelegate(),
+                  );
+                }
+                );
               }
-
-            });
-          }
-          )
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.filter_list,
+              color:Colors.green,
+            ),
+            onPressed: () {
+              showFilterDialog(context);
+            },
+          ),
         ],
 
       ),
@@ -128,7 +129,6 @@ class _InscriptionState extends State<Inscription> {
                   ),
                   SizedBox(height: MediaQuery.of(context).size.width * 0.12),
                   Container(
-                      height: MediaQuery.of(context).size.width * 0.1,
                       child: Material(
                         borderRadius: BorderRadius.circular(20.0),
                         shadowColor: Colors.greenAccent,

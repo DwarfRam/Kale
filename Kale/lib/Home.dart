@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
 import 'Menu.dart';
-import 'Routes.dart';
+import 'SearchBar.dart';
+
+List<String> allNames = ["ahmed", "ali", "john", "user"];
 
 class Home extends StatefulWidget {
   @override
@@ -12,38 +13,37 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   Icon actionIcon = new Icon(Icons.search);
-  Widget appBarTitle = new Text("Kale");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: appBarTitle,
+        backgroundColor: Colors.white,
+        title: Text("Kale",style:TextStyle(color:Colors.green)),
         actions: <Widget>[
-          IconButton(icon: actionIcon,onPressed:(){
-            setState(() {
-              if ( this.actionIcon.icon == Icons.search){
-                this.actionIcon = Icon(Icons.close);
-                this.appBarTitle = TextField(
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search,color: Colors.white),
-                      hintText: "Search...",
-                      hintStyle: TextStyle(color: Colors.white)
-                  ),
-                );}
-              else {
-                this.actionIcon = Icon(Icons.search);
-                this.appBarTitle = Text("Kale");
+          IconButton(
+              icon: actionIcon,
+              color:Colors.green,
+              onPressed:() {
+                setState(() {
+                  showSearch(
+                    context: context,
+                    delegate: CustomSearchDelegate(),
+                  );
+                }
+                );
               }
-              
-            });
-          }
-          )
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.filter_list,
+              color:Colors.green,
+            ),
+            onPressed: () {
+              showFilterDialog(context);
+            },
+          ),
         ],
-
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -216,3 +216,5 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+
