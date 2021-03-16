@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import UserRecordView
+from api_kale.views import RecipesAPIView
 
-app_name = 'api'
+app_name = 'api_kale'
 urlpatterns = [
-    path('user/', UserRecordView.as_view(), name='users'),
+    path('recipes/', RecipesAPIView.as_view()),
 ]

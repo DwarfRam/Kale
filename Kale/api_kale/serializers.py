@@ -1,25 +1,15 @@
 from django.contrib.auth.models import User
+from api_kale.models import users, recipes
 from rest_framework import serializers
-from rest_framework.validators import UniqueTogetherValidator
 
 
 class UserSerializer(serializers.ModelSerializer):
 
-    def create(self, validated_data):
-        user = User.objects.create_user(**validated_data)
-        return user
-
     class Meta:
-        model = User
-        fields = (
-            'name',
-            'mdp',
-            'email',
-        )
-        #Verification par rapport à l'unicité des nom et email des utilisateur
-        validators = [
-            UniqueTogetherValidator(
-                queryset=User.objects.all(),
-                fields=['name', 'email']
-            )
-        ]
+        model = users
+        fields = '__all__'
+
+class RecipesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = recipes
+        fields = '__all__'
