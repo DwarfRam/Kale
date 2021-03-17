@@ -1,7 +1,7 @@
 from django.urls import path
-from api_kale.views import RecipesAPIView
+from . import views
 
 app_name = 'api_kale'
 urlpatterns = [
-    path('recipes/', RecipesAPIView.as_view()),
+    path('recipes/', views.RecipesAPIView.as_view()),
 ]
