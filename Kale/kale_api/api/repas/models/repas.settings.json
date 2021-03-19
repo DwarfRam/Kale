@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "repas",
+  "info": {
+    "name": "repas"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "dateDuRepas": {
+      "type": "date"
+    },
+    "planning_repas": {
+      "via": "Liste_repas",
+      "collection": "planning-repas"
+    }
+  }
+}

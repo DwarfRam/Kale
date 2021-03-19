@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "panier_de_courses",
+  "info": {
+    "name": "panierDeCourse"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "ligne_panier_courses": {
+      "collection": "ligne-panier-course"
+    },
+    "user": {
+      "via": "panier_de_course",
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

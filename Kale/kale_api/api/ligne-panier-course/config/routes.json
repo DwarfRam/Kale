@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/ligne-panier-courses",
+      "handler": "ligne-panier-course.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ligne-panier-courses/count",
+      "handler": "ligne-panier-course.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ligne-panier-courses/:id",
+      "handler": "ligne-panier-course.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/ligne-panier-courses",
+      "handler": "ligne-panier-course.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/ligne-panier-courses/:id",
+      "handler": "ligne-panier-course.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/ligne-panier-courses/:id",
+      "handler": "ligne-panier-course.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

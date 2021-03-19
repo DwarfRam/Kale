@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recettes",
+  "info": {
+    "name": "recette",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nomRecette": {
+      "type": "string"
+    },
+    "photo": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "categories": {
+      "type": "string"
+    },
+    "ingredients": {
+      "collection": "ingredient"
+    },
+    "outils": {
+      "collection": "outils"
+    },
+    "commentaires": {
+      "via": "recette",
+      "collection": "commentaire"
+    }
+  }
+}

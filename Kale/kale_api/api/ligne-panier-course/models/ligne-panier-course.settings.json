@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ligne_panier_courses",
+  "info": {
+    "name": "lignePanierCourse",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "ingredient": {
+      "model": "ingredient"
+    },
+    "quantite": {
+      "type": "float"
+    }
+  }
+}

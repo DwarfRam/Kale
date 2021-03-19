@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "planning_repas",
+  "info": {
+    "name": "planningRepas",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Liste_repas": {
+      "collection": "repas",
+      "via": "planning_repas",
+      "dominant": true
+    },
+    "panier_de_course": {
+      "model": "panier-de-course"
+    },
+    "user": {
+      "via": "planning_repa",
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

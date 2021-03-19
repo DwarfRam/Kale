@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/planning-repas",
+      "handler": "planning-repas.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/planning-repas/count",
+      "handler": "planning-repas.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/planning-repas/:id",
+      "handler": "planning-repas.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/planning-repas",
+      "handler": "planning-repas.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/planning-repas/:id",
+      "handler": "planning-repas.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/planning-repas/:id",
+      "handler": "planning-repas.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
