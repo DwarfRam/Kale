@@ -15,6 +15,16 @@ class _RechercheState extends State<Recherche> {
   Icon actionIcon = new Icon(Icons.search);
   Widget appBarTitle = new Text("Kale");
 
+  List<dynamic> searchResults = [];
+  searchDjango(value)async {
+    searchService.searchDjangoApi(value).then((responsebody)) {
+      List<dynammic> data = jsonDecode(responseBody);
+      setState(){
+        searchResults.add(value);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
