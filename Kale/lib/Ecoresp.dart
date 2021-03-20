@@ -18,34 +18,6 @@ class _EcorespState extends State<Ecoresp> {
 
   Raisons _raison = Raisons.temps;
 
-  SearchBar searchBar;
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
-  AppBar buildAppBar(BuildContext context) {
-    return new AppBar(
-        title: new Text('Search Bar Demo'),
-        actions: [searchBar.getSearchAction(context)]);
-  }
-
-  void onSubmitted(String value) {
-    setState(() => _scaffoldKey.currentState
-        .showSnackBar(new SnackBar(content: new Text('You wrote $value!'))));
-  }
-
-  _EcorespState() {
-    searchBar = new SearchBar(
-        inBar: false,
-        buildDefaultAppBar: buildAppBar,
-        setState: setState,
-        onSubmitted: onSubmitted,
-        onCleared: () {
-          print("cleared");
-        },
-        onClosed: () {
-          print("closed");
-        });
-  }
-
   Icon actionIcon = new Icon(Icons.search);
   Widget appBarTitle = new Text("Kale");
 
@@ -382,9 +354,10 @@ class _EcorespState extends State<Ecoresp> {
                                                                           ]),
                                                                         ]),),
                                                                       actions: [
-                                                                        TextButton(child : Text("Retour"), onPressed: (){// /!\ ICI FONCTION REFUS MISSION
-                                                                           },),
-                                                                        TextButton(child : Text("Refuser"), onPressed: (){// /!\ ICI FONCTION REFUS MISSION
+                                                                        TextButton(child : Text("Retour"), onPressed: () => Navigator.pop(context),),
+                                                                        TextButton(child : Text("Refuser"), onPressed: (){
+                                                                          Navigator.pop(context);
+                                                                          // /!\ ICI FONCTION REFUS MISSION
                                                                           },),
                                                                       ],
                                                                       ));
@@ -405,7 +378,22 @@ class _EcorespState extends State<Ecoresp> {
                                                             child : GestureDetector(
                                                               onTap: () {
                                                                 // /!\ ICI FONCTION ACCEPTATION MISSION
-                                                                print("truc");
+                                                                showDialog(context: context, builder: (_) => AlertDialog(
+                                                                  title: Text("Avez-vous réussi cette mission ?"),
+                                                                  content : Container(
+                                                                    height: MediaQuery.of(context).size.width * 0.1,
+                                                                    child :
+                                                                    Column (children : [
+
+                                                                    ]),),
+                                                                  actions: [
+                                                                    TextButton(child : Text("Retour"), onPressed: () => Navigator.pop(context),),
+                                                                    TextButton(child : Text("Valider"), onPressed: (){
+                                                                      Navigator.pop(context);
+                                                                      // /!\ ICI FONCTION VALIDATION MISSION
+                                                                    },),
+                                                                  ],
+                                                                ));
                                                               },
                                                               child: Container(
 

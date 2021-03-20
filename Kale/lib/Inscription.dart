@@ -105,7 +105,6 @@ class _InscriptionState extends State<Inscription> {
                     decoration: InputDecoration(
                         labelText: 'Email',
                         labelStyle: TextStyle(
-                            fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold,
                             color: Colors.grey),
                         // hintText: 'EMAIL',
@@ -120,7 +119,6 @@ class _InscriptionState extends State<Inscription> {
                     decoration: InputDecoration(
                         labelText: 'Mot de passe ',
                         labelStyle: TextStyle(
-                            fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold,
                             color: Colors.grey),
                         focusedBorder: UnderlineInputBorder(
@@ -144,8 +142,7 @@ class _InscriptionState extends State<Inscription> {
                               'Suite',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat'),
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
@@ -171,8 +168,7 @@ class _InscriptionState extends State<Inscription> {
                         Center(
                           child: Text('Retour',
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Montserrat')),
+                                  fontWeight: FontWeight.bold)),
                         ),
 
 
@@ -187,9 +183,6 @@ class _InscriptionState extends State<Inscription> {
              children: <Widget>[
                Text(
                  'Déjà inscrit sur Kale ?',
-                 style: TextStyle(
-                   fontFamily: 'Montserrat',
-                 ),
                ),
                SizedBox(width: MediaQuery.of(context).size.width * 0.02),
                InkWell(
@@ -199,7 +192,6 @@ class _InscriptionState extends State<Inscription> {
                  child: Text('Connexion',
                      style: TextStyle(
                          color: Colors.green,
-                         fontFamily: 'Montserrat',
                          fontWeight: FontWeight.bold,
                          decoration: TextDecoration.underline)),
                )

@@ -9,6 +9,7 @@ import 'Connexion.dart';
 import 'Inscription_suite.dart';
 import 'Home_non_connecte.dart';
 import 'Recette.dart';
+import 'Ajout_recette.dart';
 
 const String home = '/';
 const String ecoresp = '/ecoresp';
@@ -20,6 +21,7 @@ const String connexion = '/connexion';
 const String inscription_suite = '/inscription_suite';
 const String home_non_connecte = '/home_non_connecte';
 const String recette = '/recette';
+const String ajout = '/ajout';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -44,6 +46,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) => Home_non_connecte());
       case recette :
         return MaterialPageRoute(builder: (_) => Recette());
+      case ajout :
+        return MaterialPageRoute(builder: (_) => Ajout_recette());
       default:
         return MaterialPageRoute(
             builder: (_) =>

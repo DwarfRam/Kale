@@ -15,16 +15,6 @@ class _RechercheState extends State<Recherche> {
   Icon actionIcon = new Icon(Icons.search);
   Widget appBarTitle = new Text("Kale");
 
-  List<dynamic> searchResults = [];
-  searchDjango(value)async {
-    searchService.searchDjangoApi(value).then((responsebody)) {
-      List<dynammic> data = jsonDecode(responseBody);
-      setState(){
-        searchResults.add(value);
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -354,11 +344,59 @@ class _RechercheState extends State<Recherche> {
                               ])),
                     ],
                   )
-              )
+              ),
+              Container(
+                padding : EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.8, top : MediaQuery.of(context).size.width * 0.04),
+                child: InkWell(
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return StatefulBuilder(
+                              builder: (context, setState) {
+                                return AlertDialog(
+                                  content: Container(
+                                      height: MediaQuery.of(context).size.width * 0.2,
+                                      child : Column(
+                                        children: [
+                                          Container(
+                                              child : Text('Souhaitez-vous ajouter une recette ?',
+                                                textAlign: TextAlign.left,
+                                                style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold, color: Colors.green),
+                                              )
+                                          ),
 
-            ]
-        ),
+                                        ],
+                                      )
+                                  ),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text("Annuler"),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          Navigator.pop(context);
+                                          Navigator.popAndPushNamed(context, ajout,);
+                                        });
+                                      },
+                                      child: Text("Valider"),
+                                    ),
+                                  ],
+                                );
+
+                              },);
+                          });},
+                    child: Icon(Icons.add_circle, color: Colors.deepOrangeAccent, size : MediaQuery.of(context).size.width * 0.1)
+                ),
+              ),
+              SizedBox(height:MediaQuery.of(context).size.width * 0.05),
+            ],
+        )
       ),
+
+
       bottomNavigationBar: Menu(currentindex : 2),
     );
   }

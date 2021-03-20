@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Menu.dart';
 import 'SearchBar.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class Planif extends StatefulWidget {
   @override
@@ -21,6 +22,8 @@ class _PlanifState extends State<Planif> {
 
   Icon actionIcon = new Icon(Icons.search);
   Widget appBarTitle = new Text("Kale");
+
+  DateTime _dateTime;
 
   @override
   Widget build(BuildContext context) {
@@ -323,6 +326,7 @@ class _PlanifState extends State<Planif> {
                                               TextButton(
                                                 onPressed: () {
                                                   setState(() {
+                                                    Navigator.pop(context);
                                                     //action
                                                   });
                                                 },
@@ -403,57 +407,32 @@ class _PlanifState extends State<Planif> {
                         ]),
                       ],
                     ),
+
+                    SizedBox(height: MediaQuery.of(context).size.width * 0.04,),
                     Container(
-                      padding : EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.8, top : MediaQuery.of(context).size.width * 0.04),
-                      child: InkWell(
-                          onTap: () {
-                                showDialog(
-                                context: context,
-                                builder: (context) {
-                                      return StatefulBuilder(
-                                      builder: (context, setState) {
-                                          return AlertDialog(
-                                            content: Container(
-                                              child : Column(
-                                                children: [
-                                                  Container(
-                                                      child : Text('Quand voulez-vous planifier cette recette ?',
-                                                        textAlign: TextAlign.left,
-                                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold, color: Colors.green),
-                                                      )
-                                                  ),
-                                                  Container(
-                                                      child : Text('Calendrier',
-                                                        textAlign: TextAlign.left,
-                                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold, color: Colors.green),
-                                                      )
-                                                  ),
-                                                ],
-                                              )
+                      padding : EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.8),
+                      child: Column(
+                        children: [
+                          InkWell(
+                              onTap: () {
+                                showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2000),
+                                  lastDate: DateTime(2025),
+                                ).then((date) {
+                                  setState(() {
+                                    _dateTime = date; // Recupérer _dateTime pour avoir la date sélectionnée
+                                  });
+                                });;
 
-                                          ),
-                                            actions: <Widget>[
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(context),
-                                                child: Text("Annuler"),
-                                              ),
-                                              TextButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    //action
-                                                  });
-                                                },
-                                                child: Text("Valider"),
-                                              ),
-                                            ],
-                                          );
+                                },
+                              child: Icon(Icons.add_circle, color: Colors.deepOrangeAccent, size : MediaQuery.of(context).size.width * 0.1)
 
-                                },);
-    });},
-                          child: Icon(Icons.add_circle, color: Colors.deepOrangeAccent, size : MediaQuery.of(context).size.width * 0.1)
-
-                      ),
-                    ),
+                          ),
+                        ],
+                        )
+                    )
                   ],
                 )
             ) 
@@ -623,11 +602,9 @@ class _PlanifState extends State<Planif> {
                                 child : Text('Dimanche',textAlign: TextAlign.left,
                                   style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.06, fontWeight: FontWeight.bold),
                                 ))
-
                           ],
                         )
                     )
-
                   ],
                 )
                 )

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_search/pages/search/seach_page.dart';
 import 'Routes.dart';
 import 'Menu.dart';
 
@@ -19,16 +18,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class FlutterSearch extends StatefulWidget {
-	@override
-	_FlutterSearchState createState() => _FlutterSearchState();
-}
 
-class _FlutterSearchState extend state<FlutterSearch> {
-	@override
-	Widget build(BuildContext context) {
-		return MaterialApp(
-			home: SearchPage(),
-		);
-	}
-}
