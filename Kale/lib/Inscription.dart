@@ -8,7 +8,6 @@ class Inscription extends StatefulWidget {
   _InscriptionState createState() => _InscriptionState();
 }
 
-
 enum FormType {
   login,
   register
@@ -16,6 +15,7 @@ enum FormType {
 
 class _InscriptionState extends State<Inscription> {
 
+  //Listener pour "écouter" les informations renseignées et envoyer à la base de données.
   final TextEditingController _emailFilter = new TextEditingController();
   final TextEditingController _passwordFilter = new TextEditingController();
   String _email = "";
@@ -26,6 +26,7 @@ class _InscriptionState extends State<Inscription> {
     _passwordFilter.addListener(_passwordListen);
   }
 
+  // S'il y a quelque chose d'écrit, on l'envoit sous forme de texte à la base de données, pour l'inscrire dans la base de données
   void _emailListen() {
     if (_emailFilter.text.isEmpty) {
       _email = "";
@@ -42,61 +43,46 @@ class _InscriptionState extends State<Inscription> {
     }
   }
 
-  Icon actionIcon = new Icon(Icons.search);
-  Widget appBarTitle = new Text("Kale");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text("Kale",style:TextStyle(color:Colors.green)),
+        title: Image.asset('assets/images/logo_simple_couleur.png', width:MediaQuery.of(context).size.width * 0.13, height:MediaQuery.of(context).size.width * 0.13),
         actions: <Widget>[
           IconButton(
-              icon: actionIcon,
+              icon: Icon(Icons.search),
               color:Colors.green,
               onPressed:() {
                 setState(() {
                   showSearch(
                     context: context,
-                    delegate: CustomSearchDelegate(),
-                  );
-                }
-                );
-              }
-          ),
+                    delegate: CustomSearchDelegate(),);});}
+                    ),
           IconButton(
-            icon: Icon(
-              Icons.filter_list,
-              color:Colors.green,
+            icon: Icon(Icons.filter_list, color:Colors.green,
             ),
-            onPressed: () {
-              showFilterDialog(context);
-            },
+            onPressed: () {showFilterDialog(context);},
           ),
         ],
-
       ),
       resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-          Container(
-            child: Stack(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.03, MediaQuery.of(context).size.width * 0.27, 0.0, 0.0),
-                  child: Text(
-                    'Inscription',
-                    style:
-                    TextStyle(fontSize: MediaQuery.of(context).size.width * 0.18, fontWeight: FontWeight.bold),
-                  ),
-                )
-              ],
+            Container(
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.03, MediaQuery.of(context).size.width * 0.27, 0.0, 0.0),
+                    child: Text('Inscription', style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.18, fontWeight: FontWeight.bold),
+                    ),
+                  )
+                ]),
             ),
-          ),
-          Container(
+            Container(
               padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.09, left: MediaQuery.of(context).size.width * 0.06, right: MediaQuery.of(context).size.width * 0.06),
               child: Column(
                 children: <Widget>[
@@ -104,29 +90,22 @@ class _InscriptionState extends State<Inscription> {
                     controller : _emailFilter,
                     decoration: InputDecoration(
                         labelText: 'Email',
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                        // hintText: 'EMAIL',
-                        // hintStyle: ,
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.green))),
-
+                        labelStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+                        focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.green))),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.width * 0.03),
                   TextField(
                     controller : _passwordFilter,
                     decoration: InputDecoration(
                         labelText: 'Mot de passe ',
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
+                        labelStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
                         focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.green))),
                     obscureText: true,
                   ),
                   SizedBox(height: MediaQuery.of(context).size.width * 0.12),
                   Container(
+                    height :  MediaQuery.of(context).size.width * 0.1,
                       child: Material(
                         borderRadius: BorderRadius.circular(20.0),
                         shadowColor: Colors.greenAccent,
@@ -138,15 +117,12 @@ class _InscriptionState extends State<Inscription> {
                             _creercompte();
                           },
                           child: Center(
-                            child: Text(
-                              'Suite',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                            child: Text('Suite', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
-                      )),
+                      )
+                  ),
                   SizedBox(height: MediaQuery.of(context).size.width * 0.06),
                   Container(
                     height: MediaQuery.of(context).size.width * 0.1,
@@ -160,50 +136,33 @@ class _InscriptionState extends State<Inscription> {
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(20.0)),
                       child: InkWell(
-                        onTap: () {
-                          Navigator.popAndPushNamed(context, home,);
-                        },
-                        child:
-
-                        Center(
-                          child: Text('Retour',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold)),
+                        onTap: () {Navigator.popAndPushNamed(context, home,);},
+                        child: Center(
+                          child: Text('Retour', style: TextStyle(fontWeight: FontWeight.bold)),
                         ),
-
-
                       ),
                     ),
                   ),
-                ],
-              )),
+                ],)
+            ),
            SizedBox(height: MediaQuery.of(context).size.width * 0.04),
            Row(
              mainAxisAlignment: MainAxisAlignment.center,
              children: <Widget>[
-               Text(
-                 'Déjà inscrit sur Kale ?',
-               ),
+               Text('Déjà inscrit sur Kale ?',),
                SizedBox(width: MediaQuery.of(context).size.width * 0.02),
                InkWell(
-                 onTap: () {
-                   Navigator.popAndPushNamed(context, connexion,);
-                 },
-                 child: Text('Connexion',
-                     style: TextStyle(
-                         color: Colors.green,
-                         fontWeight: FontWeight.bold,
-                         decoration: TextDecoration.underline)),
+                 onTap: () {Navigator.popAndPushNamed(context, connexion,);},
+                 child: Text('Connexion', style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, decoration: TextDecoration.underline)
+                 ),
                )
-             ],
-           )
-        ]
+             ],)
+            ]),
         ),
-        ),
-        bottomNavigationBar: Menu(currentindex : 0),
+      bottomNavigationBar: Menu(currentindex : 0),
     );
   }
   _creercompte (){
-    print('the user wants to create an account with $_email and $_password');
+    // Fonction de création de compte en base de données
   }
 }

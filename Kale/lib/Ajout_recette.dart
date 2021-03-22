@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Menu.dart';
-import 'package:multi_select_flutter/dialog/multi_select_dialog_field.dart';
 import 'SearchBar.dart';
-import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'Routes.dart';
 
 class Ajout_recette extends StatefulWidget {
@@ -12,63 +10,28 @@ class Ajout_recette extends StatefulWidget {
   }
 }
 
-class Ingredients {
-  final int id;
-  final String name;
-
-  Ingredients({
-    this.id,
-    this.name,
-  });
-}
-
-class Ustensiles {
-  final int id;
-  final String name;
-
-  Ustensiles({
-    this.id,
-    this.name,
-  });
-}
-
 class _Ajout_recetteState extends State<Ajout_recette> {
-
-  Icon actionIcon = new Icon(Icons.search);
-  Widget appBarTitle = new Text("Kale");
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text("Kale",style:TextStyle(color:Colors.green)),
+        title: Image.asset('assets/images/logo_simple_couleur.png', width:MediaQuery.of(context).size.width * 0.13, height:MediaQuery.of(context).size.width * 0.13),
         actions: <Widget>[
           IconButton(
-              icon: actionIcon,
+              icon: Icon(Icons.search),
               color:Colors.green,
               onPressed:() {
                 setState(() {
                   showSearch(
                     context: context,
-                    delegate: CustomSearchDelegate(),
-                  );
-                }
-                );
-              }
-          ),
+                    delegate: CustomSearchDelegate(),);});}
+              ),
           IconButton(
-            icon: Icon(
-              Icons.filter_list,
-              color:Colors.green,
-            ),
-            onPressed: () {
-              showFilterDialog(context);
-            },
+            icon: Icon(Icons.filter_list, color:Colors.green,),
+            onPressed: () {showFilterDialog(context);},
           ),
         ],
-
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -83,17 +46,15 @@ class _Ajout_recetteState extends State<Ajout_recette> {
                           child: Column(
                             children: <Widget>[
                               TextField(
-                                //controller : _emailFilter,
+                                //Nous aurions ajouté des listeners pour récuperer les informations dans tous les TextField.
                                 decoration: InputDecoration(
                                     labelText: 'Nom de la recette',
                                     labelStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
                                     focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(color: Colors.green))),
-
                               ),
                               SizedBox(height: MediaQuery.of(context).size.width * 0.05),
                               TextField(
-                                //controller : _passwordFilter,
                                 decoration: InputDecoration(
                                     labelText: 'Mot clés',
                                     labelStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
@@ -103,7 +64,10 @@ class _Ajout_recetteState extends State<Ajout_recette> {
                               ),
                               SizedBox(height: MediaQuery.of(context).size.width * 0.05),
                               TextField(
-                                //controller : _passwordFilter,
+                                // Pour les ingrédients et ustensiles, il aurait peut être fallu implémenter dans la base de données
+                                // tous les ingrédients et ustensiles possibles, puis implémenter une recherche dans ces deux
+                                //champs pour permettre à l'utilisateur de rentrer des champs corrects
+                                // Il aurait aussi fallu ajouter un champ pour ajouter les quantités.
                                 decoration: InputDecoration(
                                     labelText: 'Ingrédients',
                                     labelStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
@@ -113,7 +77,6 @@ class _Ajout_recetteState extends State<Ajout_recette> {
                               ),
                               SizedBox(height: MediaQuery.of(context).size.width * 0.05),
                               TextField(
-                                //controller : _passwordFilter,
                                 decoration: InputDecoration(
                                     labelText: 'Ustensiles',
                                     labelStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
@@ -123,7 +86,7 @@ class _Ajout_recetteState extends State<Ajout_recette> {
                               ),
                               SizedBox(height: MediaQuery.of(context).size.width * 0.05),
                               TextField(
-                                //controller : _passwordFilter,
+                                //Il aurait fallu ajouter un bouton pour ajouter plusieurs champs, pour plusieurs instructions
                                 decoration: InputDecoration(
                                     labelText: 'Instructions',
                                     labelStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
@@ -142,8 +105,7 @@ class _Ajout_recetteState extends State<Ajout_recette> {
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.popAndPushNamed(context, recherche,);
-                                        _creerrecette();
-                                      },
+                                        _creerrecette();},
                                       child: Center(
                                         child: Text(
                                           'Valider',
@@ -154,22 +116,19 @@ class _Ajout_recetteState extends State<Ajout_recette> {
                                       ),
                                     ),
                                   )),
-                    ],
-                  )
-              ),
+                            ],
+                          )
+                      ),
                     ])
               )
-
-
-            ]
-        ),
+            ]),
       ),
       bottomNavigationBar: Menu(currentindex : 2),
     );
   }
 
   _creerrecette (){
-    //
+    // Fonction de création de recette en base de données
   }
 }
 

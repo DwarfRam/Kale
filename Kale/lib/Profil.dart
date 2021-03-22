@@ -11,7 +11,8 @@ class Profil extends StatefulWidget {
     return _ProfilState();
   }
 }
-// /!\ ICI TU RECUPERES LES MEMES VARIABLES QUE DANS LA PAGE INSCRIPTION_SUITE
+// Même chose que dans la page Inscription_suite.
+//Ces informations seraient remplis lors de l'inscription de l'utilisateur.
 enum Regime {aucun, vegetarien, flexitarien, perscitarien, vegan }
 
 class Allergie {
@@ -38,6 +39,9 @@ class _ProfilState extends State<Profil> {
 
   Regime _regime = Regime.aucun;
 
+  // Pour les allergies et les aliments, il aurait peut être fallu implémenter dans la base de données
+  // toutes les allergies et aliments possibles.
+
   static List<Allergie> _allergies = [
     Allergie(id: 1, name: "Gluten"),
     Allergie(id: 2, name: "Arachides"),
@@ -61,50 +65,40 @@ class _ProfilState extends State<Profil> {
   List<Aliment> _selectedaliment = [];
   final TextEditingController _nombrefoyerFilter = new TextEditingController();
 
-  Icon actionIcon = new Icon(Icons.search);
-  Widget appBarTitle = new Text("Kale");
 
   @override
   Widget build(BuildContext context) {
+    // DefaultTabController permet de faire des tab au sein d'une même page
     return DefaultTabController(
         length: 3,
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
-            title: Text("Kale",style:TextStyle(color:Colors.green)),
+            title: Image.asset('assets/images/logo_simple_couleur.png', width:MediaQuery.of(context).size.width * 0.13, height:MediaQuery.of(context).size.width * 0.13),
             actions: <Widget>[
               IconButton(
-                  icon: actionIcon,
+                  icon: Icon(Icons.search),
                   color:Colors.green,
                   onPressed:() {
                     setState(() {
                       showSearch(
                         context: context,
-                        delegate: CustomSearchDelegate(),
-                      );
-                    }
-                    );
-                  }
-              ),
+                        delegate: CustomSearchDelegate(),);});}
+                        ),
               IconButton(
-                icon: Icon(
-                  Icons.filter_list,
-                  color:Colors.green,
-                ),
-                onPressed: () {
-                  showFilterDialog(context);
-                },
+                icon: Icon(Icons.filter_list, color:Colors.green,),
+                onPressed: () {showFilterDialog(context);},
               ),
             ],
-        bottom: TabBar(
-          labelColor: Colors.green,
-          indicatorColor: Colors.green,
-        tabs: [
-          Tab(text: 'Social'),
-          Tab(text: 'Favoris'),
-          Tab(text: 'Paramètres')
-          ],
-          ),
+            bottom: TabBar(
+              labelColor: Colors.green,
+              indicatorColor: Colors.green,
+              tabs: [
+                Tab(text: 'Social'),
+                Tab(text: 'Favoris'),
+                Tab(text: 'Paramètres')
+              ],
+            ),
           ),
           body: TabBarView(
           children: [
@@ -120,45 +114,40 @@ class _ProfilState extends State<Profil> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Row(
-                          children: [
-                          Container(
-                            child: Icon(Icons.image, size : MediaQuery.of(context).size.width * 0.3,),
-                          ),
+                            children: [
+                              Container(
+                                child: Image.asset('assets/images/photo.jpg', width:MediaQuery.of(context).size.width * 0.3, height:MediaQuery.of(context).size.width * 0.3),
+                              ),
                             SizedBox(width: MediaQuery.of(context).size.width * 0.03,),
                             Container(
+                              //Correspond au profil social de l'application. Il aurait été renseigné par l'utilisateur.
+                              // C'est la page qu'aurait pu voir les autres utilisateurs en consultant la page de profil d'un autre utilisateur.
                                 child : Expanded(
                                     child: Container(
                                         child : Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children : [
                                               Container (
-                                                // /!\ STRING PRENOM NOM
-                                                  child : Text('Prénom Nom',
-                                                    textAlign: TextAlign.left,
+                                                  child : Text('Prénom Nom', textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
                                                   )
                                               ),
                                               Container (
-                                                // /!\ STRING AGE REGIME
-                                                  child : Text('Age - régime',
-                                                    textAlign: TextAlign.left,
+                                                  child : Text('Age - régime', textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
                                                   )
                                               ),
                                               Container (
-                                                  child : Text('Plat favoris : ',
-                                                    textAlign: TextAlign.left,
+                                                  child : Text('Plat favoris : ', textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
                                                   )
                                               ),
-                                            ]
-                                        )
+                                            ])
                                     )
                                 )
                             )
-                            ],
-                      ),
-                        SizedBox(height: MediaQuery.of(context).size.width * 0.02),
+                            ],),
+                          SizedBox(height: MediaQuery.of(context).size.width * 0.02),
                           Container(
                               width: MediaQuery.of(context).size.width * 1,
                               child: Material(
@@ -172,38 +161,33 @@ class _ProfilState extends State<Profil> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Row(
+                                          // Comme dans des applications comme Instagram, l'utilisateur aurait pu choisir de "Suivre" un autre utilisateur.
                                           children: [
                                             Container(
-                                              child: Text('Suivre',
-                                                textAlign: TextAlign.left,
+                                              child: Text('Suivre', textAlign: TextAlign.left,
                                                 style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
                                               )
                                             ),
                                             SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
                                             Container(
-                                                child : Text('Abonnements',
-                                                  textAlign: TextAlign.left,
+                                                child : Text('Abonnements', textAlign: TextAlign.left,
                                                   style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04, color: Colors.black45),
                                                 )
                                             ),
                                             SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
                                             Container(
-                                                child : Text('|',
-                                                  textAlign: TextAlign.left,
+                                                child : Text('|', textAlign: TextAlign.left,
                                                   style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04, color: Colors.black45),
                                                 )
                                             ),
                                             SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
                                             Container(
-                                                child : Text('Abonnés',
-                                                  textAlign: TextAlign.left,
+                                                child : Text('Abonnés', textAlign: TextAlign.left,
                                                   style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04, color: Colors.black45),
                                                 )
                                             )
-                                          ],
-                                        ),
-                                      ]
-                                  ),
+                                          ]),
+                                      ]),
                                 ),
                               )
                           ),
@@ -216,13 +200,13 @@ class _ProfilState extends State<Profil> {
                                 color: Colors.white,
                                 elevation: 7.0,
                                 child: Container(
+                                  //Dernières activités de l'utilisateur
                                     padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                                     child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                              child: Text('Activités',
-                                                textAlign: TextAlign.left,
+                                              child: Text('Activités', textAlign: TextAlign.left,
                                                 style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
                                               )
                                           ),
@@ -230,8 +214,8 @@ class _ProfilState extends State<Profil> {
                                           Container(
                                             padding : EdgeInsets.only(bottom:MediaQuery.of(context).size.width * 0.02),
                                               decoration: BoxDecoration(
-                                                  border : Border(bottom : BorderSide(color: Colors.black26)
-                                                  )),
+                                                  border : Border(bottom : BorderSide(color: Colors.black26))
+                                              ),
                                               child: Row(
                                                 children: [
                                                   Container(
@@ -239,21 +223,18 @@ class _ProfilState extends State<Profil> {
                                                   ),
                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
                                                   Container(
-                                                    // /!\ STRING PRENOM NOM devant la string
-                                                    child :Text('... a atteint le niveau 1 !',
-                                                      textAlign: TextAlign.left,
+                                                    child :Text('... a atteint le niveau 1 !', textAlign: TextAlign.left,
                                                       style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                     )
                                                   )
-                                                ],
-                                              )
+                                                ],)
                                           ),
                                           SizedBox(height: MediaQuery.of(context).size.width * 0.02,),
                                           Container(
                                               padding : EdgeInsets.only(bottom:MediaQuery.of(context).size.width * 0.02),
                                               decoration: BoxDecoration(
-                                                  border : Border(bottom : BorderSide(color: Colors.black26)
-                                                  )),
+                                                  border : Border(bottom : BorderSide(color: Colors.black26))
+                                              ),
                                               child: Row(
                                                 children: [
                                                   Container(
@@ -261,21 +242,18 @@ class _ProfilState extends State<Profil> {
                                                   ),
                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
                                                   Container(
-                                                    // /!\ STRING PRENOM NOM devant la string
-                                                      child :Text('... a publié une nouvelle recette !',
-                                                        textAlign: TextAlign.left,
+                                                      child :Text('... a publié une nouvelle recette !', textAlign: TextAlign.left,
                                                         style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                       )
                                                   )
-                                                ],
-                                              )
+                                                ],)
                                           ),
                                           SizedBox(height: MediaQuery.of(context).size.width * 0.02,),
                                           Container(
                                               padding : EdgeInsets.only(bottom:MediaQuery.of(context).size.width * 0.02),
                                               decoration: BoxDecoration(
-                                                  border : Border(bottom : BorderSide(color: Colors.black26)
-                                                  )),
+                                                  border : Border(bottom : BorderSide(color: Colors.black26))
+                                              ),
                                               child: Row(
                                                 children: [
                                                   Container(
@@ -283,17 +261,13 @@ class _ProfilState extends State<Profil> {
                                                   ),
                                                   SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
                                                   Container(
-                                                    // /!\ STRING PRENOM NOM devant la string
-                                                      child :Text('... a rempli la mission "..." !',
-                                                        textAlign: TextAlign.left,
+                                                      child :Text('... a rempli la mission "..." !', textAlign: TextAlign.left,
                                                         style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                       )
                                                   )
-                                                ],
-                                              )
+                                                ],)
                                           ),
-                                          ]
-                                    )
+                                        ])
                                 )
                             )
                         ),
@@ -313,8 +287,7 @@ class _ProfilState extends State<Profil> {
                                             children : [
                                               Container (
                                                   padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-                                                  child : Text('Badges',
-                                                    textAlign: TextAlign.left,
+                                                  child : Text('Badges', textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
                                                   )
                                               ),
@@ -323,102 +296,86 @@ class _ProfilState extends State<Profil> {
                                                   child : Row(
                                                     children: [
                                                       Icon(Icons.verified)
-                                                    ],
-                                                  )
+                                                    ],)
                                               )
-                                            ]
-                                        )
+                                            ])
                                     ),
                                   ),
                                 ),
 
-
                               SizedBox(width: MediaQuery.of(context).size.width * 0.05,),
                               Container(
-                              width: MediaQuery.of(context).size.width * 0.5,
-                                    child : Container (
-                                      child: Material(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                child : Container (
+                                  child: Material(
                                       borderRadius: BorderRadius.circular(15.0),
                                       shadowColor: Colors.black26,
                                       color: Colors.white,
                                       elevation: 7.0,
-                                        child : Column (
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children : [
-                                          Container (
+                                      child : Column (
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children : [
+                                            Container (
+                                              //Toutes les recettes que l'utilisateur a mis en favoris, fonctionne un peu comme les tableaux pinterest avec les collections.
                                               padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-                                            child : Text('Dernières recettes ',
-                                                      textAlign: TextAlign.left,
-                                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
-                                                    )),
+                                              child : Text('Dernières recettes ', textAlign: TextAlign.left,
+                                                style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
+                                              )
+                                            ),
                                           Container(
-                                            child :
-                                                Column(
+                                            child : Column(
+                                              children: [
+                                                Row(
                                                   children: [
-                                                    Row(
-                                                      children: [
-                                                        Container(
-                                                          // /!\ CHANGER LA COULEUR ET LA FORME DE L'ETOILE SI FAVORI
-                                                          child : Icon(Icons.star, color: Colors.yellow),
-                                                        ),
-                                                        SizedBox(width: MediaQuery.of(context).size.width * 0.02 ,),
-                                                        Container(
-                                                          child: Text('Soupe de poireaux', textAlign: TextAlign.left, style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04)),
-                                                        )
-
-                                                      ],
+                                                    Container(
+                                                      child : Icon(Icons.star, color: Colors.yellow),
                                                     ),
-                                                    SizedBox(height: MediaQuery.of(context).size.width * 0.02),
-                                                    Row(
-                                                      children: [
-                                                        Container(
-                                                          // /!\ CHANGER LA COULEUR ET LA FORME DE L'ETOILE SI FAVORI
-                                                          child : Icon(Icons.star_border),
-                                                        ),
-                                                        SizedBox(width: MediaQuery.of(context).size.width * 0.02 ,),
-                                                        Container(
-                                                          child: Text('Lasagne aux poireaux', textAlign: TextAlign.left, style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04)),
-                                                        )
-
-                                                      ],
+                                                    SizedBox(width: MediaQuery.of(context).size.width * 0.02 ,),
+                                                    Container(
+                                                      child: Text('Soupe de poireaux', textAlign: TextAlign.left, style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04)),
+                                                    )
+                                                  ],),
+                                                SizedBox(height: MediaQuery.of(context).size.width * 0.02),
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                      child : Icon(Icons.star_border),
                                                     ),
-                                                    SizedBox(height: MediaQuery.of(context).size.width * 0.02),
-                                                    Row(
-                                                      children: [
-                                                        Container(
-                                                          // /!\ CHANGER LA COULEUR ET LA FORME DE L'ETOILE SI FAVORI
-                                                          child : Icon(Icons.star_border),
-                                                        ),
-                                                        SizedBox(width: MediaQuery.of(context).size.width * 0.02 ,),
-                                                        Container(
-                                                          child: Text('Omelette à la farine', textAlign: TextAlign.left, style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04)),
-                                                        )
-
-                                                      ],
+                                                    SizedBox(width: MediaQuery.of(context).size.width * 0.02 ,),
+                                                    Container(
+                                                      child: Text('Lasagne aux poireaux', textAlign: TextAlign.left, style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04)),
+                                                    )
+                                                  ],),
+                                                SizedBox(height: MediaQuery.of(context).size.width * 0.02),
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                      child : Icon(Icons.star_border),
                                                     ),
-                                                    SizedBox(height: MediaQuery.of(context).size.width * 0.02),
-                                                  ],
-                                                )
-
+                                                    SizedBox(width: MediaQuery.of(context).size.width * 0.02 ,),
+                                                    Container(
+                                                      child: Text('Omelette à la farine', textAlign: TextAlign.left, style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04)),
+                                                    )
+                                                  ],),
+                                                SizedBox(height: MediaQuery.of(context).size.width * 0.02),
+                                              ],
+                                            )
                                           )
-
-                                              ]
-                                          )
-                                      ),
-                                    ),
+                                          ])
                                   ),
+                                ),
+                              ),
+                            ],),
+                        ])
+                  )
+                )
+              ])
+            ),
 
-
-                            ],
-                          ),
-          ]
-              )))])),
-
-
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
                       width: MediaQuery.of(context).size.width * 1,
                       padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
                       child: Material(
@@ -438,42 +395,38 @@ class _ProfilState extends State<Profil> {
                                 ),
                                 SizedBox(width: MediaQuery.of(context).size.width * 0.06),
                                 Container(
-                                  child : Text('Recettes favorites',
-                                    textAlign: TextAlign.left,
+                                  child : Text('Recettes favorites', textAlign: TextAlign.left,
                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.06, fontWeight: FontWeight.bold),
+                                  )
                                 )
-                        )
-                              ],
+                              ],),
+                            ]),
+                        ),
+                      )
                   ),
-                        ]
-                    ),
-                  ),
-                )
-                ),
                   Container(
-                        width: MediaQuery.of(context).size.width * 1,
+                      width: MediaQuery.of(context).size.width * 1,
                       padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
                         child: Material(
-                        borderRadius: BorderRadius.circular(15.0),
-                        shadowColor: Colors.black26,
-                        color: Colors.white,
-                        elevation: 7.0,
+                            borderRadius: BorderRadius.circular(15.0),
+                            shadowColor: Colors.black26,
+                            color: Colors.white,
+                            elevation: 7.0,
                             child: Container(
-                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
                                 child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                                  Container(
-                                  child : Text('Toutes',
-                                    textAlign: TextAlign.left,
-                                    style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
-                                )
-                                ),
-                                   SizedBox(height: MediaQuery.of(context).size.width * 0.03),
-                                    Column(
-                                      children: [
-                                        Row(
-                                          children: [
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                          child : Text('Toutes', textAlign: TextAlign.left,
+                                            style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
+                                          )
+                                      ),
+                                      SizedBox(height: MediaQuery.of(context).size.width * 0.03),
+                                      Column(
+                                        children: [
+                                          Row(
+                                            children: [
                                               Column(
                                                 children: [
                                                   //Container(
@@ -482,15 +435,11 @@ class _ProfilState extends State<Profil> {
                                                     //  )
                                                 //  ),
                                                   Container(
-                                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
-                                                      child : Text('Recette 1 ',
-                                                        textAlign: TextAlign.left,
+                                                      child : Text('Recette 1 ', textAlign: TextAlign.left,
                                                         style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                       )
                                                   ),
-                                                ],
-                                              ),
-
+                                                ],),
                                             SizedBox(width: MediaQuery.of(context).size.width * 0.2),
                                             Column(
                                               children: [
@@ -500,16 +449,12 @@ class _ProfilState extends State<Profil> {
                                                 //    )
                                                // ),
                                                 Container(
-                                                  // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
-                                                    child : Text('Recette 2 ',
-                                                      textAlign: TextAlign.left,
+                                                    child : Text('Recette 2 ', textAlign: TextAlign.left,
                                                       style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                     )
                                                 ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
+                                              ],),
+                                            ],),
                                         SizedBox(height:  MediaQuery.of(context).size.width * 0.03),
                                         Row(
                                           children: [
@@ -521,14 +466,12 @@ class _ProfilState extends State<Profil> {
                                                //     )
                                               //  ),
                                                 Container(
-                                                  // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
                                                     child : Text('Recette 3 ',
                                                       textAlign: TextAlign.left,
                                                       style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                     )
                                                 ),
-                                              ],
-                                            ),
+                                              ],),
                                             SizedBox(width:MediaQuery.of(context).size.width * 0.2),
                                             Column(
                                               children: [
@@ -538,16 +481,12 @@ class _ProfilState extends State<Profil> {
                                                 //    )
                                                // ),
                                                 Container(
-                                                  // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
-                                                    child : Text('Recette 4 ',
-                                                      textAlign: TextAlign.left,
+                                                    child : Text('Recette 4 ', textAlign: TextAlign.left,
                                                       style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                     )
                                                 ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
+                                              ],),
+                                          ],),
                                         SizedBox(height:  MediaQuery.of(context).size.width * 0.03),
                                         Row(
                                           children: [
@@ -559,14 +498,11 @@ class _ProfilState extends State<Profil> {
                                                 //    )
                                                 // ),
                                                 Container(
-                                                  // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
-                                                    child : Text('Recette 5 ',
-                                                      textAlign: TextAlign.left,
+                                                    child : Text('Recette 5 ', textAlign: TextAlign.left,
                                                       style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                     )
                                                 ),
-                                              ],
-                                            ),
+                                              ],),
                                             SizedBox(width: MediaQuery.of(context).size.width * 0.2),
                                             Column(
                                               children: [
@@ -577,21 +513,16 @@ class _ProfilState extends State<Profil> {
                                                 // ),
                                                 Container(
                                                   // /!\ METTRE L'IMAGE ET LE NOM DE LA RECETTE
-                                                    child : Text('Recette 6 ',
-                                                      textAlign: TextAlign.left,
+                                                    child : Text('Recette 6 ', textAlign: TextAlign.left,
                                                       style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                     )
                                                 ),
-                                              ],
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                ]
-                  )
-                  )
-                  )
+                                              ],),
+                                          ],)
+                                        ],),
+                                    ])
+                            )
+                        )
                   ),
                 Container(
                     width: MediaQuery.of(context).size.width * 1,
@@ -607,9 +538,7 @@ class _ProfilState extends State<Profil> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
-                                    // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
-                                      child : Text('Collections',
-                                        textAlign: TextAlign.left,
+                                      child : Text('Collections', textAlign: TextAlign.left,
                                         style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
                                       )
                                   ),
@@ -626,14 +555,11 @@ class _ProfilState extends State<Profil> {
                                               //    )
                                               // ),
                                               Container(
-                                                // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
-                                                  child : Text('Collection 1 ',
-                                                    textAlign: TextAlign.left,
+                                                  child : Text('Collection 1 ', textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                   )
                                               ),
-                                            ],
-                                          ),
+                                            ],),
                                           SizedBox(width: MediaQuery.of(context).size.width * 0.15,),
                                           Column(
                                             children: [
@@ -643,16 +569,12 @@ class _ProfilState extends State<Profil> {
                                               //    )
                                               // ),
                                               Container(
-                                                // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
-                                                  child : Text('Collection 2 ',
-                                                    textAlign: TextAlign.left,
+                                                  child : Text('Collection 2 ', textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                   )
                                               ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
+                                            ],),
+                                        ],),
                                       SizedBox(height:  MediaQuery.of(context).size.width * 0.03),
                                       Row(
                                         children: [
@@ -664,14 +586,11 @@ class _ProfilState extends State<Profil> {
                                               //    )
                                               // ),
                                               Container(
-                                                // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
-                                                  child : Text('Collection 3 ',
-                                                    textAlign: TextAlign.left,
+                                                  child : Text('Collection 3 ', textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                   )
                                               ),
-                                            ],
-                                          ),
+                                            ],),
                                           SizedBox(width: MediaQuery.of(context).size.width * 0.15,),
                                           Column(
                                             children: [
@@ -681,16 +600,12 @@ class _ProfilState extends State<Profil> {
                                               //    )
                                               // ),
                                               Container(
-                                                // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
-                                                  child : Text('Collection 4 ',
-                                                    textAlign: TextAlign.left,
+                                                  child : Text('Collection 4 ', textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                   )
                                               ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
+                                            ],),
+                                        ],),
 
                                       SizedBox(height:  MediaQuery.of(context).size.width * 0.03),
                                       Row(
@@ -703,14 +618,11 @@ class _ProfilState extends State<Profil> {
                                               //    )
                                               // ),
                                               Container(
-                                                // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
-                                                  child : Text('Collection 5 ',
-                                                    textAlign: TextAlign.left,
+                                                  child : Text('Collection 5 ', textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                   )
                                               ),
-                                            ],
-                                          ),
+                                            ],),
                                           SizedBox(width: MediaQuery.of(context).size.width * 0.15,),
                                           Column(
                                             children: [
@@ -720,26 +632,19 @@ class _ProfilState extends State<Profil> {
                                               //    )
                                               // ),
                                               Container(
-                                                // /!\ METTRE L'IMAGE ET LE NOM DE LA COLLECTION
-                                                  child : Text('Collection 6 ',
-                                                    textAlign: TextAlign.left,
+                                                  child : Text('Collection 6 ', textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
                                                   )
                                               ),
-                                            ],
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ]
-                            )
+                                            ]),
+                                        ])
+                                    ]),
+                                ])
                         )
                     )
                 )
-              ],
+                ],),
             ),
-      ),
 
             SingleChildScrollView(
               child: Column(
@@ -764,15 +669,12 @@ class _ProfilState extends State<Profil> {
                                       ),
                                       SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
                                       Container(
-                                          child : Text('Paramètres du profil',
-                                            textAlign: TextAlign.left,
+                                          child : Text('Paramètres du profil', textAlign: TextAlign.left,
                                             style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.06, fontWeight: FontWeight.bold),
                                           )
                                       )
-                                    ],
-                                  ),
-                                ]
-                            ),
+                                    ],),
+                                ]),
                           ),
                         )
                     ),
@@ -792,7 +694,7 @@ class _ProfilState extends State<Profil> {
                                   Row(
                                     children: [
                                       Container(
-                                        child: Icon(Icons.image, size : MediaQuery.of(context).size.width * 0.3,),
+                                        child: Image.asset('assets/images/photo.jpg', width:MediaQuery.of(context).size.width * 0.3, height:MediaQuery.of(context).size.width * 0.3),
                                       ),
                                       SizedBox(width: MediaQuery.of(context).size.width * 0.03,),
                                       Container(
@@ -802,32 +704,25 @@ class _ProfilState extends State<Profil> {
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children : [
                                                 Container (
-                                                  // /!\ STRING PRENOM NOM
-                                                  child : Text('Prénom Nom',
-                                                    textAlign: TextAlign.left,
+                                                  child : Text('Prénom Nom', textAlign: TextAlign.left,
                                                     style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontWeight: FontWeight.bold),
                                                   )
                                               ),
                                                 Container (
-                                                  // /!\ STRING AGE REGIME
-                                                    child : Text('Age - régime',
-                                                      textAlign: TextAlign.left,
+                                                    child : Text('Age - régime', textAlign: TextAlign.left,
                                                       style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
                                                     )
                                                 ),
                                                 Container (
-                                                    child : Text('Plat favoris : ',
-                                                      textAlign: TextAlign.left,
+                                                    child : Text('Plat favoris : ', textAlign: TextAlign.left,
                                                       style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
                                                     )
                                                 ),
-                                              ]
-                                            )
+                                              ])
                                           )
-                                          )
+                                        )
                                       )
-                                    ],
-                                  ),
+                                    ],),
                                   SizedBox(height: MediaQuery.of(context).size.width * 0.02),
                                   Container(
                                       padding: EdgeInsets.symmetric(horizontal : MediaQuery.of(context).size.width * 0.25),
@@ -839,22 +734,14 @@ class _ProfilState extends State<Profil> {
                                         color: Colors.white,
                                         elevation: 7.0,
                                         child: InkWell(
-                                          onTap: () {
-                                            // /!\ FONCTION POUR MODIFIER ?
-                                          },
+                                          onTap: () {},
                                           child:
-                                          Center(
-                                            child: Text('Modifier',
-                                                style: TextStyle(fontWeight: FontWeight.bold,),
-                                          ),
-                                          )
-
+                                          Center(child: Text('Modifier', style: TextStyle(fontWeight: FontWeight.bold,),),)
                                         ),
                                       ),
                                     )
                                   ),
-                                ]
-                            ),
+                                ]),
                           ),
                         )
                     ),
@@ -872,9 +759,7 @@ class _ProfilState extends State<Profil> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                      child : Text('Régime souhaité',
-                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04, fontWeight: FontWeight.bold),
-                                      )
+                                      child : Text('Régime souhaité', style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04, fontWeight: FontWeight.bold),)
                                   ),
                                   Row( children : [
                                     Radio(
@@ -883,15 +768,10 @@ class _ProfilState extends State<Profil> {
                                       activeColor: Colors.lightGreen,
                                       onChanged: (Regime value) {
                                         setState(() {
-                                          _regime = value;
-                                        });
-                                        },
+                                          _regime = value;});},
                                     ),
-                                    Text('Aucun',
-                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
-                                      textAlign: TextAlign.left,),
-                                  ]
-                                  ),
+                                    Text('Aucun', style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04), textAlign: TextAlign.left,),
+                                  ]),
                                   Row(children : [
                                     Radio(
                                       value: Regime.vegetarien,
@@ -899,15 +779,10 @@ class _ProfilState extends State<Profil> {
                                       activeColor: Colors.lightGreen,
                                       onChanged: (Regime value) {
                                         setState(() {
-                                          _regime = value;
-                                        });
-                                        },
+                                          _regime = value;});},
                                     ),
-                                    Text('Végétarien',
-                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
-                                      textAlign: TextAlign.left,),
-                                  ]
-                                  ),
+                                    Text('Végétarien', style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04), textAlign: TextAlign.left,),
+                                  ]),
                                   Row(children : [
                                     Radio(
                                       value: Regime.flexitarien,
@@ -915,15 +790,10 @@ class _ProfilState extends State<Profil> {
                                       activeColor: Colors.lightGreen,
                                       onChanged: (Regime value) {
                                         setState(() {
-                                          _regime = value;
-                                        });
-                                      },
+                                          _regime = value;});},
                                     ),
-                                    Text('Flexitarien',
-                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
-                                      textAlign: TextAlign.left,),
-                                  ]
-                                  ),
+                                    Text('Flexitarien', style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04), textAlign: TextAlign.left,),
+                                  ]),
                                   Row(children : [
                                     Radio(
                                       value: Regime.perscitarien,
@@ -931,128 +801,116 @@ class _ProfilState extends State<Profil> {
                                       activeColor: Colors.lightGreen,
                                       onChanged: (Regime value) {
                                         setState(() {
-                                          _regime = value;
-                                        });
-                                      },
+                                          _regime = value;});},
                                     ),
-                                      Text('Perscitarien',
-                                      style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04),
-                                      textAlign: TextAlign.left,),
-                                  ]
-                                  )
-                                ]
-                                  ),
-                            ),
+                                      Text('Perscitarien', style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04), textAlign: TextAlign.left,),
+                                  ])
+                                ]),
                           ),
                         ),
+                    ),
 
-                                  Container(
-                                      width: MediaQuery.of(context).size.width * 1,
-                                      padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
-                                      child: Material(
-                                      borderRadius: BorderRadius.circular(15.0),
-                                      shadowColor: Colors.black26,
-                                      color: Colors.white,
-                                      elevation: 7.0,
-                                        child: Container(
-                                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-                                          child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                                child : Text('Allergies',
-                                                  style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04, fontWeight: FontWeight.bold),
-                                                )
-                                            ),
-                                            SizedBox(height: MediaQuery.of(context).size.width * 0.04),
-                                            MultiSelectDialogField(
-                                                items: _itemsallergie,
-                                                title: Text("Allergies"),
-                                                selectedColor: Colors.lightGreen,
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(Radius.circular(40)),
-                                                  border: Border.all(
-                                                    width: 2,
-                                                  ),
-                                                ),
-                                                buttonText: Text("Ajouter",style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
-                                                ),
-                                                onConfirm: (results) {
-                                                  _selectedallergie = results;
-                                                },),
-                                      ])
-                                  )
-        )),
-                Container(
-                width: MediaQuery.of(context).size.width * 1,
-                    padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
-                    child: Material(
-                    borderRadius: BorderRadius.circular(15.0),
-                    shadowColor: Colors.black26,
-                    color: Colors.white,
-                    elevation: 7.0,
-                        child: Container(
-                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-                            child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                                            Container(
-                                                child : Text('Aliments non désirés',
-                                                  style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04, fontWeight: FontWeight.bold),
-                                                )
-                                            ),
-                                            SizedBox(height: MediaQuery.of(context).size.width * 0.04),
-
-                                            MultiSelectDialogField(
-                                              items: _itemsaliments,
-                                              title: Text("Aliments non désirés"),
-                                              selectedColor: Colors.lightGreen,
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(Radius.circular(40)),
-                                                border: Border.all(
-                                                  width: 2,
-                                                ),
-                                              ),
-                                              buttonText: Text("Ajouter", style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),
-                                              ),
-                                              onConfirm: (results) {
-                                                _selectedaliment = results;
-                                              },),
-                                            ]) ))),
-                Container(
-                width: MediaQuery.of(context).size.width * 1,
-                    padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
-                    child: Material(
-                    borderRadius: BorderRadius.circular(15.0),
-                    shadowColor: Colors.black26,
-                    color: Colors.white,
-                    elevation: 7.0,
-                      child: Container(
-                      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
-                        child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            child : Text('Nombre de personnes dans le foyer',
-                            style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04, fontWeight: FontWeight.bold),
+                    Container(
+                        width: MediaQuery.of(context).size.width * 1,
+                        padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
+                        child: Material(
+                            borderRadius: BorderRadius.circular(15.0),
+                            shadowColor: Colors.black26,
+                            color: Colors.white,
+                            elevation: 7.0,
+                            child: Container(
+                                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                                child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                          child : Text('Allergies', style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04, fontWeight: FontWeight.bold),)
+                                      ),
+                                      SizedBox(height: MediaQuery.of(context).size.width * 0.04),
+                                      MultiSelectDialogField(
+                                        items: _itemsallergie,
+                                        title: Text("Allergies"),
+                                        selectedColor: Colors.lightGreen,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(40)),
+                                          border: Border.all(width: 2,),
+                                        ),
+                                        buttonText: Text("Ajouter",style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),),
+                                        onConfirm: (results) {
+                                          _selectedallergie = results;},
+                                      ),
+                                    ])
                             )
-                            ),
-                              Container(
-                                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.05),
-                                child:TextField(
-                                controller : _nombrefoyerFilter,
-                                decoration: new InputDecoration(labelText: "Taper un nombre"),
-                                keyboardType: TextInputType.number,
-                                inputFormatters: <TextInputFormatter>[
-                                  FilteringTextInputFormatter.digitsOnly
-                                ], // Only numbers can be entered
-                              )),]))))
-                  ]
-              ),
+                        )
+                    ),
+                Container(
+                width: MediaQuery.of(context).size.width * 1,
+                    padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
+                    child: Material(
+                        borderRadius: BorderRadius.circular(15.0),
+                        shadowColor: Colors.black26,
+                        color: Colors.white,
+                        elevation: 7.0,
+                        child: Container(
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      child : Text('Aliments non désirés', style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04, fontWeight: FontWeight.bold),)
+                                  ),
+                                  SizedBox(height: MediaQuery.of(context).size.width * 0.04),
+                                  MultiSelectDialogField(
+                                    items: _itemsaliments,
+                                    title: Text("Aliments non désirés"),
+                                    selectedColor: Colors.lightGreen,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(Radius.circular(40)),
+                                      border: Border.all(width: 2,),
+                                    ),
+                                    buttonText: Text("Ajouter", style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,),),
+                                    onConfirm: (results) {
+                                      _selectedaliment = results;},
+                                  ),
+                                ])
+                        )
+                    )
+                ),
+                Container(
+                width: MediaQuery.of(context).size.width * 1,
+                    padding: EdgeInsets.only(left : MediaQuery.of(context).size.width * 0.09, top: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.09),
+                    child: Material(
+                        borderRadius: BorderRadius.circular(15.0),
+                        shadowColor: Colors.black26,
+                        color: Colors.white,
+                        elevation: 7.0,
+                        child: Container(
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      child : Text('Nombre de personnes dans le foyer',
+                                        style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04, fontWeight: FontWeight.bold),
+                                      )
+                                  ),
+                                  Container(
+                                      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.05),
+                                      child:TextField(
+                                        controller : _nombrefoyerFilter,
+                                        decoration: new InputDecoration(labelText: "Taper un nombre"),
+                                        keyboardType: TextInputType.number,
+                                        inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+                                      )
+                                  ),
+                                ])
+                        )
+                    )
+                )
+                  ]),
             ),
-      ]
-          ),
-            bottomNavigationBar: Menu(currentindex : 4),
+          ]),
+          bottomNavigationBar: Menu(currentindex : 4),
         )
     );
   }

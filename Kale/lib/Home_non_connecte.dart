@@ -12,117 +12,75 @@ class Home_non_connecte extends StatefulWidget {
 }
 
 class _Home_non_connecteState extends State<Home_non_connecte> {
-  Icon actionIcon = new Icon(Icons.search);
-  Widget appBarTitle = new Text("Kale");
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text("Kale",style:TextStyle(color:Colors.green)),
+        title: Image.asset('assets/images/logo_simple_couleur.png', width:MediaQuery.of(context).size.width * 0.13, height:MediaQuery.of(context).size.width * 0.13),
         actions: <Widget>[
           IconButton(
-              icon: actionIcon,
+              icon: Icon(Icons.search),
               color:Colors.green,
               onPressed:() {
                 setState(() {
                   showSearch(
                     context: context,
-                    delegate: CustomSearchDelegate(),
-                  );
-                }
-                );
-              }
-          ),
+                    delegate: CustomSearchDelegate(),);});}
+                    ),
           IconButton(
-            icon: Icon(
-              Icons.filter_list,
-              color:Colors.green,
-            ),
-            onPressed: () {
-              showFilterDialog(context);
-            },
+            icon: Icon(Icons.filter_list, color:Colors.green,),
+            onPressed: () {showFilterDialog(context);},
           ),
         ],
-
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
+            SizedBox(height:MediaQuery.of(context).size.width * 0.15),
             Container(
-              child : Row(
-                children: [
-                  Container(
-                    width : MediaQuery.of(context).size.width * 0.8,
-                    child: Text('Bienvenue sur ',style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.1, fontWeight: FontWeight.bold),)
-                  ),
-              //    Container(
-                //    color: Colors.yellow,
-               //     child: Image.asset('images/logo_texte_noir.svg')),
-
-                ],
-              )
-
+                child: Text('Bienvenue sur ',style : TextStyle(fontSize: MediaQuery.of(context).size.width * 0.15, fontWeight: FontWeight.bold),)
             ),
             Container(
-                padding: const EdgeInsets.only(top: 500.0),
-                child:
-                Row(
+              child : Image.asset('assets/images/logo_texte_couleur.png', width:MediaQuery.of(context).size.width * 0.3, height:MediaQuery.of(context).size.width * 0.3),
+            ),
+            Container(
+              child : Image.asset('assets/images/image_accueil_non_connecté.png', width:MediaQuery.of(context).size.width * 0.8, height:MediaQuery.of(context).size.width * 0.8),
+            ),
+            Container(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
-                      'Nouveau sur Kale ?',
-                      style: TextStyle(fontFamily: 'Montserrat',fontSize: 20.0,),
+                    Text('Nouveau sur Kale ?',
+                      style: TextStyle(fontSize: 20.0,),
                     ),
                     SizedBox(width: 10.0),
                     InkWell(
-                      onTap: () {
-                        Navigator.popAndPushNamed(context, inscription,);
-                      },
-                      child: Text(
-                        'Inscription',
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            color: Colors.green,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline),
+                      onTap: () {Navigator.popAndPushNamed(context, inscription,);},
+                      child: Text('Inscription',
+                        style: TextStyle(fontSize: 20.0, color: Colors.green, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),
                       ),
                     )
-                  ],
-                )
+                  ],)
             ),
             Container(
-              child:
-              Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    'Déjà inscrit ?',
+                  Text('Déjà inscrit ?',
                     style: TextStyle(fontFamily: 'Montserrat', fontSize: 20.0,),
                   ),
                   SizedBox(width: 10.0),
                   InkWell(
-                    onTap: () {
-                      Navigator.popAndPushNamed(context, connexion,);
-                    },
-                    child: Text(
-                      'Connectez-vous',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.green,
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline),
+                    onTap: () {Navigator.popAndPushNamed(context, connexion,);},
+                    child: Text('Connectez-vous',
+                      style: TextStyle(fontSize: 20.0, color: Colors.green, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),
                     ),
                   )
-                ],
-              ),
+                ],),
             ),
-          ],
-        ),
+          ]),
       ),
       bottomNavigationBar: Menu(currentindex : 0),
     );
