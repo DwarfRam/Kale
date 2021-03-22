@@ -1,0 +1,1729 @@
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+type Commentaire {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  contenu: String
+  recette: Recette
+  users_permissions_user: UsersPermissionsUser
+  published_at: DateTime
+  image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+type CommentaireConnection {
+  values: [Commentaire]
+  groupBy: CommentaireGroupBy
+  aggregate: CommentaireAggregator
+}
+
+type CommentaireAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CommentaireGroupBy {
+  id: [CommentaireConnectionId]
+  created_at: [CommentaireConnectionCreated_at]
+  updated_at: [CommentaireConnectionUpdated_at]
+  contenu: [CommentaireConnectionContenu]
+  recette: [CommentaireConnectionRecette]
+  users_permissions_user: [CommentaireConnectionUsers_permissions_user]
+  published_at: [CommentaireConnectionPublished_at]
+}
+
+type CommentaireConnectionId {
+  key: ID
+  connection: CommentaireConnection
+}
+
+type CommentaireConnectionCreated_at {
+  key: DateTime
+  connection: CommentaireConnection
+}
+
+type CommentaireConnectionUpdated_at {
+  key: DateTime
+  connection: CommentaireConnection
+}
+
+type CommentaireConnectionContenu {
+  key: String
+  connection: CommentaireConnection
+}
+
+type CommentaireConnectionRecette {
+  key: ID
+  connection: CommentaireConnection
+}
+
+type CommentaireConnectionUsers_permissions_user {
+  key: ID
+  connection: CommentaireConnection
+}
+
+type CommentaireConnectionPublished_at {
+  key: DateTime
+  connection: CommentaireConnection
+}
+
+input CommentaireInput {
+  contenu: String
+  image: [ID]
+  recette: ID
+  users_permissions_user: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editCommentaireInput {
+  contenu: String
+  image: [ID]
+  recette: ID
+  users_permissions_user: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createCommentaireInput {
+  data: CommentaireInput
+}
+
+type createCommentairePayload {
+  commentaire: Commentaire
+}
+
+input updateCommentaireInput {
+  where: InputID
+  data: editCommentaireInput
+}
+
+type updateCommentairePayload {
+  commentaire: Commentaire
+}
+
+input deleteCommentaireInput {
+  where: InputID
+}
+
+type deleteCommentairePayload {
+  commentaire: Commentaire
+}
+
+type Conseil {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  titre: String
+  contenu: String
+  published_at: DateTime
+  photo(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+type ConseilConnection {
+  values: [Conseil]
+  groupBy: ConseilGroupBy
+  aggregate: ConseilAggregator
+}
+
+type ConseilAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ConseilGroupBy {
+  id: [ConseilConnectionId]
+  created_at: [ConseilConnectionCreated_at]
+  updated_at: [ConseilConnectionUpdated_at]
+  titre: [ConseilConnectionTitre]
+  contenu: [ConseilConnectionContenu]
+  published_at: [ConseilConnectionPublished_at]
+}
+
+type ConseilConnectionId {
+  key: ID
+  connection: ConseilConnection
+}
+
+type ConseilConnectionCreated_at {
+  key: DateTime
+  connection: ConseilConnection
+}
+
+type ConseilConnectionUpdated_at {
+  key: DateTime
+  connection: ConseilConnection
+}
+
+type ConseilConnectionTitre {
+  key: String
+  connection: ConseilConnection
+}
+
+type ConseilConnectionContenu {
+  key: String
+  connection: ConseilConnection
+}
+
+type ConseilConnectionPublished_at {
+  key: DateTime
+  connection: ConseilConnection
+}
+
+input ConseilInput {
+  titre: String
+  contenu: String
+  photo: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editConseilInput {
+  titre: String
+  contenu: String
+  photo: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createConseilInput {
+  data: ConseilInput
+}
+
+type createConseilPayload {
+  conseil: Conseil
+}
+
+input updateConseilInput {
+  where: InputID
+  data: editConseilInput
+}
+
+type updateConseilPayload {
+  conseil: Conseil
+}
+
+input deleteConseilInput {
+  where: InputID
+}
+
+type deleteConseilPayload {
+  conseil: Conseil
+}
+
+type Ingredient {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  nom: String
+  description: String
+  regime: String
+  published_at: DateTime
+  photo(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+type IngredientConnection {
+  values: [Ingredient]
+  groupBy: IngredientGroupBy
+  aggregate: IngredientAggregator
+}
+
+type IngredientAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type IngredientGroupBy {
+  id: [IngredientConnectionId]
+  created_at: [IngredientConnectionCreated_at]
+  updated_at: [IngredientConnectionUpdated_at]
+  nom: [IngredientConnectionNom]
+  description: [IngredientConnectionDescription]
+  regime: [IngredientConnectionRegime]
+  published_at: [IngredientConnectionPublished_at]
+}
+
+type IngredientConnectionId {
+  key: ID
+  connection: IngredientConnection
+}
+
+type IngredientConnectionCreated_at {
+  key: DateTime
+  connection: IngredientConnection
+}
+
+type IngredientConnectionUpdated_at {
+  key: DateTime
+  connection: IngredientConnection
+}
+
+type IngredientConnectionNom {
+  key: String
+  connection: IngredientConnection
+}
+
+type IngredientConnectionDescription {
+  key: String
+  connection: IngredientConnection
+}
+
+type IngredientConnectionRegime {
+  key: String
+  connection: IngredientConnection
+}
+
+type IngredientConnectionPublished_at {
+  key: DateTime
+  connection: IngredientConnection
+}
+
+input IngredientInput {
+  nom: String
+  photo: [ID]
+  description: String
+  regime: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editIngredientInput {
+  nom: String
+  photo: [ID]
+  description: String
+  regime: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createIngredientInput {
+  data: IngredientInput
+}
+
+type createIngredientPayload {
+  ingredient: Ingredient
+}
+
+input updateIngredientInput {
+  where: InputID
+  data: editIngredientInput
+}
+
+type updateIngredientPayload {
+  ingredient: Ingredient
+}
+
+input deleteIngredientInput {
+  where: InputID
+}
+
+type deleteIngredientPayload {
+  ingredient: Ingredient
+}
+
+type LignePanierCourse {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  ingredient: Ingredient
+  quantite: Float
+  published_at: DateTime
+}
+
+type LignePanierCourseConnection {
+  values: [LignePanierCourse]
+  groupBy: LignePanierCourseGroupBy
+  aggregate: LignePanierCourseAggregator
+}
+
+type LignePanierCourseAggregator {
+  count: Int
+  totalCount: Int
+  sum: LignePanierCourseAggregatorSum
+  avg: LignePanierCourseAggregatorAvg
+  min: LignePanierCourseAggregatorMin
+  max: LignePanierCourseAggregatorMax
+}
+
+type LignePanierCourseAggregatorSum {
+  quantite: Float
+}
+
+type LignePanierCourseAggregatorAvg {
+  quantite: Float
+}
+
+type LignePanierCourseAggregatorMin {
+  quantite: Float
+}
+
+type LignePanierCourseAggregatorMax {
+  quantite: Float
+}
+
+type LignePanierCourseGroupBy {
+  id: [LignePanierCourseConnectionId]
+  created_at: [LignePanierCourseConnectionCreated_at]
+  updated_at: [LignePanierCourseConnectionUpdated_at]
+  ingredient: [LignePanierCourseConnectionIngredient]
+  quantite: [LignePanierCourseConnectionQuantite]
+  published_at: [LignePanierCourseConnectionPublished_at]
+}
+
+type LignePanierCourseConnectionId {
+  key: ID
+  connection: LignePanierCourseConnection
+}
+
+type LignePanierCourseConnectionCreated_at {
+  key: DateTime
+  connection: LignePanierCourseConnection
+}
+
+type LignePanierCourseConnectionUpdated_at {
+  key: DateTime
+  connection: LignePanierCourseConnection
+}
+
+type LignePanierCourseConnectionIngredient {
+  key: ID
+  connection: LignePanierCourseConnection
+}
+
+type LignePanierCourseConnectionQuantite {
+  key: Float
+  connection: LignePanierCourseConnection
+}
+
+type LignePanierCourseConnectionPublished_at {
+  key: DateTime
+  connection: LignePanierCourseConnection
+}
+
+input LignePanierCourseInput {
+  ingredient: ID
+  quantite: Float
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editLignePanierCourseInput {
+  ingredient: ID
+  quantite: Float
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createLignePanierCourseInput {
+  data: LignePanierCourseInput
+}
+
+type createLignePanierCoursePayload {
+  lignePanierCourse: LignePanierCourse
+}
+
+input updateLignePanierCourseInput {
+  where: InputID
+  data: editLignePanierCourseInput
+}
+
+type updateLignePanierCoursePayload {
+  lignePanierCourse: LignePanierCourse
+}
+
+input deleteLignePanierCourseInput {
+  where: InputID
+}
+
+type deleteLignePanierCoursePayload {
+  lignePanierCourse: LignePanierCourse
+}
+
+type Mission {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  titre: String
+  contenu: String
+  published_at: DateTime
+  phoyo(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+type MissionConnection {
+  values: [Mission]
+  groupBy: MissionGroupBy
+  aggregate: MissionAggregator
+}
+
+type MissionAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type MissionGroupBy {
+  id: [MissionConnectionId]
+  created_at: [MissionConnectionCreated_at]
+  updated_at: [MissionConnectionUpdated_at]
+  titre: [MissionConnectionTitre]
+  contenu: [MissionConnectionContenu]
+  published_at: [MissionConnectionPublished_at]
+}
+
+type MissionConnectionId {
+  key: ID
+  connection: MissionConnection
+}
+
+type MissionConnectionCreated_at {
+  key: DateTime
+  connection: MissionConnection
+}
+
+type MissionConnectionUpdated_at {
+  key: DateTime
+  connection: MissionConnection
+}
+
+type MissionConnectionTitre {
+  key: String
+  connection: MissionConnection
+}
+
+type MissionConnectionContenu {
+  key: String
+  connection: MissionConnection
+}
+
+type MissionConnectionPublished_at {
+  key: DateTime
+  connection: MissionConnection
+}
+
+input MissionInput {
+  titre: String
+  phoyo: [ID]
+  contenu: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editMissionInput {
+  titre: String
+  phoyo: [ID]
+  contenu: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createMissionInput {
+  data: MissionInput
+}
+
+type createMissionPayload {
+  mission: Mission
+}
+
+input updateMissionInput {
+  where: InputID
+  data: editMissionInput
+}
+
+type updateMissionPayload {
+  mission: Mission
+}
+
+input deleteMissionInput {
+  where: InputID
+}
+
+type deleteMissionPayload {
+  mission: Mission
+}
+
+type Outils {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  nom: String
+  description: String
+  published_at: DateTime
+  photo(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+type OutilsConnection {
+  values: [Outils]
+  groupBy: OutilsGroupBy
+  aggregate: OutilsAggregator
+}
+
+type OutilsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type OutilsGroupBy {
+  id: [OutilsConnectionId]
+  created_at: [OutilsConnectionCreated_at]
+  updated_at: [OutilsConnectionUpdated_at]
+  nom: [OutilsConnectionNom]
+  description: [OutilsConnectionDescription]
+  published_at: [OutilsConnectionPublished_at]
+}
+
+type OutilsConnectionId {
+  key: ID
+  connection: OutilsConnection
+}
+
+type OutilsConnectionCreated_at {
+  key: DateTime
+  connection: OutilsConnection
+}
+
+type OutilsConnectionUpdated_at {
+  key: DateTime
+  connection: OutilsConnection
+}
+
+type OutilsConnectionNom {
+  key: String
+  connection: OutilsConnection
+}
+
+type OutilsConnectionDescription {
+  key: String
+  connection: OutilsConnection
+}
+
+type OutilsConnectionPublished_at {
+  key: DateTime
+  connection: OutilsConnection
+}
+
+input OutilInput {
+  nom: String
+  photo: [ID]
+  description: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editOutilInput {
+  nom: String
+  photo: [ID]
+  description: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createOutilInput {
+  data: OutilInput
+}
+
+type createOutilPayload {
+  outil: Outils
+}
+
+input updateOutilInput {
+  where: InputID
+  data: editOutilInput
+}
+
+type updateOutilPayload {
+  outil: Outils
+}
+
+input deleteOutilInput {
+  where: InputID
+}
+
+type deleteOutilPayload {
+  outil: Outils
+}
+
+type PanierDeCourse {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  user: UsersPermissionsUser
+  published_at: DateTime
+  ligne_panier_courses(sort: String, limit: Int, start: Int, where: JSON): [LignePanierCourse]
+}
+
+type PanierDeCourseConnection {
+  values: [PanierDeCourse]
+  groupBy: PanierDeCourseGroupBy
+  aggregate: PanierDeCourseAggregator
+}
+
+type PanierDeCourseAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PanierDeCourseGroupBy {
+  id: [PanierDeCourseConnectionId]
+  created_at: [PanierDeCourseConnectionCreated_at]
+  updated_at: [PanierDeCourseConnectionUpdated_at]
+  user: [PanierDeCourseConnectionUser]
+  published_at: [PanierDeCourseConnectionPublished_at]
+}
+
+type PanierDeCourseConnectionId {
+  key: ID
+  connection: PanierDeCourseConnection
+}
+
+type PanierDeCourseConnectionCreated_at {
+  key: DateTime
+  connection: PanierDeCourseConnection
+}
+
+type PanierDeCourseConnectionUpdated_at {
+  key: DateTime
+  connection: PanierDeCourseConnection
+}
+
+type PanierDeCourseConnectionUser {
+  key: ID
+  connection: PanierDeCourseConnection
+}
+
+type PanierDeCourseConnectionPublished_at {
+  key: DateTime
+  connection: PanierDeCourseConnection
+}
+
+input PanierDeCourseInput {
+  ligne_panier_courses: [ID]
+  user: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editPanierDeCourseInput {
+  ligne_panier_courses: [ID]
+  user: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createPanierDeCourseInput {
+  data: PanierDeCourseInput
+}
+
+type createPanierDeCoursePayload {
+  panierDeCourse: PanierDeCourse
+}
+
+input updatePanierDeCourseInput {
+  where: InputID
+  data: editPanierDeCourseInput
+}
+
+type updatePanierDeCoursePayload {
+  panierDeCourse: PanierDeCourse
+}
+
+input deletePanierDeCourseInput {
+  where: InputID
+}
+
+type deletePanierDeCoursePayload {
+  panierDeCourse: PanierDeCourse
+}
+
+type PlanningRepas {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  panier_de_course: PanierDeCourse
+  user: UsersPermissionsUser
+  published_at: DateTime
+  Liste_repas(sort: String, limit: Int, start: Int, where: JSON): [Repas]
+}
+
+type PlanningRepasConnection {
+  values: [PlanningRepas]
+  groupBy: PlanningRepasGroupBy
+  aggregate: PlanningRepasAggregator
+}
+
+type PlanningRepasAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PlanningRepasGroupBy {
+  id: [PlanningRepasConnectionId]
+  created_at: [PlanningRepasConnectionCreated_at]
+  updated_at: [PlanningRepasConnectionUpdated_at]
+  panier_de_course: [PlanningRepasConnectionPanier_de_course]
+  user: [PlanningRepasConnectionUser]
+  published_at: [PlanningRepasConnectionPublished_at]
+}
+
+type PlanningRepasConnectionId {
+  key: ID
+  connection: PlanningRepasConnection
+}
+
+type PlanningRepasConnectionCreated_at {
+  key: DateTime
+  connection: PlanningRepasConnection
+}
+
+type PlanningRepasConnectionUpdated_at {
+  key: DateTime
+  connection: PlanningRepasConnection
+}
+
+type PlanningRepasConnectionPanier_de_course {
+  key: ID
+  connection: PlanningRepasConnection
+}
+
+type PlanningRepasConnectionUser {
+  key: ID
+  connection: PlanningRepasConnection
+}
+
+type PlanningRepasConnectionPublished_at {
+  key: DateTime
+  connection: PlanningRepasConnection
+}
+
+input PlanningRepaInput {
+  Liste_repas: [ID]
+  panier_de_course: ID
+  user: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editPlanningRepaInput {
+  Liste_repas: [ID]
+  panier_de_course: ID
+  user: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createPlanningRepaInput {
+  data: PlanningRepaInput
+}
+
+type createPlanningRepaPayload {
+  planningRepa: PlanningRepas
+}
+
+input updatePlanningRepaInput {
+  where: InputID
+  data: editPlanningRepaInput
+}
+
+type updatePlanningRepaPayload {
+  planningRepa: PlanningRepas
+}
+
+input deletePlanningRepaInput {
+  where: InputID
+}
+
+type deletePlanningRepaPayload {
+  planningRepa: PlanningRepas
+}
+
+type Recette {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  nomRecette: String
+  description: String
+  categories: String
+  published_at: DateTime
+  photo(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  ingredients(sort: String, limit: Int, start: Int, where: JSON): [Ingredient]
+  outils(sort: String, limit: Int, start: Int, where: JSON): [Outils]
+  commentaires(sort: String, limit: Int, start: Int, where: JSON): [Commentaire]
+}
+
+type RecetteConnection {
+  values: [Recette]
+  groupBy: RecetteGroupBy
+  aggregate: RecetteAggregator
+}
+
+type RecetteAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type RecetteGroupBy {
+  id: [RecetteConnectionId]
+  created_at: [RecetteConnectionCreated_at]
+  updated_at: [RecetteConnectionUpdated_at]
+  nomRecette: [RecetteConnectionNomRecette]
+  description: [RecetteConnectionDescription]
+  categories: [RecetteConnectionCategories]
+  published_at: [RecetteConnectionPublished_at]
+}
+
+type RecetteConnectionId {
+  key: ID
+  connection: RecetteConnection
+}
+
+type RecetteConnectionCreated_at {
+  key: DateTime
+  connection: RecetteConnection
+}
+
+type RecetteConnectionUpdated_at {
+  key: DateTime
+  connection: RecetteConnection
+}
+
+type RecetteConnectionNomRecette {
+  key: String
+  connection: RecetteConnection
+}
+
+type RecetteConnectionDescription {
+  key: String
+  connection: RecetteConnection
+}
+
+type RecetteConnectionCategories {
+  key: String
+  connection: RecetteConnection
+}
+
+type RecetteConnectionPublished_at {
+  key: DateTime
+  connection: RecetteConnection
+}
+
+input RecetteInput {
+  nomRecette: String
+  photo: [ID]
+  description: String
+  categories: String
+  ingredients: [ID]
+  outils: [ID]
+  commentaires: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editRecetteInput {
+  nomRecette: String
+  photo: [ID]
+  description: String
+  categories: String
+  ingredients: [ID]
+  outils: [ID]
+  commentaires: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createRecetteInput {
+  data: RecetteInput
+}
+
+type createRecettePayload {
+  recette: Recette
+}
+
+input updateRecetteInput {
+  where: InputID
+  data: editRecetteInput
+}
+
+type updateRecettePayload {
+  recette: Recette
+}
+
+input deleteRecetteInput {
+  where: InputID
+}
+
+type deleteRecettePayload {
+  recette: Recette
+}
+
+type Repas {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  dateDuRepas: Date
+  published_at: DateTime
+  planning_repas(sort: String, limit: Int, start: Int, where: JSON): [PlanningRepas]
+}
+
+type RepasConnection {
+  values: [Repas]
+  groupBy: RepasGroupBy
+  aggregate: RepasAggregator
+}
+
+type RepasAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type RepasGroupBy {
+  id: [RepasConnectionId]
+  created_at: [RepasConnectionCreated_at]
+  updated_at: [RepasConnectionUpdated_at]
+  dateDuRepas: [RepasConnectionDateDuRepas]
+  published_at: [RepasConnectionPublished_at]
+}
+
+type RepasConnectionId {
+  key: ID
+  connection: RepasConnection
+}
+
+type RepasConnectionCreated_at {
+  key: DateTime
+  connection: RepasConnection
+}
+
+type RepasConnectionUpdated_at {
+  key: DateTime
+  connection: RepasConnection
+}
+
+type RepasConnectionDateDuRepas {
+  key: ID
+  connection: RepasConnection
+}
+
+type RepasConnectionPublished_at {
+  key: DateTime
+  connection: RepasConnection
+}
+
+input RepaInput {
+  dateDuRepas: Date
+  planning_repas: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editRepaInput {
+  dateDuRepas: Date
+  planning_repas: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createRepaInput {
+  data: RepaInput
+}
+
+type createRepaPayload {
+  repa: Repas
+}
+
+input updateRepaInput {
+  where: InputID
+  data: editRepaInput
+}
+
+type updateRepaPayload {
+  repa: Repas
+}
+
+input deleteRepaInput {
+  where: InputID
+}
+
+type deleteRepaPayload {
+  repa: Repas
+}
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input deleteFileInput {
+  where: InputID
+}
+
+type deleteFilePayload {
+  file: UploadFile
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  planning_repa: PlanningRepas
+  panier_de_course: PanierDeCourse
+  outils(sort: String, limit: Int, start: Int, where: JSON): [Outils]
+  commentaires(sort: String, limit: Int, start: Int, where: JSON): [Commentaire]
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+  planning_repa: [UsersPermissionsUserConnectionPlanning_repa]
+  panier_de_course: [UsersPermissionsUserConnectionPanier_de_course]
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionPlanning_repa {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionPanier_de_course {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  outils: [ID]
+  planning_repa: ID
+  panier_de_course: ID
+  commentaires: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  outils: [ID]
+  planning_repa: ID
+  panier_de_course: ID
+  commentaires: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Commentaire | CommentaireConnection | CommentaireAggregator | CommentaireGroupBy | CommentaireConnectionId | CommentaireConnectionCreated_at | CommentaireConnectionUpdated_at | CommentaireConnectionContenu | CommentaireConnectionRecette | CommentaireConnectionUsers_permissions_user | CommentaireConnectionPublished_at | createCommentairePayload | updateCommentairePayload | deleteCommentairePayload | Conseil | ConseilConnection | ConseilAggregator | ConseilGroupBy | ConseilConnectionId | ConseilConnectionCreated_at | ConseilConnectionUpdated_at | ConseilConnectionTitre | ConseilConnectionContenu | ConseilConnectionPublished_at | createConseilPayload | updateConseilPayload | deleteConseilPayload | Ingredient | IngredientConnection | IngredientAggregator | IngredientGroupBy | IngredientConnectionId | IngredientConnectionCreated_at | IngredientConnectionUpdated_at | IngredientConnectionNom | IngredientConnectionDescription | IngredientConnectionRegime | IngredientConnectionPublished_at | createIngredientPayload | updateIngredientPayload | deleteIngredientPayload | LignePanierCourse | LignePanierCourseConnection | LignePanierCourseAggregator | LignePanierCourseAggregatorSum | LignePanierCourseAggregatorAvg | LignePanierCourseAggregatorMin | LignePanierCourseAggregatorMax | LignePanierCourseGroupBy | LignePanierCourseConnectionId | LignePanierCourseConnectionCreated_at | LignePanierCourseConnectionUpdated_at | LignePanierCourseConnectionIngredient | LignePanierCourseConnectionQuantite | LignePanierCourseConnectionPublished_at | createLignePanierCoursePayload | updateLignePanierCoursePayload | deleteLignePanierCoursePayload | Mission | MissionConnection | MissionAggregator | MissionGroupBy | MissionConnectionId | MissionConnectionCreated_at | MissionConnectionUpdated_at | MissionConnectionTitre | MissionConnectionContenu | MissionConnectionPublished_at | createMissionPayload | updateMissionPayload | deleteMissionPayload | Outils | OutilsConnection | OutilsAggregator | OutilsGroupBy | OutilsConnectionId | OutilsConnectionCreated_at | OutilsConnectionUpdated_at | OutilsConnectionNom | OutilsConnectionDescription | OutilsConnectionPublished_at | createOutilPayload | updateOutilPayload | deleteOutilPayload | PanierDeCourse | PanierDeCourseConnection | PanierDeCourseAggregator | PanierDeCourseGroupBy | PanierDeCourseConnectionId | PanierDeCourseConnectionCreated_at | PanierDeCourseConnectionUpdated_at | PanierDeCourseConnectionUser | PanierDeCourseConnectionPublished_at | createPanierDeCoursePayload | updatePanierDeCoursePayload | deletePanierDeCoursePayload | PlanningRepas | PlanningRepasConnection | PlanningRepasAggregator | PlanningRepasGroupBy | PlanningRepasConnectionId | PlanningRepasConnectionCreated_at | PlanningRepasConnectionUpdated_at | PlanningRepasConnectionPanier_de_course | PlanningRepasConnectionUser | PlanningRepasConnectionPublished_at | createPlanningRepaPayload | updatePlanningRepaPayload | deletePlanningRepaPayload | Recette | RecetteConnection | RecetteAggregator | RecetteGroupBy | RecetteConnectionId | RecetteConnectionCreated_at | RecetteConnectionUpdated_at | RecetteConnectionNomRecette | RecetteConnectionDescription | RecetteConnectionCategories | RecetteConnectionPublished_at | createRecettePayload | updateRecettePayload | deleteRecettePayload | Repas | RepasConnection | RepasAggregator | RepasGroupBy | RepasConnectionId | RepasConnectionCreated_at | RepasConnectionUpdated_at | RepasConnectionDateDuRepas | RepasConnectionPublished_at | createRepaPayload | updateRepaPayload | deleteRepaPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionPlanning_repa | UsersPermissionsUserConnectionPanier_de_course | createUserPayload | updateUserPayload | deleteUserPayload
+
+input InputID {
+  id: ID!
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+type AdminUser {
+  id: ID!
+  username: String
+  firstname: String!
+  lastname: String!
+}
+
+type Query {
+  commentaire(id: ID!, publicationState: PublicationState): Commentaire
+  commentaires(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Commentaire]
+  commentairesConnection(sort: String, limit: Int, start: Int, where: JSON): CommentaireConnection
+  conseil(id: ID!, publicationState: PublicationState): Conseil
+  conseils(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Conseil]
+  conseilsConnection(sort: String, limit: Int, start: Int, where: JSON): ConseilConnection
+  ingredient(id: ID!, publicationState: PublicationState): Ingredient
+  ingredients(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Ingredient]
+  ingredientsConnection(sort: String, limit: Int, start: Int, where: JSON): IngredientConnection
+  lignePanierCourse(id: ID!, publicationState: PublicationState): LignePanierCourse
+  lignePanierCourses(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [LignePanierCourse]
+  lignePanierCoursesConnection(sort: String, limit: Int, start: Int, where: JSON): LignePanierCourseConnection
+  mission(id: ID!, publicationState: PublicationState): Mission
+  missions(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Mission]
+  missionsConnection(sort: String, limit: Int, start: Int, where: JSON): MissionConnection
+  outil(id: ID!, publicationState: PublicationState): Outils
+  outils(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Outils]
+  outilsConnection(sort: String, limit: Int, start: Int, where: JSON): OutilsConnection
+  panierDeCourse(id: ID!, publicationState: PublicationState): PanierDeCourse
+  panierDeCourses(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [PanierDeCourse]
+  panierDeCoursesConnection(sort: String, limit: Int, start: Int, where: JSON): PanierDeCourseConnection
+  planningRepa(id: ID!, publicationState: PublicationState): PlanningRepas
+  planningRepas(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [PlanningRepas]
+  planningRepasConnection(sort: String, limit: Int, start: Int, where: JSON): PlanningRepasConnection
+  recette(id: ID!, publicationState: PublicationState): Recette
+  recettes(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Recette]
+  recettesConnection(sort: String, limit: Int, start: Int, where: JSON): RecetteConnection
+  repa(id: ID!, publicationState: PublicationState): Repas
+  repas(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Repas]
+  repasConnection(sort: String, limit: Int, start: Int, where: JSON): RepasConnection
+  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+type Mutation {
+  createCommentaire(input: createCommentaireInput): createCommentairePayload
+  updateCommentaire(input: updateCommentaireInput): updateCommentairePayload
+  deleteCommentaire(input: deleteCommentaireInput): deleteCommentairePayload
+  createConseil(input: createConseilInput): createConseilPayload
+  updateConseil(input: updateConseilInput): updateConseilPayload
+  deleteConseil(input: deleteConseilInput): deleteConseilPayload
+  createIngredient(input: createIngredientInput): createIngredientPayload
+  updateIngredient(input: updateIngredientInput): updateIngredientPayload
+  deleteIngredient(input: deleteIngredientInput): deleteIngredientPayload
+  createLignePanierCourse(input: createLignePanierCourseInput): createLignePanierCoursePayload
+  updateLignePanierCourse(input: updateLignePanierCourseInput): updateLignePanierCoursePayload
+  deleteLignePanierCourse(input: deleteLignePanierCourseInput): deleteLignePanierCoursePayload
+  createMission(input: createMissionInput): createMissionPayload
+  updateMission(input: updateMissionInput): updateMissionPayload
+  deleteMission(input: deleteMissionInput): deleteMissionPayload
+  createOutil(input: createOutilInput): createOutilPayload
+  updateOutil(input: updateOutilInput): updateOutilPayload
+  deleteOutil(input: deleteOutilInput): deleteOutilPayload
+  createPanierDeCourse(input: createPanierDeCourseInput): createPanierDeCoursePayload
+  updatePanierDeCourse(input: updatePanierDeCourseInput): updatePanierDeCoursePayload
+  deletePanierDeCourse(input: deletePanierDeCourseInput): deletePanierDeCoursePayload
+  createPlanningRepa(input: createPlanningRepaInput): createPlanningRepaPayload
+  updatePlanningRepa(input: updatePlanningRepaInput): updatePlanningRepaPayload
+  deletePlanningRepa(input: deletePlanningRepaInput): deletePlanningRepaPayload
+  createRecette(input: createRecetteInput): createRecettePayload
+  updateRecette(input: updateRecetteInput): updateRecettePayload
+  deleteRecette(input: deleteRecetteInput): deleteRecettePayload
+  createRepa(input: createRepaInput): createRepaPayload
+  updateRepa(input: updateRepaInput): updateRepaPayload
+  deleteRepa(input: deleteRepaInput): deleteRepaPayload
+
+  """Delete one file"""
+  deleteFile(input: deleteFileInput): deleteFilePayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
